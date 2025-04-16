@@ -8,7 +8,7 @@ WORKDIR /app
 COPY bun.lockb package.json tsconfig.json ./
 
 # ติดตั้ง dependency
-RUN bun install --frozen-lockfile
+RUN bun install
 
 # คัดลอก source code ทั้งหมด
 COPY . .
