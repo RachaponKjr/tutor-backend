@@ -1,8 +1,8 @@
 // prisma/schema.prisma
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = "postgresql://admin:tutorpostgresdatabase@localhost:5432/tutor-database"
 }
 
 generator client {
