@@ -12,6 +12,8 @@ COPY prisma prisma
 
 # COPY public public
 
+COPY generated generated
+
 ENV NODE_ENV production
 CMD ["bun", "./src/index.ts"]
 
