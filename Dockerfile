@@ -14,7 +14,6 @@ RUN bun install --production
 COPY prisma ./prisma
 COPY src ./src
 COPY tsconfig.json ./
-COPY .env .env
 
 # Generate Prisma Client (ใช้ default output → node_modules/@prisma/client)
 RUN bunx prisma generate
