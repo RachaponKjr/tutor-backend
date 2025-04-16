@@ -1,0 +1,93 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tutorProfile TutorProfile?
+  reviews      Review[]
+}
+
+model TutorProfile {
+  id           Int     @id @default(autoincrement())
+  userId       Int     @unique
+  tutorName    String
+  province     String
+  image        String
+  pricePerHour Int
+  description  String
+  phoneNumber  String
+  verifyed     Boolean @default(false)
+
+  user           User            @relation(fields: [userId], references: [id])
+  availableTimes AvailableTime[]
+  tutorSubjects  TutorSubject[]
+  experiences    Experience[]
+  reviews        Review[]
+}
+
+model AvailableTime {
+  id        Int    @id @default(autoincrement())
+  dayStart  String
+  dayEnd    String
+  timeStart String
+  timeEnd   String
+  tutorId   Int
+
+  tutor TutorProfile @relation(fields: [tutorId], references: [id])
+}
+
+model Experience {
+  id      Int    @id @default(autoincrement())
+  detail  String
+  tutorId Int
+
+  tutor TutorProfile @relation(fields: [tutorId], references: [id])
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  comment   String
+  rating    Int // 1 - 5 stars
+  tutorId   Int
+  userId    Int
+  createdAt DateTime @default(now())
+
+  tutor TutorProfile @relation(fields: [tutorId], references: [id])
+  user  User         @relation(fields: [userId], references: [id])
+}
+
+model SubjectCategory {
+  id     Int            @id @default(autoincrement())
+  name   String         @unique
+  tutors TutorSubject[]
+}
+
+model TutorSubject {
+  id         Int @id @default(autoincrement())
+  tutorId    Int
+  categoryId Int
+
+  tutor    TutorProfile    @relation(fields: [tutorId], references: [id])
+  category SubjectCategory @relation(fields: [categoryId], references: [id])
+}
+
+enum Role {
+  USER
+  TUTOR
+  ADMIN
+}
