@@ -1,26 +1,25 @@
 # ใช้ official Bun image
 FROM oven/bun:1.0.20 as base
 
-# Set working directory
 WORKDIR /app
 
-# คัดลอกเฉพาะไฟล์ที่จำเป็นก่อนเพื่อใช้ cache build
-COPY package.json bun.lockb tsconfig.json prisma ./ 
+# คัดลอกเฉพาะไฟล์ที่จำเป็นเพื่อใช้ cache สำหรับ dependency install
+COPY bun.lockb package.json tsconfig.json ./
 
 # ติดตั้ง dependencies
 RUN bun install
 
-# Generate Prisma Client
-RUN bunx prisma generate
-
-# คัดลอก source code ทั้งหมดที่เหลือ
+# ✅ คัดลอกโค้ดทั้งหมด (รวม src/, prisma/)
 COPY . .
 
-# (ถ้าคุณใช้ Prisma Migrate, สั่ง migrate ใน production แบบ safe)
+# ✅ Generate Prisma Client หลังจากมี source code แล้ว
+RUN bunx prisma generate
+
+# ✅ (ถ้าต้องการ migrate schema)
 RUN bunx prisma migrate deploy
 
 # สั่ง build TypeScript (ถ้ามี)
 RUN bun run build
 
-# รันแอป (เปลี่ยนตาม entry point ของคุณ)
+# รันแอป
 CMD ["bun", "run", "start"]
