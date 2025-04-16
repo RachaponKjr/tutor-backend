@@ -1,25 +1,23 @@
-# ใช้ Bun official image
 FROM oven/bun:1.0.20
-
-# Set working directory
 WORKDIR /app
 
-# Copy dependency config
+# Step 1: Copy package info
 COPY package.json bun.lockb ./
 
-# ติดตั้ง dependencies (รวม prisma CLI และ client)
-RUN bun install --production
+# Step 2: ติดตั้ง dependencies (ทุกตัว)
+RUN bun install
 
-# คัดลอก source code และ Prisma schema
+# Step 3: คัดลอกไฟล์โปรเจกต์ทั้งหมด
 COPY prisma ./prisma
 COPY src ./src
 COPY tsconfig.json ./
 
-# Generate Prisma Client (ใช้ default output → node_modules/@prisma/client)
+# Step 4: Generate Prisma Client
 RUN bunx prisma generate
 
-# Expose port
-EXPOSE 3000
+# Step 5: ตัด dev dependencies ทิ้ง (เลือกได้)
+RUN bun install --production
 
-# Run app
+# Step 6: รันแอป
+EXPOSE 3000
 CMD ["bun", "src/index.ts"]
