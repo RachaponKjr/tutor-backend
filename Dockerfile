@@ -1,15 +1,18 @@
 FROM oven/bun:1.0.20
 WORKDIR /app
 
-# ติดตั้ง dependencies
-COPY bun.lockb package.json tsconfig.json ./
-RUN bun install
+COPY package.json .
+COPY bun.lockb .
 
-# ✅ คัดลอกทุกไฟล์ในโปรเจกต์ (รวม prisma/, src/, .env)
-COPY . .
+RUN bun install --production
 
-# Build TypeScript
-RUN bun run build
+COPY src src
+COPY tsconfig.json .
+COPY prisma prisma
 
-# ✅ Generate Prisma client ก่อนรันแอป
-CMD ["sh", "-c", "bunx prisma generate && bun run start"]
+# COPY public public
+
+ENV NODE_ENV production
+CMD ["bun", "./src/index.ts"]
+
+EXPOSE 3000
