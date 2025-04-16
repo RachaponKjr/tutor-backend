@@ -8,7 +8,8 @@ COPY prisma ./prisma
 COPY src ./src
 COPY tsconfig.json ./
 
-RUN bunx prisma generate
+# ✅ Force generate to correct output
+RUN rm -rf node_modules/.prisma node_modules/@prisma/client && bunx prisma generate
 
 EXPOSE 3000
 CMD ["bun", "src/index.ts"]
