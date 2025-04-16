@@ -1,18 +1,26 @@
+# ใช้ Bun official image
 FROM oven/bun:1.0.20
+
+# Set working directory
 WORKDIR /app
 
-COPY package.json .
-COPY bun.lockb .
-RUN bun install
+# Copy dependency config
+COPY package.json bun.lockb ./
 
-COPY src ./src
-COPY tsconfig.json .
+# ติดตั้ง dependencies (รวม prisma CLI และ client)
+RUN bun install --production
+
+# คัดลอก source code และ Prisma schema
 COPY prisma ./prisma
+COPY src ./src
+COPY tsconfig.json ./
+COPY .env .env
 
-# ✅ ไม่ต้อง COPY generated
-# ❌ COPY generated/client ./generated/client
+# Generate Prisma Client (ใช้ default output → node_modules/@prisma/client)
+RUN bunx prisma generate
 
-ENV NODE_ENV=production
+# Expose port
 EXPOSE 3000
 
-CMD ["bun", "./src/index.ts"]
+# Run app
+CMD ["bun", "src/index.ts"]
