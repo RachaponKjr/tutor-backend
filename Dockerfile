@@ -15,7 +15,7 @@ COPY src ./src
 
 # Copy config files
 COPY tsconfig.json ./
-COPY .env ./
+# COPY .env ./
 
 # Generate Prisma Client (ส่งออกไป src/libs/prismaClient)
 RUN npx prisma generate
