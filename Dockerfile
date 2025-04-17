@@ -1,15 +1,30 @@
-FROM oven/bun:1.0.20
+FROM node:20
+
+# Set working directory
 WORKDIR /app
 
-COPY package.json ./
-RUN bun install
+# Copy dependencies
+COPY package*.json ./
 
+# Install dependencies (ใช้ npm เพื่อความเข้ากันได้กับ Prisma)
+RUN npm install
+
+# Copy Prisma schema + source code
 COPY prisma ./prisma
 COPY src ./src
+
+# Copy config files
 COPY tsconfig.json ./
+COPY .env ./
 
-# ✅ Force generate to correct output
-RUN rm -rf node_modules/.prisma node_modules/@prisma/client && bunx prisma generate
+# Generate Prisma Client (ส่งออกไป src/libs/prismaClient)
+RUN npx prisma generate
 
+# Build TypeScript
+RUN npm run build
+
+# Expose app port
 EXPOSE 3000
-CMD ["bun", "src/index.ts"]
+
+# Start the app
+CMD ["node", "dist/index.js"]
