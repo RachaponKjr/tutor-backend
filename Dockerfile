@@ -17,9 +17,6 @@ COPY tsconfig.json ./
 # Generate Prisma Client
 RUN bunx prisma generate
 
-# Build
-RUN bun run build
-
 EXPOSE 3000
 
-CMD ["bun", "dist/index.js"]
+CMD ["bun", ".\src\index.ts"]
