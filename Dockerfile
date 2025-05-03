@@ -2,6 +2,8 @@ FROM oven/bun
 
 WORKDIR /app
 
+RUN apt-get update -y && apt-get install -y openssl
+
 # Copy dependencies
 COPY package*.json ./
 RUN bun install
@@ -17,6 +19,6 @@ COPY tsconfig.json ./
 # Generate Prisma Client
 RUN bunx prisma generate
 
-EXPOSE 3000
+EXPOSE 3001
 
 CMD ["bun", "src/index.ts"]
