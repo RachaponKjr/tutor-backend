@@ -119,7 +119,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  name: 'name',
   email: 'email',
   password: 'password',
   role: 'role',
@@ -134,18 +133,52 @@ exports.Prisma.TutorProfileScalarFieldEnum = {
   province: 'province',
   image: 'image',
   pricePerHour: 'pricePerHour',
+  languageTaught: 'languageTaught',
+  sex: 'sex',
   description: 'description',
   phoneNumber: 'phoneNumber',
-  verifyed: 'verifyed'
-};
-
-exports.Prisma.AvailableTimeScalarFieldEnum = {
-  id: 'id',
-  dayStart: 'dayStart',
-  dayEnd: 'dayEnd',
+  verifyed: 'verifyed',
+  technique: 'technique',
+  teachingMethod: 'teachingMethod',
+  teachingTime: 'teachingTime',
   timeStart: 'timeStart',
   timeEnd: 'timeEnd',
-  tutorId: 'tutorId'
+  availableTimes: 'availableTimes'
+};
+
+exports.Prisma.TeachingLevelScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.TutorLevelScalarFieldEnum = {
+  id: 'id',
+  tutorProfileId: 'tutorProfileId',
+  teachingLevelId: 'teachingLevelId'
+};
+
+exports.Prisma.BookingTutorScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  phoneNumber: 'phoneNumber',
+  email: 'email',
+  subjectId: 'subjectId',
+  subjectName: 'subjectName',
+  level: 'level',
+  target: 'target',
+  nationalityTeacher: 'nationalityTeacher',
+  teacherSex: 'teacherSex',
+  studyingDays: 'studyingDays',
+  studyingTimes: 'studyingTimes',
+  startStudyingDate: 'startStudyingDate',
+  teachingMethod: 'teachingMethod',
+  studyLocation: 'studyLocation',
+  yourCity: 'yourCity',
+  note: 'note',
+  assignedTutorId: 'assignedTutorId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.ExperienceScalarFieldEnum = {
@@ -165,7 +198,8 @@ exports.Prisma.ReviewScalarFieldEnum = {
 
 exports.Prisma.SubjectCategoryScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  icon: 'icon'
 };
 
 exports.Prisma.TutorSubjectScalarFieldEnum = {
@@ -183,16 +217,54 @@ exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
 exports.Role = exports.$Enums.Role = {
   USER: 'USER',
   TUTOR: 'TUTOR',
   ADMIN: 'ADMIN'
 };
 
+exports.Language = exports.$Enums.Language = {
+  THAI: 'THAI',
+  ENGLISH: 'ENGLISH',
+  BOTH: 'BOTH'
+};
+
+exports.SexMethod = exports.$Enums.SexMethod = {
+  MAN: 'MAN',
+  WOMAN: 'WOMAN',
+  NULL: 'NULL'
+};
+
+exports.TeachingMethod = exports.$Enums.TeachingMethod = {
+  ONLINE: 'ONLINE',
+  ONSITE: 'ONSITE',
+  BOTH: 'BOTH'
+};
+
+exports.TeachingTime = exports.$Enums.TeachingTime = {
+  WEEKDAY: 'WEEKDAY',
+  WEEKEND: 'WEEKEND',
+  EVERYDAY: 'EVERYDAY'
+};
+
+exports.BookingStatus = exports.$Enums.BookingStatus = {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  CANCELLED: 'CANCELLED',
+  COMPLETED: 'COMPLETED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   TutorProfile: 'TutorProfile',
-  AvailableTime: 'AvailableTime',
+  TeachingLevel: 'TeachingLevel',
+  TutorLevel: 'TutorLevel',
+  BookingTutor: 'BookingTutor',
   Experience: 'Experience',
   Review: 'Review',
   SubjectCategory: 'SubjectCategory',

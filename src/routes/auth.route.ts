@@ -1,5 +1,5 @@
 import { Elysia, t } from "elysia";
-import { login, register } from "../controllers/auth.controllers";
+import { login, register } from "../controllers/auth.controller";
 import AuthModel from "../models/auth.model";
 
 export const authRoute = new Elysia({

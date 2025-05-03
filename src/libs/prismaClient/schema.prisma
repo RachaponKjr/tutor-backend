@@ -8,15 +8,14 @@ datasource db {
 generator client {
   provider      = "prisma-client-js"
   output        = "../src/libs/prismaClient"
-  binaryTargets = ["native", "linux-musl"]
+  binaryTargets = ["native", "linux-musl", "windows"]
 }
 
 model User {
   id        Int      @id @default(autoincrement())
-  name      String
   email     String   @unique
   password  String
-  role      Role     @default(USER)
+  role      Role     @default(TUTOR)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -25,32 +24,81 @@ model User {
 }
 
 model TutorProfile {
-  id           Int     @id @default(autoincrement())
-  userId       Int     @unique
-  tutorName    String
-  province     String
-  image        String
-  pricePerHour Int
-  description  String
-  phoneNumber  String
-  verifyed     Boolean @default(false)
+  id             Int       @id @default(autoincrement())
+  userId         Int       @unique
+  tutorName      String //OK
+  province       String //OK
+  image          String
+  pricePerHour   Int //OK
+  languageTaught Language  @default(THAI)
+  sex            SexMethod @default(MAN) //OK
+  description    String? //OK
+  phoneNumber    String //OK
+  verifyed       Boolean   @default(false)
+  technique      String? //OK
 
-  user           User            @relation(fields: [userId], references: [id])
-  availableTimes AvailableTime[]
+  teachingMethod TeachingMethod @default(ONLINE)
+  teachingTime   TeachingTime   @default(EVERYDAY) //OK
+  timeStart      String //OK
+  timeEnd        String //OK
+
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  availableTimes TeachingTime   @default(EVERYDAY) //OK
   tutorSubjects  TutorSubject[]
   experiences    Experience[]
   reviews        Review[]
+  levels         TutorLevel[]
+  BookingTutor   BookingTutor[]
 }
 
-model AvailableTime {
-  id        Int    @id @default(autoincrement())
-  dayStart  String
-  dayEnd    String
-  timeStart String
-  timeEnd   String
-  tutorId   Int
+model TeachingLevel {
+  id     Int          @id @default(autoincrement())
+  name   String       @unique
+  tutors TutorLevel[]
+}
 
-  tutor TutorProfile @relation(fields: [tutorId], references: [id])
+model TutorLevel {
+  id              Int @id @default(autoincrement())
+  tutorProfileId  Int
+  teachingLevelId Int
+
+  tutorProfile  TutorProfile  @relation(fields: [tutorProfileId], references: [id], onDelete: Cascade)
+  teachingLevel TeachingLevel @relation(fields: [teachingLevelId], references: [id])
+
+  @@unique([tutorProfileId, teachingLevelId])
+}
+
+model BookingTutor {
+  id Int @id @default(autoincrement())
+
+  // ข้อมูลที่ลูกค้า(คนกรอกฟอร์ม)ให้มา
+  fullName    String // ชื่อลูกค้า (optional ไหม แล้วแต่)
+  phoneNumber String // เบอร์โทร
+  email       String? // อีเมล (optional)
+
+  subjectId          Int? // หมวดหมู่วิชา เช่น ภาษาอังกฤษ
+  subjectName        String?
+  level              String? // ระดับ เช่น ม.ปลาย
+  target             String? // เป้าหมาย เช่น สอบ GAT/PAT
+  nationalityTeacher String? // อยากได้ติวเตอร์สัญชาติไหน
+  teacherSex         SexMethod? // อยากได้ติวเตอร์เพศไหน
+  studyingDays       TeachingTime? // เรียนวันอะไร (WEEKDAY/WEEKEND/EVERYDAY)
+  studyingTimes      String? // เวลาเรียน เช่น "10:00-12:00"
+  startStudyingDate  String? // อยากเริ่มเรียนวันไหน
+  teachingMethod     TeachingMethod? // สอนออนไลน์/สอนสด
+  studyLocation      String? // สถานที่เรียน (ถ้า onsite)
+  yourCity           String? // จังหวัดที่เรียน
+  note               String? // ข้อความเพิ่มเติม
+
+  // ฝั่งหลังบ้านจัดการ
+  assignedTutorId Int? // ติวเตอร์ที่เลือกให้
+  status          BookingStatus? @default(PENDING)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  subject       SubjectCategory? @relation(fields: [subjectId], references: [id])
+  assignedTutor TutorProfile?    @relation(fields: [assignedTutorId], references: [id])
 }
 
 model Experience {
@@ -58,13 +106,13 @@ model Experience {
   detail  String
   tutorId Int
 
-  tutor TutorProfile @relation(fields: [tutorId], references: [id])
+  tutor TutorProfile @relation(fields: [tutorId], references: [id], onDelete: Cascade)
 }
 
 model Review {
   id        Int      @id @default(autoincrement())
   comment   String
-  rating    Int // 1 - 5 stars
+  rating    Int
   tutorId   Int
   userId    Int
   createdAt DateTime @default(now())
@@ -74,9 +122,11 @@ model Review {
 }
 
 model SubjectCategory {
-  id     Int            @id @default(autoincrement())
-  name   String         @unique
-  tutors TutorSubject[]
+  id           Int            @id @default(autoincrement())
+  name         String         @unique
+  icon         String?
+  tutors       TutorSubject[]
+  BookingTutor BookingTutor[]
 }
 
 model TutorSubject {
@@ -84,7 +134,7 @@ model TutorSubject {
   tutorId    Int
   categoryId Int
 
-  tutor    TutorProfile    @relation(fields: [tutorId], references: [id])
+  tutor    TutorProfile    @relation(fields: [tutorId], references: [id], onDelete: Cascade)
   category SubjectCategory @relation(fields: [categoryId], references: [id])
 }
 
@@ -92,4 +142,35 @@ enum Role {
   USER
   TUTOR
   ADMIN
+}
+
+enum TeachingTime {
+  WEEKDAY // จันทร์-ศุกร์
+  WEEKEND // เสาร์-อาทิตย์
+  EVERYDAY // ทุกวัน
+}
+
+enum TeachingMethod {
+  ONLINE
+  ONSITE
+  BOTH
+}
+
+enum SexMethod {
+  MAN
+  WOMAN
+  NULL
+}
+
+enum Language {
+  THAI
+  ENGLISH
+  BOTH
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
 }

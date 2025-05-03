@@ -24,10 +24,20 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type TutorProfile = $Result.DefaultSelection<Prisma.$TutorProfilePayload>
 /**
- * Model AvailableTime
+ * Model TeachingLevel
  * 
  */
-export type AvailableTime = $Result.DefaultSelection<Prisma.$AvailableTimePayload>
+export type TeachingLevel = $Result.DefaultSelection<Prisma.$TeachingLevelPayload>
+/**
+ * Model TutorLevel
+ * 
+ */
+export type TutorLevel = $Result.DefaultSelection<Prisma.$TutorLevelPayload>
+/**
+ * Model BookingTutor
+ * 
+ */
+export type BookingTutor = $Result.DefaultSelection<Prisma.$BookingTutorPayload>
 /**
  * Model Experience
  * 
@@ -61,11 +71,77 @@ export namespace $Enums {
 
 export type Role = (typeof Role)[keyof typeof Role]
 
+
+export const TeachingTime: {
+  WEEKDAY: 'WEEKDAY',
+  WEEKEND: 'WEEKEND',
+  EVERYDAY: 'EVERYDAY'
+};
+
+export type TeachingTime = (typeof TeachingTime)[keyof typeof TeachingTime]
+
+
+export const TeachingMethod: {
+  ONLINE: 'ONLINE',
+  ONSITE: 'ONSITE',
+  BOTH: 'BOTH'
+};
+
+export type TeachingMethod = (typeof TeachingMethod)[keyof typeof TeachingMethod]
+
+
+export const SexMethod: {
+  MAN: 'MAN',
+  WOMAN: 'WOMAN',
+  NULL: 'NULL'
+};
+
+export type SexMethod = (typeof SexMethod)[keyof typeof SexMethod]
+
+
+export const Language: {
+  THAI: 'THAI',
+  ENGLISH: 'ENGLISH',
+  BOTH: 'BOTH'
+};
+
+export type Language = (typeof Language)[keyof typeof Language]
+
+
+export const BookingStatus: {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  CANCELLED: 'CANCELLED',
+  COMPLETED: 'COMPLETED'
+};
+
+export type BookingStatus = (typeof BookingStatus)[keyof typeof BookingStatus]
+
 }
 
 export type Role = $Enums.Role
 
 export const Role: typeof $Enums.Role
+
+export type TeachingTime = $Enums.TeachingTime
+
+export const TeachingTime: typeof $Enums.TeachingTime
+
+export type TeachingMethod = $Enums.TeachingMethod
+
+export const TeachingMethod: typeof $Enums.TeachingMethod
+
+export type SexMethod = $Enums.SexMethod
+
+export const SexMethod: typeof $Enums.SexMethod
+
+export type Language = $Enums.Language
+
+export const Language: typeof $Enums.Language
+
+export type BookingStatus = $Enums.BookingStatus
+
+export const BookingStatus: typeof $Enums.BookingStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -213,14 +289,34 @@ export class PrismaClient<
   get tutorProfile(): Prisma.TutorProfileDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.availableTime`: Exposes CRUD operations for the **AvailableTime** model.
+   * `prisma.teachingLevel`: Exposes CRUD operations for the **TeachingLevel** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more AvailableTimes
-    * const availableTimes = await prisma.availableTime.findMany()
+    * // Fetch zero or more TeachingLevels
+    * const teachingLevels = await prisma.teachingLevel.findMany()
     * ```
     */
-  get availableTime(): Prisma.AvailableTimeDelegate<ExtArgs, ClientOptions>;
+  get teachingLevel(): Prisma.TeachingLevelDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tutorLevel`: Exposes CRUD operations for the **TutorLevel** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TutorLevels
+    * const tutorLevels = await prisma.tutorLevel.findMany()
+    * ```
+    */
+  get tutorLevel(): Prisma.TutorLevelDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.bookingTutor`: Exposes CRUD operations for the **BookingTutor** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BookingTutors
+    * const bookingTutors = await prisma.bookingTutor.findMany()
+    * ```
+    */
+  get bookingTutor(): Prisma.BookingTutorDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.experience`: Exposes CRUD operations for the **Experience** model.
@@ -703,7 +799,9 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     TutorProfile: 'TutorProfile',
-    AvailableTime: 'AvailableTime',
+    TeachingLevel: 'TeachingLevel',
+    TutorLevel: 'TutorLevel',
+    BookingTutor: 'BookingTutor',
     Experience: 'Experience',
     Review: 'Review',
     SubjectCategory: 'SubjectCategory',
@@ -726,7 +824,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "tutorProfile" | "availableTime" | "experience" | "review" | "subjectCategory" | "tutorSubject"
+      modelProps: "user" | "tutorProfile" | "teachingLevel" | "tutorLevel" | "bookingTutor" | "experience" | "review" | "subjectCategory" | "tutorSubject"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -878,77 +976,225 @@ export namespace Prisma {
           }
         }
       }
-      AvailableTime: {
-        payload: Prisma.$AvailableTimePayload<ExtArgs>
-        fields: Prisma.AvailableTimeFieldRefs
+      TeachingLevel: {
+        payload: Prisma.$TeachingLevelPayload<ExtArgs>
+        fields: Prisma.TeachingLevelFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.AvailableTimeFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload> | null
+            args: Prisma.TeachingLevelFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.AvailableTimeFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload>
+            args: Prisma.TeachingLevelFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload>
           }
           findFirst: {
-            args: Prisma.AvailableTimeFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload> | null
+            args: Prisma.TeachingLevelFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.AvailableTimeFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload>
+            args: Prisma.TeachingLevelFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload>
           }
           findMany: {
-            args: Prisma.AvailableTimeFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload>[]
+            args: Prisma.TeachingLevelFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload>[]
           }
           create: {
-            args: Prisma.AvailableTimeCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload>
+            args: Prisma.TeachingLevelCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload>
           }
           createMany: {
-            args: Prisma.AvailableTimeCreateManyArgs<ExtArgs>
+            args: Prisma.TeachingLevelCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.AvailableTimeCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload>[]
+            args: Prisma.TeachingLevelCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload>[]
           }
           delete: {
-            args: Prisma.AvailableTimeDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload>
+            args: Prisma.TeachingLevelDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload>
           }
           update: {
-            args: Prisma.AvailableTimeUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload>
+            args: Prisma.TeachingLevelUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload>
           }
           deleteMany: {
-            args: Prisma.AvailableTimeDeleteManyArgs<ExtArgs>
+            args: Prisma.TeachingLevelDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.AvailableTimeUpdateManyArgs<ExtArgs>
+            args: Prisma.TeachingLevelUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.AvailableTimeUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload>[]
+            args: Prisma.TeachingLevelUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload>[]
           }
           upsert: {
-            args: Prisma.AvailableTimeUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AvailableTimePayload>
+            args: Prisma.TeachingLevelUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeachingLevelPayload>
           }
           aggregate: {
-            args: Prisma.AvailableTimeAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAvailableTime>
+            args: Prisma.TeachingLevelAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTeachingLevel>
           }
           groupBy: {
-            args: Prisma.AvailableTimeGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AvailableTimeGroupByOutputType>[]
+            args: Prisma.TeachingLevelGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TeachingLevelGroupByOutputType>[]
           }
           count: {
-            args: Prisma.AvailableTimeCountArgs<ExtArgs>
-            result: $Utils.Optional<AvailableTimeCountAggregateOutputType> | number
+            args: Prisma.TeachingLevelCountArgs<ExtArgs>
+            result: $Utils.Optional<TeachingLevelCountAggregateOutputType> | number
+          }
+        }
+      }
+      TutorLevel: {
+        payload: Prisma.$TutorLevelPayload<ExtArgs>
+        fields: Prisma.TutorLevelFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TutorLevelFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TutorLevelFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload>
+          }
+          findFirst: {
+            args: Prisma.TutorLevelFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TutorLevelFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload>
+          }
+          findMany: {
+            args: Prisma.TutorLevelFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload>[]
+          }
+          create: {
+            args: Prisma.TutorLevelCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload>
+          }
+          createMany: {
+            args: Prisma.TutorLevelCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TutorLevelCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload>[]
+          }
+          delete: {
+            args: Prisma.TutorLevelDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload>
+          }
+          update: {
+            args: Prisma.TutorLevelUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload>
+          }
+          deleteMany: {
+            args: Prisma.TutorLevelDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TutorLevelUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TutorLevelUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload>[]
+          }
+          upsert: {
+            args: Prisma.TutorLevelUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TutorLevelPayload>
+          }
+          aggregate: {
+            args: Prisma.TutorLevelAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTutorLevel>
+          }
+          groupBy: {
+            args: Prisma.TutorLevelGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TutorLevelGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TutorLevelCountArgs<ExtArgs>
+            result: $Utils.Optional<TutorLevelCountAggregateOutputType> | number
+          }
+        }
+      }
+      BookingTutor: {
+        payload: Prisma.$BookingTutorPayload<ExtArgs>
+        fields: Prisma.BookingTutorFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BookingTutorFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BookingTutorFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload>
+          }
+          findFirst: {
+            args: Prisma.BookingTutorFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BookingTutorFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload>
+          }
+          findMany: {
+            args: Prisma.BookingTutorFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload>[]
+          }
+          create: {
+            args: Prisma.BookingTutorCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload>
+          }
+          createMany: {
+            args: Prisma.BookingTutorCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BookingTutorCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload>[]
+          }
+          delete: {
+            args: Prisma.BookingTutorDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload>
+          }
+          update: {
+            args: Prisma.BookingTutorUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload>
+          }
+          deleteMany: {
+            args: Prisma.BookingTutorDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BookingTutorUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BookingTutorUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload>[]
+          }
+          upsert: {
+            args: Prisma.BookingTutorUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookingTutorPayload>
+          }
+          aggregate: {
+            args: Prisma.BookingTutorAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBookingTutor>
+          }
+          groupBy: {
+            args: Prisma.BookingTutorGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BookingTutorGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BookingTutorCountArgs<ExtArgs>
+            result: $Utils.Optional<BookingTutorCountAggregateOutputType> | number
           }
         }
       }
@@ -1334,7 +1580,9 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     tutorProfile?: TutorProfileOmit
-    availableTime?: AvailableTimeOmit
+    teachingLevel?: TeachingLevelOmit
+    tutorLevel?: TutorLevelOmit
+    bookingTutor?: BookingTutorOmit
     experience?: ExperienceOmit
     review?: ReviewOmit
     subjectCategory?: SubjectCategoryOmit
@@ -1464,17 +1712,19 @@ export namespace Prisma {
    */
 
   export type TutorProfileCountOutputType = {
-    availableTimes: number
     tutorSubjects: number
     experiences: number
     reviews: number
+    levels: number
+    BookingTutor: number
   }
 
   export type TutorProfileCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    availableTimes?: boolean | TutorProfileCountOutputTypeCountAvailableTimesArgs
     tutorSubjects?: boolean | TutorProfileCountOutputTypeCountTutorSubjectsArgs
     experiences?: boolean | TutorProfileCountOutputTypeCountExperiencesArgs
     reviews?: boolean | TutorProfileCountOutputTypeCountReviewsArgs
+    levels?: boolean | TutorProfileCountOutputTypeCountLevelsArgs
+    BookingTutor?: boolean | TutorProfileCountOutputTypeCountBookingTutorArgs
   }
 
   // Custom InputTypes
@@ -1486,13 +1736,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the TutorProfileCountOutputType
      */
     select?: TutorProfileCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * TutorProfileCountOutputType without action
-   */
-  export type TutorProfileCountOutputTypeCountAvailableTimesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AvailableTimeWhereInput
   }
 
   /**
@@ -1516,6 +1759,51 @@ export namespace Prisma {
     where?: ReviewWhereInput
   }
 
+  /**
+   * TutorProfileCountOutputType without action
+   */
+  export type TutorProfileCountOutputTypeCountLevelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TutorLevelWhereInput
+  }
+
+  /**
+   * TutorProfileCountOutputType without action
+   */
+  export type TutorProfileCountOutputTypeCountBookingTutorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookingTutorWhereInput
+  }
+
+
+  /**
+   * Count Type TeachingLevelCountOutputType
+   */
+
+  export type TeachingLevelCountOutputType = {
+    tutors: number
+  }
+
+  export type TeachingLevelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tutors?: boolean | TeachingLevelCountOutputTypeCountTutorsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TeachingLevelCountOutputType without action
+   */
+  export type TeachingLevelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeachingLevelCountOutputType
+     */
+    select?: TeachingLevelCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TeachingLevelCountOutputType without action
+   */
+  export type TeachingLevelCountOutputTypeCountTutorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TutorLevelWhereInput
+  }
+
 
   /**
    * Count Type SubjectCategoryCountOutputType
@@ -1523,10 +1811,12 @@ export namespace Prisma {
 
   export type SubjectCategoryCountOutputType = {
     tutors: number
+    BookingTutor: number
   }
 
   export type SubjectCategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tutors?: boolean | SubjectCategoryCountOutputTypeCountTutorsArgs
+    BookingTutor?: boolean | SubjectCategoryCountOutputTypeCountBookingTutorArgs
   }
 
   // Custom InputTypes
@@ -1545,6 +1835,13 @@ export namespace Prisma {
    */
   export type SubjectCategoryCountOutputTypeCountTutorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TutorSubjectWhereInput
+  }
+
+  /**
+   * SubjectCategoryCountOutputType without action
+   */
+  export type SubjectCategoryCountOutputTypeCountBookingTutorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookingTutorWhereInput
   }
 
 
@@ -1574,7 +1871,6 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: number | null
-    name: string | null
     email: string | null
     password: string | null
     role: $Enums.Role | null
@@ -1584,7 +1880,6 @@ export namespace Prisma {
 
   export type UserMaxAggregateOutputType = {
     id: number | null
-    name: string | null
     email: string | null
     password: string | null
     role: $Enums.Role | null
@@ -1594,7 +1889,6 @@ export namespace Prisma {
 
   export type UserCountAggregateOutputType = {
     id: number
-    name: number
     email: number
     password: number
     role: number
@@ -1614,7 +1908,6 @@ export namespace Prisma {
 
   export type UserMinAggregateInputType = {
     id?: true
-    name?: true
     email?: true
     password?: true
     role?: true
@@ -1624,7 +1917,6 @@ export namespace Prisma {
 
   export type UserMaxAggregateInputType = {
     id?: true
-    name?: true
     email?: true
     password?: true
     role?: true
@@ -1634,7 +1926,6 @@ export namespace Prisma {
 
   export type UserCountAggregateInputType = {
     id?: true
-    name?: true
     email?: true
     password?: true
     role?: true
@@ -1731,7 +2022,6 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: number
-    name: string
     email: string
     password: string
     role: $Enums.Role
@@ -1760,7 +2050,6 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     email?: boolean
     password?: boolean
     role?: boolean
@@ -1773,7 +2062,6 @@ export namespace Prisma {
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     email?: boolean
     password?: boolean
     role?: boolean
@@ -1783,7 +2071,6 @@ export namespace Prisma {
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     email?: boolean
     password?: boolean
     role?: boolean
@@ -1793,7 +2080,6 @@ export namespace Prisma {
 
   export type UserSelectScalar = {
     id?: boolean
-    name?: boolean
     email?: boolean
     password?: boolean
     role?: boolean
@@ -1801,7 +2087,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tutorProfile?: boolean | User$tutorProfileArgs<ExtArgs>
     reviews?: boolean | User$reviewsArgs<ExtArgs>
@@ -1818,7 +2104,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      name: string
       email: string
       password: string
       role: $Enums.Role
@@ -2250,7 +2535,6 @@ export namespace Prisma {
    */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'Int'>
-    readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'Role'>
@@ -2736,9 +3020,17 @@ export namespace Prisma {
     province: string | null
     image: string | null
     pricePerHour: number | null
+    languageTaught: $Enums.Language | null
+    sex: $Enums.SexMethod | null
     description: string | null
     phoneNumber: string | null
     verifyed: boolean | null
+    technique: string | null
+    teachingMethod: $Enums.TeachingMethod | null
+    teachingTime: $Enums.TeachingTime | null
+    timeStart: string | null
+    timeEnd: string | null
+    availableTimes: $Enums.TeachingTime | null
   }
 
   export type TutorProfileMaxAggregateOutputType = {
@@ -2748,9 +3040,17 @@ export namespace Prisma {
     province: string | null
     image: string | null
     pricePerHour: number | null
+    languageTaught: $Enums.Language | null
+    sex: $Enums.SexMethod | null
     description: string | null
     phoneNumber: string | null
     verifyed: boolean | null
+    technique: string | null
+    teachingMethod: $Enums.TeachingMethod | null
+    teachingTime: $Enums.TeachingTime | null
+    timeStart: string | null
+    timeEnd: string | null
+    availableTimes: $Enums.TeachingTime | null
   }
 
   export type TutorProfileCountAggregateOutputType = {
@@ -2760,9 +3060,17 @@ export namespace Prisma {
     province: number
     image: number
     pricePerHour: number
+    languageTaught: number
+    sex: number
     description: number
     phoneNumber: number
     verifyed: number
+    technique: number
+    teachingMethod: number
+    teachingTime: number
+    timeStart: number
+    timeEnd: number
+    availableTimes: number
     _all: number
   }
 
@@ -2786,9 +3094,17 @@ export namespace Prisma {
     province?: true
     image?: true
     pricePerHour?: true
+    languageTaught?: true
+    sex?: true
     description?: true
     phoneNumber?: true
     verifyed?: true
+    technique?: true
+    teachingMethod?: true
+    teachingTime?: true
+    timeStart?: true
+    timeEnd?: true
+    availableTimes?: true
   }
 
   export type TutorProfileMaxAggregateInputType = {
@@ -2798,9 +3114,17 @@ export namespace Prisma {
     province?: true
     image?: true
     pricePerHour?: true
+    languageTaught?: true
+    sex?: true
     description?: true
     phoneNumber?: true
     verifyed?: true
+    technique?: true
+    teachingMethod?: true
+    teachingTime?: true
+    timeStart?: true
+    timeEnd?: true
+    availableTimes?: true
   }
 
   export type TutorProfileCountAggregateInputType = {
@@ -2810,9 +3134,17 @@ export namespace Prisma {
     province?: true
     image?: true
     pricePerHour?: true
+    languageTaught?: true
+    sex?: true
     description?: true
     phoneNumber?: true
     verifyed?: true
+    technique?: true
+    teachingMethod?: true
+    teachingTime?: true
+    timeStart?: true
+    timeEnd?: true
+    availableTimes?: true
     _all?: true
   }
 
@@ -2909,9 +3241,17 @@ export namespace Prisma {
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught: $Enums.Language
+    sex: $Enums.SexMethod
+    description: string | null
     phoneNumber: string
     verifyed: boolean
+    technique: string | null
+    teachingMethod: $Enums.TeachingMethod
+    teachingTime: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes: $Enums.TeachingTime
     _count: TutorProfileCountAggregateOutputType | null
     _avg: TutorProfileAvgAggregateOutputType | null
     _sum: TutorProfileSumAggregateOutputType | null
@@ -2940,14 +3280,23 @@ export namespace Prisma {
     province?: boolean
     image?: boolean
     pricePerHour?: boolean
+    languageTaught?: boolean
+    sex?: boolean
     description?: boolean
     phoneNumber?: boolean
     verifyed?: boolean
+    technique?: boolean
+    teachingMethod?: boolean
+    teachingTime?: boolean
+    timeStart?: boolean
+    timeEnd?: boolean
+    availableTimes?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    availableTimes?: boolean | TutorProfile$availableTimesArgs<ExtArgs>
     tutorSubjects?: boolean | TutorProfile$tutorSubjectsArgs<ExtArgs>
     experiences?: boolean | TutorProfile$experiencesArgs<ExtArgs>
     reviews?: boolean | TutorProfile$reviewsArgs<ExtArgs>
+    levels?: boolean | TutorProfile$levelsArgs<ExtArgs>
+    BookingTutor?: boolean | TutorProfile$BookingTutorArgs<ExtArgs>
     _count?: boolean | TutorProfileCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tutorProfile"]>
 
@@ -2958,9 +3307,17 @@ export namespace Prisma {
     province?: boolean
     image?: boolean
     pricePerHour?: boolean
+    languageTaught?: boolean
+    sex?: boolean
     description?: boolean
     phoneNumber?: boolean
     verifyed?: boolean
+    technique?: boolean
+    teachingMethod?: boolean
+    teachingTime?: boolean
+    timeStart?: boolean
+    timeEnd?: boolean
+    availableTimes?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tutorProfile"]>
 
@@ -2971,9 +3328,17 @@ export namespace Prisma {
     province?: boolean
     image?: boolean
     pricePerHour?: boolean
+    languageTaught?: boolean
+    sex?: boolean
     description?: boolean
     phoneNumber?: boolean
     verifyed?: boolean
+    technique?: boolean
+    teachingMethod?: boolean
+    teachingTime?: boolean
+    timeStart?: boolean
+    timeEnd?: boolean
+    availableTimes?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tutorProfile"]>
 
@@ -2984,18 +3349,27 @@ export namespace Prisma {
     province?: boolean
     image?: boolean
     pricePerHour?: boolean
+    languageTaught?: boolean
+    sex?: boolean
     description?: boolean
     phoneNumber?: boolean
     verifyed?: boolean
+    technique?: boolean
+    teachingMethod?: boolean
+    teachingTime?: boolean
+    timeStart?: boolean
+    timeEnd?: boolean
+    availableTimes?: boolean
   }
 
-  export type TutorProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "tutorName" | "province" | "image" | "pricePerHour" | "description" | "phoneNumber" | "verifyed", ExtArgs["result"]["tutorProfile"]>
+  export type TutorProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "tutorName" | "province" | "image" | "pricePerHour" | "languageTaught" | "sex" | "description" | "phoneNumber" | "verifyed" | "technique" | "teachingMethod" | "teachingTime" | "timeStart" | "timeEnd" | "availableTimes", ExtArgs["result"]["tutorProfile"]>
   export type TutorProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    availableTimes?: boolean | TutorProfile$availableTimesArgs<ExtArgs>
     tutorSubjects?: boolean | TutorProfile$tutorSubjectsArgs<ExtArgs>
     experiences?: boolean | TutorProfile$experiencesArgs<ExtArgs>
     reviews?: boolean | TutorProfile$reviewsArgs<ExtArgs>
+    levels?: boolean | TutorProfile$levelsArgs<ExtArgs>
+    BookingTutor?: boolean | TutorProfile$BookingTutorArgs<ExtArgs>
     _count?: boolean | TutorProfileCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TutorProfileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3009,10 +3383,11 @@ export namespace Prisma {
     name: "TutorProfile"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      availableTimes: Prisma.$AvailableTimePayload<ExtArgs>[]
       tutorSubjects: Prisma.$TutorSubjectPayload<ExtArgs>[]
       experiences: Prisma.$ExperiencePayload<ExtArgs>[]
       reviews: Prisma.$ReviewPayload<ExtArgs>[]
+      levels: Prisma.$TutorLevelPayload<ExtArgs>[]
+      BookingTutor: Prisma.$BookingTutorPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3021,9 +3396,17 @@ export namespace Prisma {
       province: string
       image: string
       pricePerHour: number
-      description: string
+      languageTaught: $Enums.Language
+      sex: $Enums.SexMethod
+      description: string | null
       phoneNumber: string
       verifyed: boolean
+      technique: string | null
+      teachingMethod: $Enums.TeachingMethod
+      teachingTime: $Enums.TeachingTime
+      timeStart: string
+      timeEnd: string
+      availableTimes: $Enums.TeachingTime
     }, ExtArgs["result"]["tutorProfile"]>
     composites: {}
   }
@@ -3419,10 +3802,11 @@ export namespace Prisma {
   export interface Prisma__TutorProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    availableTimes<T extends TutorProfile$availableTimesArgs<ExtArgs> = {}>(args?: Subset<T, TutorProfile$availableTimesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tutorSubjects<T extends TutorProfile$tutorSubjectsArgs<ExtArgs> = {}>(args?: Subset<T, TutorProfile$tutorSubjectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TutorSubjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     experiences<T extends TutorProfile$experiencesArgs<ExtArgs> = {}>(args?: Subset<T, TutorProfile$experiencesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExperiencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reviews<T extends TutorProfile$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, TutorProfile$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    levels<T extends TutorProfile$levelsArgs<ExtArgs> = {}>(args?: Subset<T, TutorProfile$levelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    BookingTutor<T extends TutorProfile$BookingTutorArgs<ExtArgs> = {}>(args?: Subset<T, TutorProfile$BookingTutorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3458,9 +3842,17 @@ export namespace Prisma {
     readonly province: FieldRef<"TutorProfile", 'String'>
     readonly image: FieldRef<"TutorProfile", 'String'>
     readonly pricePerHour: FieldRef<"TutorProfile", 'Int'>
+    readonly languageTaught: FieldRef<"TutorProfile", 'Language'>
+    readonly sex: FieldRef<"TutorProfile", 'SexMethod'>
     readonly description: FieldRef<"TutorProfile", 'String'>
     readonly phoneNumber: FieldRef<"TutorProfile", 'String'>
     readonly verifyed: FieldRef<"TutorProfile", 'Boolean'>
+    readonly technique: FieldRef<"TutorProfile", 'String'>
+    readonly teachingMethod: FieldRef<"TutorProfile", 'TeachingMethod'>
+    readonly teachingTime: FieldRef<"TutorProfile", 'TeachingTime'>
+    readonly timeStart: FieldRef<"TutorProfile", 'String'>
+    readonly timeEnd: FieldRef<"TutorProfile", 'String'>
+    readonly availableTimes: FieldRef<"TutorProfile", 'TeachingTime'>
   }
     
 
@@ -3857,30 +4249,6 @@ export namespace Prisma {
   }
 
   /**
-   * TutorProfile.availableTimes
-   */
-  export type TutorProfile$availableTimesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AvailableTime
-     */
-    select?: AvailableTimeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AvailableTime
-     */
-    omit?: AvailableTimeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AvailableTimeInclude<ExtArgs> | null
-    where?: AvailableTimeWhereInput
-    orderBy?: AvailableTimeOrderByWithRelationInput | AvailableTimeOrderByWithRelationInput[]
-    cursor?: AvailableTimeWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AvailableTimeScalarFieldEnum | AvailableTimeScalarFieldEnum[]
-  }
-
-  /**
    * TutorProfile.tutorSubjects
    */
   export type TutorProfile$tutorSubjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3953,6 +4321,54 @@ export namespace Prisma {
   }
 
   /**
+   * TutorProfile.levels
+   */
+  export type TutorProfile$levelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TutorLevel
+     */
+    select?: TutorLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TutorLevel
+     */
+    omit?: TutorLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TutorLevelInclude<ExtArgs> | null
+    where?: TutorLevelWhereInput
+    orderBy?: TutorLevelOrderByWithRelationInput | TutorLevelOrderByWithRelationInput[]
+    cursor?: TutorLevelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TutorLevelScalarFieldEnum | TutorLevelScalarFieldEnum[]
+  }
+
+  /**
+   * TutorProfile.BookingTutor
+   */
+  export type TutorProfile$BookingTutorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    where?: BookingTutorWhereInput
+    orderBy?: BookingTutorOrderByWithRelationInput | BookingTutorOrderByWithRelationInput[]
+    cursor?: BookingTutorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BookingTutorScalarFieldEnum | BookingTutorScalarFieldEnum[]
+  }
+
+  /**
    * TutorProfile without action
    */
   export type TutorProfileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3972,400 +4388,344 @@ export namespace Prisma {
 
 
   /**
-   * Model AvailableTime
+   * Model TeachingLevel
    */
 
-  export type AggregateAvailableTime = {
-    _count: AvailableTimeCountAggregateOutputType | null
-    _avg: AvailableTimeAvgAggregateOutputType | null
-    _sum: AvailableTimeSumAggregateOutputType | null
-    _min: AvailableTimeMinAggregateOutputType | null
-    _max: AvailableTimeMaxAggregateOutputType | null
+  export type AggregateTeachingLevel = {
+    _count: TeachingLevelCountAggregateOutputType | null
+    _avg: TeachingLevelAvgAggregateOutputType | null
+    _sum: TeachingLevelSumAggregateOutputType | null
+    _min: TeachingLevelMinAggregateOutputType | null
+    _max: TeachingLevelMaxAggregateOutputType | null
   }
 
-  export type AvailableTimeAvgAggregateOutputType = {
+  export type TeachingLevelAvgAggregateOutputType = {
     id: number | null
-    tutorId: number | null
   }
 
-  export type AvailableTimeSumAggregateOutputType = {
+  export type TeachingLevelSumAggregateOutputType = {
     id: number | null
-    tutorId: number | null
   }
 
-  export type AvailableTimeMinAggregateOutputType = {
+  export type TeachingLevelMinAggregateOutputType = {
     id: number | null
-    dayStart: string | null
-    dayEnd: string | null
-    timeStart: string | null
-    timeEnd: string | null
-    tutorId: number | null
+    name: string | null
   }
 
-  export type AvailableTimeMaxAggregateOutputType = {
+  export type TeachingLevelMaxAggregateOutputType = {
     id: number | null
-    dayStart: string | null
-    dayEnd: string | null
-    timeStart: string | null
-    timeEnd: string | null
-    tutorId: number | null
+    name: string | null
   }
 
-  export type AvailableTimeCountAggregateOutputType = {
+  export type TeachingLevelCountAggregateOutputType = {
     id: number
-    dayStart: number
-    dayEnd: number
-    timeStart: number
-    timeEnd: number
-    tutorId: number
+    name: number
     _all: number
   }
 
 
-  export type AvailableTimeAvgAggregateInputType = {
+  export type TeachingLevelAvgAggregateInputType = {
     id?: true
-    tutorId?: true
   }
 
-  export type AvailableTimeSumAggregateInputType = {
+  export type TeachingLevelSumAggregateInputType = {
     id?: true
-    tutorId?: true
   }
 
-  export type AvailableTimeMinAggregateInputType = {
+  export type TeachingLevelMinAggregateInputType = {
     id?: true
-    dayStart?: true
-    dayEnd?: true
-    timeStart?: true
-    timeEnd?: true
-    tutorId?: true
+    name?: true
   }
 
-  export type AvailableTimeMaxAggregateInputType = {
+  export type TeachingLevelMaxAggregateInputType = {
     id?: true
-    dayStart?: true
-    dayEnd?: true
-    timeStart?: true
-    timeEnd?: true
-    tutorId?: true
+    name?: true
   }
 
-  export type AvailableTimeCountAggregateInputType = {
+  export type TeachingLevelCountAggregateInputType = {
     id?: true
-    dayStart?: true
-    dayEnd?: true
-    timeStart?: true
-    timeEnd?: true
-    tutorId?: true
+    name?: true
     _all?: true
   }
 
-  export type AvailableTimeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeachingLevelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which AvailableTime to aggregate.
+     * Filter which TeachingLevel to aggregate.
      */
-    where?: AvailableTimeWhereInput
+    where?: TeachingLevelWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AvailableTimes to fetch.
+     * Determine the order of TeachingLevels to fetch.
      */
-    orderBy?: AvailableTimeOrderByWithRelationInput | AvailableTimeOrderByWithRelationInput[]
+    orderBy?: TeachingLevelOrderByWithRelationInput | TeachingLevelOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: AvailableTimeWhereUniqueInput
+    cursor?: TeachingLevelWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AvailableTimes from the position of the cursor.
+     * Take `±n` TeachingLevels from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AvailableTimes.
+     * Skip the first `n` TeachingLevels.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned AvailableTimes
+     * Count returned TeachingLevels
     **/
-    _count?: true | AvailableTimeCountAggregateInputType
+    _count?: true | TeachingLevelCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: AvailableTimeAvgAggregateInputType
+    _avg?: TeachingLevelAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: AvailableTimeSumAggregateInputType
+    _sum?: TeachingLevelSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: AvailableTimeMinAggregateInputType
+    _min?: TeachingLevelMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: AvailableTimeMaxAggregateInputType
+    _max?: TeachingLevelMaxAggregateInputType
   }
 
-  export type GetAvailableTimeAggregateType<T extends AvailableTimeAggregateArgs> = {
-        [P in keyof T & keyof AggregateAvailableTime]: P extends '_count' | 'count'
+  export type GetTeachingLevelAggregateType<T extends TeachingLevelAggregateArgs> = {
+        [P in keyof T & keyof AggregateTeachingLevel]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAvailableTime[P]>
-      : GetScalarType<T[P], AggregateAvailableTime[P]>
+        : GetScalarType<T[P], AggregateTeachingLevel[P]>
+      : GetScalarType<T[P], AggregateTeachingLevel[P]>
   }
 
 
 
 
-  export type AvailableTimeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AvailableTimeWhereInput
-    orderBy?: AvailableTimeOrderByWithAggregationInput | AvailableTimeOrderByWithAggregationInput[]
-    by: AvailableTimeScalarFieldEnum[] | AvailableTimeScalarFieldEnum
-    having?: AvailableTimeScalarWhereWithAggregatesInput
+  export type TeachingLevelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TeachingLevelWhereInput
+    orderBy?: TeachingLevelOrderByWithAggregationInput | TeachingLevelOrderByWithAggregationInput[]
+    by: TeachingLevelScalarFieldEnum[] | TeachingLevelScalarFieldEnum
+    having?: TeachingLevelScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: AvailableTimeCountAggregateInputType | true
-    _avg?: AvailableTimeAvgAggregateInputType
-    _sum?: AvailableTimeSumAggregateInputType
-    _min?: AvailableTimeMinAggregateInputType
-    _max?: AvailableTimeMaxAggregateInputType
+    _count?: TeachingLevelCountAggregateInputType | true
+    _avg?: TeachingLevelAvgAggregateInputType
+    _sum?: TeachingLevelSumAggregateInputType
+    _min?: TeachingLevelMinAggregateInputType
+    _max?: TeachingLevelMaxAggregateInputType
   }
 
-  export type AvailableTimeGroupByOutputType = {
+  export type TeachingLevelGroupByOutputType = {
     id: number
-    dayStart: string
-    dayEnd: string
-    timeStart: string
-    timeEnd: string
-    tutorId: number
-    _count: AvailableTimeCountAggregateOutputType | null
-    _avg: AvailableTimeAvgAggregateOutputType | null
-    _sum: AvailableTimeSumAggregateOutputType | null
-    _min: AvailableTimeMinAggregateOutputType | null
-    _max: AvailableTimeMaxAggregateOutputType | null
+    name: string
+    _count: TeachingLevelCountAggregateOutputType | null
+    _avg: TeachingLevelAvgAggregateOutputType | null
+    _sum: TeachingLevelSumAggregateOutputType | null
+    _min: TeachingLevelMinAggregateOutputType | null
+    _max: TeachingLevelMaxAggregateOutputType | null
   }
 
-  type GetAvailableTimeGroupByPayload<T extends AvailableTimeGroupByArgs> = Prisma.PrismaPromise<
+  type GetTeachingLevelGroupByPayload<T extends TeachingLevelGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<AvailableTimeGroupByOutputType, T['by']> &
+      PickEnumerable<TeachingLevelGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof AvailableTimeGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof TeachingLevelGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], AvailableTimeGroupByOutputType[P]>
-            : GetScalarType<T[P], AvailableTimeGroupByOutputType[P]>
+              : GetScalarType<T[P], TeachingLevelGroupByOutputType[P]>
+            : GetScalarType<T[P], TeachingLevelGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type AvailableTimeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TeachingLevelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    dayStart?: boolean
-    dayEnd?: boolean
-    timeStart?: boolean
-    timeEnd?: boolean
-    tutorId?: boolean
-    tutor?: boolean | TutorProfileDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["availableTime"]>
+    name?: boolean
+    tutors?: boolean | TeachingLevel$tutorsArgs<ExtArgs>
+    _count?: boolean | TeachingLevelCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["teachingLevel"]>
 
-  export type AvailableTimeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TeachingLevelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    dayStart?: boolean
-    dayEnd?: boolean
-    timeStart?: boolean
-    timeEnd?: boolean
-    tutorId?: boolean
-    tutor?: boolean | TutorProfileDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["availableTime"]>
+    name?: boolean
+  }, ExtArgs["result"]["teachingLevel"]>
 
-  export type AvailableTimeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TeachingLevelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    dayStart?: boolean
-    dayEnd?: boolean
-    timeStart?: boolean
-    timeEnd?: boolean
-    tutorId?: boolean
-    tutor?: boolean | TutorProfileDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["availableTime"]>
+    name?: boolean
+  }, ExtArgs["result"]["teachingLevel"]>
 
-  export type AvailableTimeSelectScalar = {
+  export type TeachingLevelSelectScalar = {
     id?: boolean
-    dayStart?: boolean
-    dayEnd?: boolean
-    timeStart?: boolean
-    timeEnd?: boolean
-    tutorId?: boolean
+    name?: boolean
   }
 
-  export type AvailableTimeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dayStart" | "dayEnd" | "timeStart" | "timeEnd" | "tutorId", ExtArgs["result"]["availableTime"]>
-  export type AvailableTimeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tutor?: boolean | TutorProfileDefaultArgs<ExtArgs>
+  export type TeachingLevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["teachingLevel"]>
+  export type TeachingLevelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tutors?: boolean | TeachingLevel$tutorsArgs<ExtArgs>
+    _count?: boolean | TeachingLevelCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type AvailableTimeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tutor?: boolean | TutorProfileDefaultArgs<ExtArgs>
-  }
-  export type AvailableTimeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tutor?: boolean | TutorProfileDefaultArgs<ExtArgs>
-  }
+  export type TeachingLevelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TeachingLevelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $AvailableTimePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "AvailableTime"
+  export type $TeachingLevelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TeachingLevel"
     objects: {
-      tutor: Prisma.$TutorProfilePayload<ExtArgs>
+      tutors: Prisma.$TutorLevelPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      dayStart: string
-      dayEnd: string
-      timeStart: string
-      timeEnd: string
-      tutorId: number
-    }, ExtArgs["result"]["availableTime"]>
+      name: string
+    }, ExtArgs["result"]["teachingLevel"]>
     composites: {}
   }
 
-  type AvailableTimeGetPayload<S extends boolean | null | undefined | AvailableTimeDefaultArgs> = $Result.GetResult<Prisma.$AvailableTimePayload, S>
+  type TeachingLevelGetPayload<S extends boolean | null | undefined | TeachingLevelDefaultArgs> = $Result.GetResult<Prisma.$TeachingLevelPayload, S>
 
-  type AvailableTimeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AvailableTimeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AvailableTimeCountAggregateInputType | true
+  type TeachingLevelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TeachingLevelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TeachingLevelCountAggregateInputType | true
     }
 
-  export interface AvailableTimeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AvailableTime'], meta: { name: 'AvailableTime' } }
+  export interface TeachingLevelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TeachingLevel'], meta: { name: 'TeachingLevel' } }
     /**
-     * Find zero or one AvailableTime that matches the filter.
-     * @param {AvailableTimeFindUniqueArgs} args - Arguments to find a AvailableTime
+     * Find zero or one TeachingLevel that matches the filter.
+     * @param {TeachingLevelFindUniqueArgs} args - Arguments to find a TeachingLevel
      * @example
-     * // Get one AvailableTime
-     * const availableTime = await prisma.availableTime.findUnique({
+     * // Get one TeachingLevel
+     * const teachingLevel = await prisma.teachingLevel.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends AvailableTimeFindUniqueArgs>(args: SelectSubset<T, AvailableTimeFindUniqueArgs<ExtArgs>>): Prisma__AvailableTimeClient<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends TeachingLevelFindUniqueArgs>(args: SelectSubset<T, TeachingLevelFindUniqueArgs<ExtArgs>>): Prisma__TeachingLevelClient<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one AvailableTime that matches the filter or throw an error with `error.code='P2025'`
+     * Find one TeachingLevel that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {AvailableTimeFindUniqueOrThrowArgs} args - Arguments to find a AvailableTime
+     * @param {TeachingLevelFindUniqueOrThrowArgs} args - Arguments to find a TeachingLevel
      * @example
-     * // Get one AvailableTime
-     * const availableTime = await prisma.availableTime.findUniqueOrThrow({
+     * // Get one TeachingLevel
+     * const teachingLevel = await prisma.teachingLevel.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends AvailableTimeFindUniqueOrThrowArgs>(args: SelectSubset<T, AvailableTimeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AvailableTimeClient<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends TeachingLevelFindUniqueOrThrowArgs>(args: SelectSubset<T, TeachingLevelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TeachingLevelClient<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first AvailableTime that matches the filter.
+     * Find the first TeachingLevel that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AvailableTimeFindFirstArgs} args - Arguments to find a AvailableTime
+     * @param {TeachingLevelFindFirstArgs} args - Arguments to find a TeachingLevel
      * @example
-     * // Get one AvailableTime
-     * const availableTime = await prisma.availableTime.findFirst({
+     * // Get one TeachingLevel
+     * const teachingLevel = await prisma.teachingLevel.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends AvailableTimeFindFirstArgs>(args?: SelectSubset<T, AvailableTimeFindFirstArgs<ExtArgs>>): Prisma__AvailableTimeClient<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends TeachingLevelFindFirstArgs>(args?: SelectSubset<T, TeachingLevelFindFirstArgs<ExtArgs>>): Prisma__TeachingLevelClient<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first AvailableTime that matches the filter or
+     * Find the first TeachingLevel that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AvailableTimeFindFirstOrThrowArgs} args - Arguments to find a AvailableTime
+     * @param {TeachingLevelFindFirstOrThrowArgs} args - Arguments to find a TeachingLevel
      * @example
-     * // Get one AvailableTime
-     * const availableTime = await prisma.availableTime.findFirstOrThrow({
+     * // Get one TeachingLevel
+     * const teachingLevel = await prisma.teachingLevel.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends AvailableTimeFindFirstOrThrowArgs>(args?: SelectSubset<T, AvailableTimeFindFirstOrThrowArgs<ExtArgs>>): Prisma__AvailableTimeClient<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends TeachingLevelFindFirstOrThrowArgs>(args?: SelectSubset<T, TeachingLevelFindFirstOrThrowArgs<ExtArgs>>): Prisma__TeachingLevelClient<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more AvailableTimes that matches the filter.
+     * Find zero or more TeachingLevels that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AvailableTimeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {TeachingLevelFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all AvailableTimes
-     * const availableTimes = await prisma.availableTime.findMany()
+     * // Get all TeachingLevels
+     * const teachingLevels = await prisma.teachingLevel.findMany()
      * 
-     * // Get first 10 AvailableTimes
-     * const availableTimes = await prisma.availableTime.findMany({ take: 10 })
+     * // Get first 10 TeachingLevels
+     * const teachingLevels = await prisma.teachingLevel.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const availableTimeWithIdOnly = await prisma.availableTime.findMany({ select: { id: true } })
+     * const teachingLevelWithIdOnly = await prisma.teachingLevel.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends AvailableTimeFindManyArgs>(args?: SelectSubset<T, AvailableTimeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends TeachingLevelFindManyArgs>(args?: SelectSubset<T, TeachingLevelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a AvailableTime.
-     * @param {AvailableTimeCreateArgs} args - Arguments to create a AvailableTime.
+     * Create a TeachingLevel.
+     * @param {TeachingLevelCreateArgs} args - Arguments to create a TeachingLevel.
      * @example
-     * // Create one AvailableTime
-     * const AvailableTime = await prisma.availableTime.create({
+     * // Create one TeachingLevel
+     * const TeachingLevel = await prisma.teachingLevel.create({
      *   data: {
-     *     // ... data to create a AvailableTime
+     *     // ... data to create a TeachingLevel
      *   }
      * })
      * 
      */
-    create<T extends AvailableTimeCreateArgs>(args: SelectSubset<T, AvailableTimeCreateArgs<ExtArgs>>): Prisma__AvailableTimeClient<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends TeachingLevelCreateArgs>(args: SelectSubset<T, TeachingLevelCreateArgs<ExtArgs>>): Prisma__TeachingLevelClient<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many AvailableTimes.
-     * @param {AvailableTimeCreateManyArgs} args - Arguments to create many AvailableTimes.
+     * Create many TeachingLevels.
+     * @param {TeachingLevelCreateManyArgs} args - Arguments to create many TeachingLevels.
      * @example
-     * // Create many AvailableTimes
-     * const availableTime = await prisma.availableTime.createMany({
+     * // Create many TeachingLevels
+     * const teachingLevel = await prisma.teachingLevel.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends AvailableTimeCreateManyArgs>(args?: SelectSubset<T, AvailableTimeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends TeachingLevelCreateManyArgs>(args?: SelectSubset<T, TeachingLevelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many AvailableTimes and returns the data saved in the database.
-     * @param {AvailableTimeCreateManyAndReturnArgs} args - Arguments to create many AvailableTimes.
+     * Create many TeachingLevels and returns the data saved in the database.
+     * @param {TeachingLevelCreateManyAndReturnArgs} args - Arguments to create many TeachingLevels.
      * @example
-     * // Create many AvailableTimes
-     * const availableTime = await prisma.availableTime.createManyAndReturn({
+     * // Create many TeachingLevels
+     * const teachingLevel = await prisma.teachingLevel.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many AvailableTimes and only return the `id`
-     * const availableTimeWithIdOnly = await prisma.availableTime.createManyAndReturn({
+     * // Create many TeachingLevels and only return the `id`
+     * const teachingLevelWithIdOnly = await prisma.teachingLevel.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -4375,28 +4735,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends AvailableTimeCreateManyAndReturnArgs>(args?: SelectSubset<T, AvailableTimeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends TeachingLevelCreateManyAndReturnArgs>(args?: SelectSubset<T, TeachingLevelCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a AvailableTime.
-     * @param {AvailableTimeDeleteArgs} args - Arguments to delete one AvailableTime.
+     * Delete a TeachingLevel.
+     * @param {TeachingLevelDeleteArgs} args - Arguments to delete one TeachingLevel.
      * @example
-     * // Delete one AvailableTime
-     * const AvailableTime = await prisma.availableTime.delete({
+     * // Delete one TeachingLevel
+     * const TeachingLevel = await prisma.teachingLevel.delete({
      *   where: {
-     *     // ... filter to delete one AvailableTime
+     *     // ... filter to delete one TeachingLevel
      *   }
      * })
      * 
      */
-    delete<T extends AvailableTimeDeleteArgs>(args: SelectSubset<T, AvailableTimeDeleteArgs<ExtArgs>>): Prisma__AvailableTimeClient<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends TeachingLevelDeleteArgs>(args: SelectSubset<T, TeachingLevelDeleteArgs<ExtArgs>>): Prisma__TeachingLevelClient<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one AvailableTime.
-     * @param {AvailableTimeUpdateArgs} args - Arguments to update one AvailableTime.
+     * Update one TeachingLevel.
+     * @param {TeachingLevelUpdateArgs} args - Arguments to update one TeachingLevel.
      * @example
-     * // Update one AvailableTime
-     * const availableTime = await prisma.availableTime.update({
+     * // Update one TeachingLevel
+     * const teachingLevel = await prisma.teachingLevel.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4406,30 +4766,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends AvailableTimeUpdateArgs>(args: SelectSubset<T, AvailableTimeUpdateArgs<ExtArgs>>): Prisma__AvailableTimeClient<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends TeachingLevelUpdateArgs>(args: SelectSubset<T, TeachingLevelUpdateArgs<ExtArgs>>): Prisma__TeachingLevelClient<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more AvailableTimes.
-     * @param {AvailableTimeDeleteManyArgs} args - Arguments to filter AvailableTimes to delete.
+     * Delete zero or more TeachingLevels.
+     * @param {TeachingLevelDeleteManyArgs} args - Arguments to filter TeachingLevels to delete.
      * @example
-     * // Delete a few AvailableTimes
-     * const { count } = await prisma.availableTime.deleteMany({
+     * // Delete a few TeachingLevels
+     * const { count } = await prisma.teachingLevel.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends AvailableTimeDeleteManyArgs>(args?: SelectSubset<T, AvailableTimeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends TeachingLevelDeleteManyArgs>(args?: SelectSubset<T, TeachingLevelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more AvailableTimes.
+     * Update zero or more TeachingLevels.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AvailableTimeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {TeachingLevelUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many AvailableTimes
-     * const availableTime = await prisma.availableTime.updateMany({
+     * // Update many TeachingLevels
+     * const teachingLevel = await prisma.teachingLevel.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4439,14 +4799,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends AvailableTimeUpdateManyArgs>(args: SelectSubset<T, AvailableTimeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends TeachingLevelUpdateManyArgs>(args: SelectSubset<T, TeachingLevelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more AvailableTimes and returns the data updated in the database.
-     * @param {AvailableTimeUpdateManyAndReturnArgs} args - Arguments to update many AvailableTimes.
+     * Update zero or more TeachingLevels and returns the data updated in the database.
+     * @param {TeachingLevelUpdateManyAndReturnArgs} args - Arguments to update many TeachingLevels.
      * @example
-     * // Update many AvailableTimes
-     * const availableTime = await prisma.availableTime.updateManyAndReturn({
+     * // Update many TeachingLevels
+     * const teachingLevel = await prisma.teachingLevel.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4455,8 +4815,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more AvailableTimes and only return the `id`
-     * const availableTimeWithIdOnly = await prisma.availableTime.updateManyAndReturn({
+     * // Update zero or more TeachingLevels and only return the `id`
+     * const teachingLevelWithIdOnly = await prisma.teachingLevel.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -4469,56 +4829,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends AvailableTimeUpdateManyAndReturnArgs>(args: SelectSubset<T, AvailableTimeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends TeachingLevelUpdateManyAndReturnArgs>(args: SelectSubset<T, TeachingLevelUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one AvailableTime.
-     * @param {AvailableTimeUpsertArgs} args - Arguments to update or create a AvailableTime.
+     * Create or update one TeachingLevel.
+     * @param {TeachingLevelUpsertArgs} args - Arguments to update or create a TeachingLevel.
      * @example
-     * // Update or create a AvailableTime
-     * const availableTime = await prisma.availableTime.upsert({
+     * // Update or create a TeachingLevel
+     * const teachingLevel = await prisma.teachingLevel.upsert({
      *   create: {
-     *     // ... data to create a AvailableTime
+     *     // ... data to create a TeachingLevel
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the AvailableTime we want to update
+     *     // ... the filter for the TeachingLevel we want to update
      *   }
      * })
      */
-    upsert<T extends AvailableTimeUpsertArgs>(args: SelectSubset<T, AvailableTimeUpsertArgs<ExtArgs>>): Prisma__AvailableTimeClient<$Result.GetResult<Prisma.$AvailableTimePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends TeachingLevelUpsertArgs>(args: SelectSubset<T, TeachingLevelUpsertArgs<ExtArgs>>): Prisma__TeachingLevelClient<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of AvailableTimes.
+     * Count the number of TeachingLevels.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AvailableTimeCountArgs} args - Arguments to filter AvailableTimes to count.
+     * @param {TeachingLevelCountArgs} args - Arguments to filter TeachingLevels to count.
      * @example
-     * // Count the number of AvailableTimes
-     * const count = await prisma.availableTime.count({
+     * // Count the number of TeachingLevels
+     * const count = await prisma.teachingLevel.count({
      *   where: {
-     *     // ... the filter for the AvailableTimes we want to count
+     *     // ... the filter for the TeachingLevels we want to count
      *   }
      * })
     **/
-    count<T extends AvailableTimeCountArgs>(
-      args?: Subset<T, AvailableTimeCountArgs>,
+    count<T extends TeachingLevelCountArgs>(
+      args?: Subset<T, TeachingLevelCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], AvailableTimeCountAggregateOutputType>
+          : GetScalarType<T['select'], TeachingLevelCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a AvailableTime.
+     * Allows you to perform aggregations operations on a TeachingLevel.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AvailableTimeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {TeachingLevelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -4538,13 +4898,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends AvailableTimeAggregateArgs>(args: Subset<T, AvailableTimeAggregateArgs>): Prisma.PrismaPromise<GetAvailableTimeAggregateType<T>>
+    aggregate<T extends TeachingLevelAggregateArgs>(args: Subset<T, TeachingLevelAggregateArgs>): Prisma.PrismaPromise<GetTeachingLevelAggregateType<T>>
 
     /**
-     * Group by AvailableTime.
+     * Group by TeachingLevel.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AvailableTimeGroupByArgs} args - Group by arguments.
+     * @param {TeachingLevelGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -4559,14 +4919,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AvailableTimeGroupByArgs,
+      T extends TeachingLevelGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AvailableTimeGroupByArgs['orderBy'] }
-        : { orderBy?: AvailableTimeGroupByArgs['orderBy'] },
+        ? { orderBy: TeachingLevelGroupByArgs['orderBy'] }
+        : { orderBy?: TeachingLevelGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4615,22 +4975,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AvailableTimeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAvailableTimeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, TeachingLevelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTeachingLevelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the AvailableTime model
+   * Fields of the TeachingLevel model
    */
-  readonly fields: AvailableTimeFieldRefs;
+  readonly fields: TeachingLevelFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for AvailableTime.
+   * The delegate class that acts as a "Promise-like" for TeachingLevel.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__AvailableTimeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__TeachingLevelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    tutor<T extends TutorProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TutorProfileDefaultArgs<ExtArgs>>): Prisma__TutorProfileClient<$Result.GetResult<Prisma.$TutorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tutors<T extends TeachingLevel$tutorsArgs<ExtArgs> = {}>(args?: Subset<T, TeachingLevel$tutorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4657,426 +5017,2874 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the AvailableTime model
+   * Fields of the TeachingLevel model
    */
-  interface AvailableTimeFieldRefs {
-    readonly id: FieldRef<"AvailableTime", 'Int'>
-    readonly dayStart: FieldRef<"AvailableTime", 'String'>
-    readonly dayEnd: FieldRef<"AvailableTime", 'String'>
-    readonly timeStart: FieldRef<"AvailableTime", 'String'>
-    readonly timeEnd: FieldRef<"AvailableTime", 'String'>
-    readonly tutorId: FieldRef<"AvailableTime", 'Int'>
+  interface TeachingLevelFieldRefs {
+    readonly id: FieldRef<"TeachingLevel", 'Int'>
+    readonly name: FieldRef<"TeachingLevel", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * AvailableTime findUnique
+   * TeachingLevel findUnique
    */
-  export type AvailableTimeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeachingLevelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TeachingLevel
      */
-    select?: AvailableTimeSelect<ExtArgs> | null
+    select?: TeachingLevelSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TeachingLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TeachingLevelOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeInclude<ExtArgs> | null
+    include?: TeachingLevelInclude<ExtArgs> | null
     /**
-     * Filter, which AvailableTime to fetch.
+     * Filter, which TeachingLevel to fetch.
      */
-    where: AvailableTimeWhereUniqueInput
+    where: TeachingLevelWhereUniqueInput
   }
 
   /**
-   * AvailableTime findUniqueOrThrow
+   * TeachingLevel findUniqueOrThrow
    */
-  export type AvailableTimeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeachingLevelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TeachingLevel
      */
-    select?: AvailableTimeSelect<ExtArgs> | null
+    select?: TeachingLevelSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TeachingLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TeachingLevelOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeInclude<ExtArgs> | null
+    include?: TeachingLevelInclude<ExtArgs> | null
     /**
-     * Filter, which AvailableTime to fetch.
+     * Filter, which TeachingLevel to fetch.
      */
-    where: AvailableTimeWhereUniqueInput
+    where: TeachingLevelWhereUniqueInput
   }
 
   /**
-   * AvailableTime findFirst
+   * TeachingLevel findFirst
    */
-  export type AvailableTimeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeachingLevelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TeachingLevel
      */
-    select?: AvailableTimeSelect<ExtArgs> | null
+    select?: TeachingLevelSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TeachingLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TeachingLevelOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeInclude<ExtArgs> | null
+    include?: TeachingLevelInclude<ExtArgs> | null
     /**
-     * Filter, which AvailableTime to fetch.
+     * Filter, which TeachingLevel to fetch.
      */
-    where?: AvailableTimeWhereInput
+    where?: TeachingLevelWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AvailableTimes to fetch.
+     * Determine the order of TeachingLevels to fetch.
      */
-    orderBy?: AvailableTimeOrderByWithRelationInput | AvailableTimeOrderByWithRelationInput[]
+    orderBy?: TeachingLevelOrderByWithRelationInput | TeachingLevelOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for AvailableTimes.
+     * Sets the position for searching for TeachingLevels.
      */
-    cursor?: AvailableTimeWhereUniqueInput
+    cursor?: TeachingLevelWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AvailableTimes from the position of the cursor.
+     * Take `±n` TeachingLevels from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AvailableTimes.
+     * Skip the first `n` TeachingLevels.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of AvailableTimes.
+     * Filter by unique combinations of TeachingLevels.
      */
-    distinct?: AvailableTimeScalarFieldEnum | AvailableTimeScalarFieldEnum[]
+    distinct?: TeachingLevelScalarFieldEnum | TeachingLevelScalarFieldEnum[]
   }
 
   /**
-   * AvailableTime findFirstOrThrow
+   * TeachingLevel findFirstOrThrow
    */
-  export type AvailableTimeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeachingLevelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TeachingLevel
      */
-    select?: AvailableTimeSelect<ExtArgs> | null
+    select?: TeachingLevelSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TeachingLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TeachingLevelOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeInclude<ExtArgs> | null
+    include?: TeachingLevelInclude<ExtArgs> | null
     /**
-     * Filter, which AvailableTime to fetch.
+     * Filter, which TeachingLevel to fetch.
      */
-    where?: AvailableTimeWhereInput
+    where?: TeachingLevelWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AvailableTimes to fetch.
+     * Determine the order of TeachingLevels to fetch.
      */
-    orderBy?: AvailableTimeOrderByWithRelationInput | AvailableTimeOrderByWithRelationInput[]
+    orderBy?: TeachingLevelOrderByWithRelationInput | TeachingLevelOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for AvailableTimes.
+     * Sets the position for searching for TeachingLevels.
      */
-    cursor?: AvailableTimeWhereUniqueInput
+    cursor?: TeachingLevelWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AvailableTimes from the position of the cursor.
+     * Take `±n` TeachingLevels from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AvailableTimes.
+     * Skip the first `n` TeachingLevels.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of AvailableTimes.
+     * Filter by unique combinations of TeachingLevels.
      */
-    distinct?: AvailableTimeScalarFieldEnum | AvailableTimeScalarFieldEnum[]
+    distinct?: TeachingLevelScalarFieldEnum | TeachingLevelScalarFieldEnum[]
   }
 
   /**
-   * AvailableTime findMany
+   * TeachingLevel findMany
    */
-  export type AvailableTimeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeachingLevelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TeachingLevel
      */
-    select?: AvailableTimeSelect<ExtArgs> | null
+    select?: TeachingLevelSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TeachingLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TeachingLevelOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeInclude<ExtArgs> | null
+    include?: TeachingLevelInclude<ExtArgs> | null
     /**
-     * Filter, which AvailableTimes to fetch.
+     * Filter, which TeachingLevels to fetch.
      */
-    where?: AvailableTimeWhereInput
+    where?: TeachingLevelWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AvailableTimes to fetch.
+     * Determine the order of TeachingLevels to fetch.
      */
-    orderBy?: AvailableTimeOrderByWithRelationInput | AvailableTimeOrderByWithRelationInput[]
+    orderBy?: TeachingLevelOrderByWithRelationInput | TeachingLevelOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing AvailableTimes.
+     * Sets the position for listing TeachingLevels.
      */
-    cursor?: AvailableTimeWhereUniqueInput
+    cursor?: TeachingLevelWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AvailableTimes from the position of the cursor.
+     * Take `±n` TeachingLevels from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AvailableTimes.
+     * Skip the first `n` TeachingLevels.
      */
     skip?: number
-    distinct?: AvailableTimeScalarFieldEnum | AvailableTimeScalarFieldEnum[]
+    distinct?: TeachingLevelScalarFieldEnum | TeachingLevelScalarFieldEnum[]
   }
 
   /**
-   * AvailableTime create
+   * TeachingLevel create
    */
-  export type AvailableTimeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeachingLevelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TeachingLevel
      */
-    select?: AvailableTimeSelect<ExtArgs> | null
+    select?: TeachingLevelSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TeachingLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TeachingLevelOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeInclude<ExtArgs> | null
+    include?: TeachingLevelInclude<ExtArgs> | null
     /**
-     * The data needed to create a AvailableTime.
+     * The data needed to create a TeachingLevel.
      */
-    data: XOR<AvailableTimeCreateInput, AvailableTimeUncheckedCreateInput>
+    data: XOR<TeachingLevelCreateInput, TeachingLevelUncheckedCreateInput>
   }
 
   /**
-   * AvailableTime createMany
+   * TeachingLevel createMany
    */
-  export type AvailableTimeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeachingLevelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many AvailableTimes.
+     * The data used to create many TeachingLevels.
      */
-    data: AvailableTimeCreateManyInput | AvailableTimeCreateManyInput[]
+    data: TeachingLevelCreateManyInput | TeachingLevelCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * AvailableTime createManyAndReturn
+   * TeachingLevel createManyAndReturn
    */
-  export type AvailableTimeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeachingLevelCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TeachingLevel
      */
-    select?: AvailableTimeSelectCreateManyAndReturn<ExtArgs> | null
+    select?: TeachingLevelSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TeachingLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TeachingLevelOmit<ExtArgs> | null
     /**
-     * The data used to create many AvailableTimes.
+     * The data used to create many TeachingLevels.
      */
-    data: AvailableTimeCreateManyInput | AvailableTimeCreateManyInput[]
+    data: TeachingLevelCreateManyInput | TeachingLevelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TeachingLevel update
+   */
+  export type TeachingLevelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeachingLevel
+     */
+    select?: TeachingLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeachingLevel
+     */
+    omit?: TeachingLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeachingLevelInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TeachingLevel.
+     */
+    data: XOR<TeachingLevelUpdateInput, TeachingLevelUncheckedUpdateInput>
+    /**
+     * Choose, which TeachingLevel to update.
+     */
+    where: TeachingLevelWhereUniqueInput
+  }
+
+  /**
+   * TeachingLevel updateMany
+   */
+  export type TeachingLevelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TeachingLevels.
+     */
+    data: XOR<TeachingLevelUpdateManyMutationInput, TeachingLevelUncheckedUpdateManyInput>
+    /**
+     * Filter which TeachingLevels to update
+     */
+    where?: TeachingLevelWhereInput
+    /**
+     * Limit how many TeachingLevels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TeachingLevel updateManyAndReturn
+   */
+  export type TeachingLevelUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeachingLevel
+     */
+    select?: TeachingLevelSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeachingLevel
+     */
+    omit?: TeachingLevelOmit<ExtArgs> | null
+    /**
+     * The data used to update TeachingLevels.
+     */
+    data: XOR<TeachingLevelUpdateManyMutationInput, TeachingLevelUncheckedUpdateManyInput>
+    /**
+     * Filter which TeachingLevels to update
+     */
+    where?: TeachingLevelWhereInput
+    /**
+     * Limit how many TeachingLevels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TeachingLevel upsert
+   */
+  export type TeachingLevelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeachingLevel
+     */
+    select?: TeachingLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeachingLevel
+     */
+    omit?: TeachingLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeachingLevelInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TeachingLevel to update in case it exists.
+     */
+    where: TeachingLevelWhereUniqueInput
+    /**
+     * In case the TeachingLevel found by the `where` argument doesn't exist, create a new TeachingLevel with this data.
+     */
+    create: XOR<TeachingLevelCreateInput, TeachingLevelUncheckedCreateInput>
+    /**
+     * In case the TeachingLevel was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TeachingLevelUpdateInput, TeachingLevelUncheckedUpdateInput>
+  }
+
+  /**
+   * TeachingLevel delete
+   */
+  export type TeachingLevelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeachingLevel
+     */
+    select?: TeachingLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeachingLevel
+     */
+    omit?: TeachingLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeachingLevelInclude<ExtArgs> | null
+    /**
+     * Filter which TeachingLevel to delete.
+     */
+    where: TeachingLevelWhereUniqueInput
+  }
+
+  /**
+   * TeachingLevel deleteMany
+   */
+  export type TeachingLevelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TeachingLevels to delete
+     */
+    where?: TeachingLevelWhereInput
+    /**
+     * Limit how many TeachingLevels to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TeachingLevel.tutors
+   */
+  export type TeachingLevel$tutorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TutorLevel
+     */
+    select?: TutorLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TutorLevel
+     */
+    omit?: TutorLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TutorLevelInclude<ExtArgs> | null
+    where?: TutorLevelWhereInput
+    orderBy?: TutorLevelOrderByWithRelationInput | TutorLevelOrderByWithRelationInput[]
+    cursor?: TutorLevelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TutorLevelScalarFieldEnum | TutorLevelScalarFieldEnum[]
+  }
+
+  /**
+   * TeachingLevel without action
+   */
+  export type TeachingLevelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeachingLevel
+     */
+    select?: TeachingLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeachingLevel
+     */
+    omit?: TeachingLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeachingLevelInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TutorLevel
+   */
+
+  export type AggregateTutorLevel = {
+    _count: TutorLevelCountAggregateOutputType | null
+    _avg: TutorLevelAvgAggregateOutputType | null
+    _sum: TutorLevelSumAggregateOutputType | null
+    _min: TutorLevelMinAggregateOutputType | null
+    _max: TutorLevelMaxAggregateOutputType | null
+  }
+
+  export type TutorLevelAvgAggregateOutputType = {
+    id: number | null
+    tutorProfileId: number | null
+    teachingLevelId: number | null
+  }
+
+  export type TutorLevelSumAggregateOutputType = {
+    id: number | null
+    tutorProfileId: number | null
+    teachingLevelId: number | null
+  }
+
+  export type TutorLevelMinAggregateOutputType = {
+    id: number | null
+    tutorProfileId: number | null
+    teachingLevelId: number | null
+  }
+
+  export type TutorLevelMaxAggregateOutputType = {
+    id: number | null
+    tutorProfileId: number | null
+    teachingLevelId: number | null
+  }
+
+  export type TutorLevelCountAggregateOutputType = {
+    id: number
+    tutorProfileId: number
+    teachingLevelId: number
+    _all: number
+  }
+
+
+  export type TutorLevelAvgAggregateInputType = {
+    id?: true
+    tutorProfileId?: true
+    teachingLevelId?: true
+  }
+
+  export type TutorLevelSumAggregateInputType = {
+    id?: true
+    tutorProfileId?: true
+    teachingLevelId?: true
+  }
+
+  export type TutorLevelMinAggregateInputType = {
+    id?: true
+    tutorProfileId?: true
+    teachingLevelId?: true
+  }
+
+  export type TutorLevelMaxAggregateInputType = {
+    id?: true
+    tutorProfileId?: true
+    teachingLevelId?: true
+  }
+
+  export type TutorLevelCountAggregateInputType = {
+    id?: true
+    tutorProfileId?: true
+    teachingLevelId?: true
+    _all?: true
+  }
+
+  export type TutorLevelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TutorLevel to aggregate.
+     */
+    where?: TutorLevelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TutorLevels to fetch.
+     */
+    orderBy?: TutorLevelOrderByWithRelationInput | TutorLevelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TutorLevelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TutorLevels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TutorLevels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TutorLevels
+    **/
+    _count?: true | TutorLevelCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TutorLevelAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TutorLevelSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TutorLevelMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TutorLevelMaxAggregateInputType
+  }
+
+  export type GetTutorLevelAggregateType<T extends TutorLevelAggregateArgs> = {
+        [P in keyof T & keyof AggregateTutorLevel]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTutorLevel[P]>
+      : GetScalarType<T[P], AggregateTutorLevel[P]>
+  }
+
+
+
+
+  export type TutorLevelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TutorLevelWhereInput
+    orderBy?: TutorLevelOrderByWithAggregationInput | TutorLevelOrderByWithAggregationInput[]
+    by: TutorLevelScalarFieldEnum[] | TutorLevelScalarFieldEnum
+    having?: TutorLevelScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TutorLevelCountAggregateInputType | true
+    _avg?: TutorLevelAvgAggregateInputType
+    _sum?: TutorLevelSumAggregateInputType
+    _min?: TutorLevelMinAggregateInputType
+    _max?: TutorLevelMaxAggregateInputType
+  }
+
+  export type TutorLevelGroupByOutputType = {
+    id: number
+    tutorProfileId: number
+    teachingLevelId: number
+    _count: TutorLevelCountAggregateOutputType | null
+    _avg: TutorLevelAvgAggregateOutputType | null
+    _sum: TutorLevelSumAggregateOutputType | null
+    _min: TutorLevelMinAggregateOutputType | null
+    _max: TutorLevelMaxAggregateOutputType | null
+  }
+
+  type GetTutorLevelGroupByPayload<T extends TutorLevelGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TutorLevelGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TutorLevelGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TutorLevelGroupByOutputType[P]>
+            : GetScalarType<T[P], TutorLevelGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TutorLevelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tutorProfileId?: boolean
+    teachingLevelId?: boolean
+    tutorProfile?: boolean | TutorProfileDefaultArgs<ExtArgs>
+    teachingLevel?: boolean | TeachingLevelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tutorLevel"]>
+
+  export type TutorLevelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tutorProfileId?: boolean
+    teachingLevelId?: boolean
+    tutorProfile?: boolean | TutorProfileDefaultArgs<ExtArgs>
+    teachingLevel?: boolean | TeachingLevelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tutorLevel"]>
+
+  export type TutorLevelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tutorProfileId?: boolean
+    teachingLevelId?: boolean
+    tutorProfile?: boolean | TutorProfileDefaultArgs<ExtArgs>
+    teachingLevel?: boolean | TeachingLevelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tutorLevel"]>
+
+  export type TutorLevelSelectScalar = {
+    id?: boolean
+    tutorProfileId?: boolean
+    teachingLevelId?: boolean
+  }
+
+  export type TutorLevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tutorProfileId" | "teachingLevelId", ExtArgs["result"]["tutorLevel"]>
+  export type TutorLevelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tutorProfile?: boolean | TutorProfileDefaultArgs<ExtArgs>
+    teachingLevel?: boolean | TeachingLevelDefaultArgs<ExtArgs>
+  }
+  export type TutorLevelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tutorProfile?: boolean | TutorProfileDefaultArgs<ExtArgs>
+    teachingLevel?: boolean | TeachingLevelDefaultArgs<ExtArgs>
+  }
+  export type TutorLevelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tutorProfile?: boolean | TutorProfileDefaultArgs<ExtArgs>
+    teachingLevel?: boolean | TeachingLevelDefaultArgs<ExtArgs>
+  }
+
+  export type $TutorLevelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TutorLevel"
+    objects: {
+      tutorProfile: Prisma.$TutorProfilePayload<ExtArgs>
+      teachingLevel: Prisma.$TeachingLevelPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      tutorProfileId: number
+      teachingLevelId: number
+    }, ExtArgs["result"]["tutorLevel"]>
+    composites: {}
+  }
+
+  type TutorLevelGetPayload<S extends boolean | null | undefined | TutorLevelDefaultArgs> = $Result.GetResult<Prisma.$TutorLevelPayload, S>
+
+  type TutorLevelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TutorLevelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TutorLevelCountAggregateInputType | true
+    }
+
+  export interface TutorLevelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TutorLevel'], meta: { name: 'TutorLevel' } }
+    /**
+     * Find zero or one TutorLevel that matches the filter.
+     * @param {TutorLevelFindUniqueArgs} args - Arguments to find a TutorLevel
+     * @example
+     * // Get one TutorLevel
+     * const tutorLevel = await prisma.tutorLevel.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TutorLevelFindUniqueArgs>(args: SelectSubset<T, TutorLevelFindUniqueArgs<ExtArgs>>): Prisma__TutorLevelClient<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TutorLevel that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TutorLevelFindUniqueOrThrowArgs} args - Arguments to find a TutorLevel
+     * @example
+     * // Get one TutorLevel
+     * const tutorLevel = await prisma.tutorLevel.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TutorLevelFindUniqueOrThrowArgs>(args: SelectSubset<T, TutorLevelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TutorLevelClient<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TutorLevel that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TutorLevelFindFirstArgs} args - Arguments to find a TutorLevel
+     * @example
+     * // Get one TutorLevel
+     * const tutorLevel = await prisma.tutorLevel.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TutorLevelFindFirstArgs>(args?: SelectSubset<T, TutorLevelFindFirstArgs<ExtArgs>>): Prisma__TutorLevelClient<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TutorLevel that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TutorLevelFindFirstOrThrowArgs} args - Arguments to find a TutorLevel
+     * @example
+     * // Get one TutorLevel
+     * const tutorLevel = await prisma.tutorLevel.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TutorLevelFindFirstOrThrowArgs>(args?: SelectSubset<T, TutorLevelFindFirstOrThrowArgs<ExtArgs>>): Prisma__TutorLevelClient<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TutorLevels that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TutorLevelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TutorLevels
+     * const tutorLevels = await prisma.tutorLevel.findMany()
+     * 
+     * // Get first 10 TutorLevels
+     * const tutorLevels = await prisma.tutorLevel.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tutorLevelWithIdOnly = await prisma.tutorLevel.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TutorLevelFindManyArgs>(args?: SelectSubset<T, TutorLevelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TutorLevel.
+     * @param {TutorLevelCreateArgs} args - Arguments to create a TutorLevel.
+     * @example
+     * // Create one TutorLevel
+     * const TutorLevel = await prisma.tutorLevel.create({
+     *   data: {
+     *     // ... data to create a TutorLevel
+     *   }
+     * })
+     * 
+     */
+    create<T extends TutorLevelCreateArgs>(args: SelectSubset<T, TutorLevelCreateArgs<ExtArgs>>): Prisma__TutorLevelClient<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TutorLevels.
+     * @param {TutorLevelCreateManyArgs} args - Arguments to create many TutorLevels.
+     * @example
+     * // Create many TutorLevels
+     * const tutorLevel = await prisma.tutorLevel.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TutorLevelCreateManyArgs>(args?: SelectSubset<T, TutorLevelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TutorLevels and returns the data saved in the database.
+     * @param {TutorLevelCreateManyAndReturnArgs} args - Arguments to create many TutorLevels.
+     * @example
+     * // Create many TutorLevels
+     * const tutorLevel = await prisma.tutorLevel.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TutorLevels and only return the `id`
+     * const tutorLevelWithIdOnly = await prisma.tutorLevel.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TutorLevelCreateManyAndReturnArgs>(args?: SelectSubset<T, TutorLevelCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TutorLevel.
+     * @param {TutorLevelDeleteArgs} args - Arguments to delete one TutorLevel.
+     * @example
+     * // Delete one TutorLevel
+     * const TutorLevel = await prisma.tutorLevel.delete({
+     *   where: {
+     *     // ... filter to delete one TutorLevel
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TutorLevelDeleteArgs>(args: SelectSubset<T, TutorLevelDeleteArgs<ExtArgs>>): Prisma__TutorLevelClient<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TutorLevel.
+     * @param {TutorLevelUpdateArgs} args - Arguments to update one TutorLevel.
+     * @example
+     * // Update one TutorLevel
+     * const tutorLevel = await prisma.tutorLevel.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TutorLevelUpdateArgs>(args: SelectSubset<T, TutorLevelUpdateArgs<ExtArgs>>): Prisma__TutorLevelClient<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TutorLevels.
+     * @param {TutorLevelDeleteManyArgs} args - Arguments to filter TutorLevels to delete.
+     * @example
+     * // Delete a few TutorLevels
+     * const { count } = await prisma.tutorLevel.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TutorLevelDeleteManyArgs>(args?: SelectSubset<T, TutorLevelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TutorLevels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TutorLevelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TutorLevels
+     * const tutorLevel = await prisma.tutorLevel.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TutorLevelUpdateManyArgs>(args: SelectSubset<T, TutorLevelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TutorLevels and returns the data updated in the database.
+     * @param {TutorLevelUpdateManyAndReturnArgs} args - Arguments to update many TutorLevels.
+     * @example
+     * // Update many TutorLevels
+     * const tutorLevel = await prisma.tutorLevel.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TutorLevels and only return the `id`
+     * const tutorLevelWithIdOnly = await prisma.tutorLevel.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TutorLevelUpdateManyAndReturnArgs>(args: SelectSubset<T, TutorLevelUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TutorLevel.
+     * @param {TutorLevelUpsertArgs} args - Arguments to update or create a TutorLevel.
+     * @example
+     * // Update or create a TutorLevel
+     * const tutorLevel = await prisma.tutorLevel.upsert({
+     *   create: {
+     *     // ... data to create a TutorLevel
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TutorLevel we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TutorLevelUpsertArgs>(args: SelectSubset<T, TutorLevelUpsertArgs<ExtArgs>>): Prisma__TutorLevelClient<$Result.GetResult<Prisma.$TutorLevelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TutorLevels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TutorLevelCountArgs} args - Arguments to filter TutorLevels to count.
+     * @example
+     * // Count the number of TutorLevels
+     * const count = await prisma.tutorLevel.count({
+     *   where: {
+     *     // ... the filter for the TutorLevels we want to count
+     *   }
+     * })
+    **/
+    count<T extends TutorLevelCountArgs>(
+      args?: Subset<T, TutorLevelCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TutorLevelCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TutorLevel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TutorLevelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TutorLevelAggregateArgs>(args: Subset<T, TutorLevelAggregateArgs>): Prisma.PrismaPromise<GetTutorLevelAggregateType<T>>
+
+    /**
+     * Group by TutorLevel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TutorLevelGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TutorLevelGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TutorLevelGroupByArgs['orderBy'] }
+        : { orderBy?: TutorLevelGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TutorLevelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTutorLevelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TutorLevel model
+   */
+  readonly fields: TutorLevelFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TutorLevel.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TutorLevelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tutorProfile<T extends TutorProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TutorProfileDefaultArgs<ExtArgs>>): Prisma__TutorProfileClient<$Result.GetResult<Prisma.$TutorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    teachingLevel<T extends TeachingLevelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TeachingLevelDefaultArgs<ExtArgs>>): Prisma__TeachingLevelClient<$Result.GetResult<Prisma.$TeachingLevelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TutorLevel model
+   */
+  interface TutorLevelFieldRefs {
+    readonly id: FieldRef<"TutorLevel", 'Int'>
+    readonly tutorProfileId: FieldRef<"TutorLevel", 'Int'>
+    readonly teachingLevelId: FieldRef<"TutorLevel", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TutorLevel findUnique
+   */
+  export type TutorLevelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TutorLevel
+     */
+    select?: TutorLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TutorLevel
+     */
+    omit?: TutorLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TutorLevelInclude<ExtArgs> | null
+    /**
+     * Filter, which TutorLevel to fetch.
+     */
+    where: TutorLevelWhereUniqueInput
+  }
+
+  /**
+   * TutorLevel findUniqueOrThrow
+   */
+  export type TutorLevelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TutorLevel
+     */
+    select?: TutorLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TutorLevel
+     */
+    omit?: TutorLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TutorLevelInclude<ExtArgs> | null
+    /**
+     * Filter, which TutorLevel to fetch.
+     */
+    where: TutorLevelWhereUniqueInput
+  }
+
+  /**
+   * TutorLevel findFirst
+   */
+  export type TutorLevelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TutorLevel
+     */
+    select?: TutorLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TutorLevel
+     */
+    omit?: TutorLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TutorLevelInclude<ExtArgs> | null
+    /**
+     * Filter, which TutorLevel to fetch.
+     */
+    where?: TutorLevelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TutorLevels to fetch.
+     */
+    orderBy?: TutorLevelOrderByWithRelationInput | TutorLevelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TutorLevels.
+     */
+    cursor?: TutorLevelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TutorLevels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TutorLevels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TutorLevels.
+     */
+    distinct?: TutorLevelScalarFieldEnum | TutorLevelScalarFieldEnum[]
+  }
+
+  /**
+   * TutorLevel findFirstOrThrow
+   */
+  export type TutorLevelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TutorLevel
+     */
+    select?: TutorLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TutorLevel
+     */
+    omit?: TutorLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TutorLevelInclude<ExtArgs> | null
+    /**
+     * Filter, which TutorLevel to fetch.
+     */
+    where?: TutorLevelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TutorLevels to fetch.
+     */
+    orderBy?: TutorLevelOrderByWithRelationInput | TutorLevelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TutorLevels.
+     */
+    cursor?: TutorLevelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TutorLevels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TutorLevels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TutorLevels.
+     */
+    distinct?: TutorLevelScalarFieldEnum | TutorLevelScalarFieldEnum[]
+  }
+
+  /**
+   * TutorLevel findMany
+   */
+  export type TutorLevelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TutorLevel
+     */
+    select?: TutorLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TutorLevel
+     */
+    omit?: TutorLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TutorLevelInclude<ExtArgs> | null
+    /**
+     * Filter, which TutorLevels to fetch.
+     */
+    where?: TutorLevelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TutorLevels to fetch.
+     */
+    orderBy?: TutorLevelOrderByWithRelationInput | TutorLevelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TutorLevels.
+     */
+    cursor?: TutorLevelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TutorLevels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TutorLevels.
+     */
+    skip?: number
+    distinct?: TutorLevelScalarFieldEnum | TutorLevelScalarFieldEnum[]
+  }
+
+  /**
+   * TutorLevel create
+   */
+  export type TutorLevelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TutorLevel
+     */
+    select?: TutorLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TutorLevel
+     */
+    omit?: TutorLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TutorLevelInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TutorLevel.
+     */
+    data: XOR<TutorLevelCreateInput, TutorLevelUncheckedCreateInput>
+  }
+
+  /**
+   * TutorLevel createMany
+   */
+  export type TutorLevelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TutorLevels.
+     */
+    data: TutorLevelCreateManyInput | TutorLevelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TutorLevel createManyAndReturn
+   */
+  export type TutorLevelCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TutorLevel
+     */
+    select?: TutorLevelSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TutorLevel
+     */
+    omit?: TutorLevelOmit<ExtArgs> | null
+    /**
+     * The data used to create many TutorLevels.
+     */
+    data: TutorLevelCreateManyInput | TutorLevelCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: TutorLevelIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * AvailableTime update
+   * TutorLevel update
    */
-  export type AvailableTimeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TutorLevelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TutorLevel
      */
-    select?: AvailableTimeSelect<ExtArgs> | null
+    select?: TutorLevelSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TutorLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TutorLevelOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeInclude<ExtArgs> | null
+    include?: TutorLevelInclude<ExtArgs> | null
     /**
-     * The data needed to update a AvailableTime.
+     * The data needed to update a TutorLevel.
      */
-    data: XOR<AvailableTimeUpdateInput, AvailableTimeUncheckedUpdateInput>
+    data: XOR<TutorLevelUpdateInput, TutorLevelUncheckedUpdateInput>
     /**
-     * Choose, which AvailableTime to update.
+     * Choose, which TutorLevel to update.
      */
-    where: AvailableTimeWhereUniqueInput
+    where: TutorLevelWhereUniqueInput
   }
 
   /**
-   * AvailableTime updateMany
+   * TutorLevel updateMany
    */
-  export type AvailableTimeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TutorLevelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update AvailableTimes.
+     * The data used to update TutorLevels.
      */
-    data: XOR<AvailableTimeUpdateManyMutationInput, AvailableTimeUncheckedUpdateManyInput>
+    data: XOR<TutorLevelUpdateManyMutationInput, TutorLevelUncheckedUpdateManyInput>
     /**
-     * Filter which AvailableTimes to update
+     * Filter which TutorLevels to update
      */
-    where?: AvailableTimeWhereInput
+    where?: TutorLevelWhereInput
     /**
-     * Limit how many AvailableTimes to update.
+     * Limit how many TutorLevels to update.
      */
     limit?: number
   }
 
   /**
-   * AvailableTime updateManyAndReturn
+   * TutorLevel updateManyAndReturn
    */
-  export type AvailableTimeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TutorLevelUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TutorLevel
      */
-    select?: AvailableTimeSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: TutorLevelSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TutorLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TutorLevelOmit<ExtArgs> | null
     /**
-     * The data used to update AvailableTimes.
+     * The data used to update TutorLevels.
      */
-    data: XOR<AvailableTimeUpdateManyMutationInput, AvailableTimeUncheckedUpdateManyInput>
+    data: XOR<TutorLevelUpdateManyMutationInput, TutorLevelUncheckedUpdateManyInput>
     /**
-     * Filter which AvailableTimes to update
+     * Filter which TutorLevels to update
      */
-    where?: AvailableTimeWhereInput
+    where?: TutorLevelWhereInput
     /**
-     * Limit how many AvailableTimes to update.
+     * Limit how many TutorLevels to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: TutorLevelIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * AvailableTime upsert
+   * TutorLevel upsert
    */
-  export type AvailableTimeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TutorLevelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TutorLevel
      */
-    select?: AvailableTimeSelect<ExtArgs> | null
+    select?: TutorLevelSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TutorLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TutorLevelOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeInclude<ExtArgs> | null
+    include?: TutorLevelInclude<ExtArgs> | null
     /**
-     * The filter to search for the AvailableTime to update in case it exists.
+     * The filter to search for the TutorLevel to update in case it exists.
      */
-    where: AvailableTimeWhereUniqueInput
+    where: TutorLevelWhereUniqueInput
     /**
-     * In case the AvailableTime found by the `where` argument doesn't exist, create a new AvailableTime with this data.
+     * In case the TutorLevel found by the `where` argument doesn't exist, create a new TutorLevel with this data.
      */
-    create: XOR<AvailableTimeCreateInput, AvailableTimeUncheckedCreateInput>
+    create: XOR<TutorLevelCreateInput, TutorLevelUncheckedCreateInput>
     /**
-     * In case the AvailableTime was found with the provided `where` argument, update it with this data.
+     * In case the TutorLevel was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<AvailableTimeUpdateInput, AvailableTimeUncheckedUpdateInput>
+    update: XOR<TutorLevelUpdateInput, TutorLevelUncheckedUpdateInput>
   }
 
   /**
-   * AvailableTime delete
+   * TutorLevel delete
    */
-  export type AvailableTimeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TutorLevelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TutorLevel
      */
-    select?: AvailableTimeSelect<ExtArgs> | null
+    select?: TutorLevelSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TutorLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TutorLevelOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeInclude<ExtArgs> | null
+    include?: TutorLevelInclude<ExtArgs> | null
     /**
-     * Filter which AvailableTime to delete.
+     * Filter which TutorLevel to delete.
      */
-    where: AvailableTimeWhereUniqueInput
+    where: TutorLevelWhereUniqueInput
   }
 
   /**
-   * AvailableTime deleteMany
+   * TutorLevel deleteMany
    */
-  export type AvailableTimeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TutorLevelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which AvailableTimes to delete
+     * Filter which TutorLevels to delete
      */
-    where?: AvailableTimeWhereInput
+    where?: TutorLevelWhereInput
     /**
-     * Limit how many AvailableTimes to delete.
+     * Limit how many TutorLevels to delete.
      */
     limit?: number
   }
 
   /**
-   * AvailableTime without action
+   * TutorLevel without action
    */
-  export type AvailableTimeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TutorLevelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AvailableTime
+     * Select specific fields to fetch from the TutorLevel
      */
-    select?: AvailableTimeSelect<ExtArgs> | null
+    select?: TutorLevelSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AvailableTime
+     * Omit specific fields from the TutorLevel
      */
-    omit?: AvailableTimeOmit<ExtArgs> | null
+    omit?: TutorLevelOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AvailableTimeInclude<ExtArgs> | null
+    include?: TutorLevelInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BookingTutor
+   */
+
+  export type AggregateBookingTutor = {
+    _count: BookingTutorCountAggregateOutputType | null
+    _avg: BookingTutorAvgAggregateOutputType | null
+    _sum: BookingTutorSumAggregateOutputType | null
+    _min: BookingTutorMinAggregateOutputType | null
+    _max: BookingTutorMaxAggregateOutputType | null
+  }
+
+  export type BookingTutorAvgAggregateOutputType = {
+    id: number | null
+    subjectId: number | null
+    assignedTutorId: number | null
+  }
+
+  export type BookingTutorSumAggregateOutputType = {
+    id: number | null
+    subjectId: number | null
+    assignedTutorId: number | null
+  }
+
+  export type BookingTutorMinAggregateOutputType = {
+    id: number | null
+    fullName: string | null
+    phoneNumber: string | null
+    email: string | null
+    subjectId: number | null
+    subjectName: string | null
+    level: string | null
+    target: string | null
+    nationalityTeacher: string | null
+    teacherSex: $Enums.SexMethod | null
+    studyingDays: $Enums.TeachingTime | null
+    studyingTimes: string | null
+    startStudyingDate: string | null
+    teachingMethod: $Enums.TeachingMethod | null
+    studyLocation: string | null
+    yourCity: string | null
+    note: string | null
+    assignedTutorId: number | null
+    status: $Enums.BookingStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BookingTutorMaxAggregateOutputType = {
+    id: number | null
+    fullName: string | null
+    phoneNumber: string | null
+    email: string | null
+    subjectId: number | null
+    subjectName: string | null
+    level: string | null
+    target: string | null
+    nationalityTeacher: string | null
+    teacherSex: $Enums.SexMethod | null
+    studyingDays: $Enums.TeachingTime | null
+    studyingTimes: string | null
+    startStudyingDate: string | null
+    teachingMethod: $Enums.TeachingMethod | null
+    studyLocation: string | null
+    yourCity: string | null
+    note: string | null
+    assignedTutorId: number | null
+    status: $Enums.BookingStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BookingTutorCountAggregateOutputType = {
+    id: number
+    fullName: number
+    phoneNumber: number
+    email: number
+    subjectId: number
+    subjectName: number
+    level: number
+    target: number
+    nationalityTeacher: number
+    teacherSex: number
+    studyingDays: number
+    studyingTimes: number
+    startStudyingDate: number
+    teachingMethod: number
+    studyLocation: number
+    yourCity: number
+    note: number
+    assignedTutorId: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BookingTutorAvgAggregateInputType = {
+    id?: true
+    subjectId?: true
+    assignedTutorId?: true
+  }
+
+  export type BookingTutorSumAggregateInputType = {
+    id?: true
+    subjectId?: true
+    assignedTutorId?: true
+  }
+
+  export type BookingTutorMinAggregateInputType = {
+    id?: true
+    fullName?: true
+    phoneNumber?: true
+    email?: true
+    subjectId?: true
+    subjectName?: true
+    level?: true
+    target?: true
+    nationalityTeacher?: true
+    teacherSex?: true
+    studyingDays?: true
+    studyingTimes?: true
+    startStudyingDate?: true
+    teachingMethod?: true
+    studyLocation?: true
+    yourCity?: true
+    note?: true
+    assignedTutorId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BookingTutorMaxAggregateInputType = {
+    id?: true
+    fullName?: true
+    phoneNumber?: true
+    email?: true
+    subjectId?: true
+    subjectName?: true
+    level?: true
+    target?: true
+    nationalityTeacher?: true
+    teacherSex?: true
+    studyingDays?: true
+    studyingTimes?: true
+    startStudyingDate?: true
+    teachingMethod?: true
+    studyLocation?: true
+    yourCity?: true
+    note?: true
+    assignedTutorId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BookingTutorCountAggregateInputType = {
+    id?: true
+    fullName?: true
+    phoneNumber?: true
+    email?: true
+    subjectId?: true
+    subjectName?: true
+    level?: true
+    target?: true
+    nationalityTeacher?: true
+    teacherSex?: true
+    studyingDays?: true
+    studyingTimes?: true
+    startStudyingDate?: true
+    teachingMethod?: true
+    studyLocation?: true
+    yourCity?: true
+    note?: true
+    assignedTutorId?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BookingTutorAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BookingTutor to aggregate.
+     */
+    where?: BookingTutorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookingTutors to fetch.
+     */
+    orderBy?: BookingTutorOrderByWithRelationInput | BookingTutorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BookingTutorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookingTutors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookingTutors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BookingTutors
+    **/
+    _count?: true | BookingTutorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BookingTutorAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BookingTutorSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BookingTutorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BookingTutorMaxAggregateInputType
+  }
+
+  export type GetBookingTutorAggregateType<T extends BookingTutorAggregateArgs> = {
+        [P in keyof T & keyof AggregateBookingTutor]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBookingTutor[P]>
+      : GetScalarType<T[P], AggregateBookingTutor[P]>
+  }
+
+
+
+
+  export type BookingTutorGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookingTutorWhereInput
+    orderBy?: BookingTutorOrderByWithAggregationInput | BookingTutorOrderByWithAggregationInput[]
+    by: BookingTutorScalarFieldEnum[] | BookingTutorScalarFieldEnum
+    having?: BookingTutorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BookingTutorCountAggregateInputType | true
+    _avg?: BookingTutorAvgAggregateInputType
+    _sum?: BookingTutorSumAggregateInputType
+    _min?: BookingTutorMinAggregateInputType
+    _max?: BookingTutorMaxAggregateInputType
+  }
+
+  export type BookingTutorGroupByOutputType = {
+    id: number
+    fullName: string
+    phoneNumber: string
+    email: string | null
+    subjectId: number | null
+    subjectName: string | null
+    level: string | null
+    target: string | null
+    nationalityTeacher: string | null
+    teacherSex: $Enums.SexMethod | null
+    studyingDays: $Enums.TeachingTime | null
+    studyingTimes: string | null
+    startStudyingDate: string | null
+    teachingMethod: $Enums.TeachingMethod | null
+    studyLocation: string | null
+    yourCity: string | null
+    note: string | null
+    assignedTutorId: number | null
+    status: $Enums.BookingStatus | null
+    createdAt: Date
+    updatedAt: Date
+    _count: BookingTutorCountAggregateOutputType | null
+    _avg: BookingTutorAvgAggregateOutputType | null
+    _sum: BookingTutorSumAggregateOutputType | null
+    _min: BookingTutorMinAggregateOutputType | null
+    _max: BookingTutorMaxAggregateOutputType | null
+  }
+
+  type GetBookingTutorGroupByPayload<T extends BookingTutorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BookingTutorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BookingTutorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BookingTutorGroupByOutputType[P]>
+            : GetScalarType<T[P], BookingTutorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BookingTutorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fullName?: boolean
+    phoneNumber?: boolean
+    email?: boolean
+    subjectId?: boolean
+    subjectName?: boolean
+    level?: boolean
+    target?: boolean
+    nationalityTeacher?: boolean
+    teacherSex?: boolean
+    studyingDays?: boolean
+    studyingTimes?: boolean
+    startStudyingDate?: boolean
+    teachingMethod?: boolean
+    studyLocation?: boolean
+    yourCity?: boolean
+    note?: boolean
+    assignedTutorId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
+    assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+  }, ExtArgs["result"]["bookingTutor"]>
+
+  export type BookingTutorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fullName?: boolean
+    phoneNumber?: boolean
+    email?: boolean
+    subjectId?: boolean
+    subjectName?: boolean
+    level?: boolean
+    target?: boolean
+    nationalityTeacher?: boolean
+    teacherSex?: boolean
+    studyingDays?: boolean
+    studyingTimes?: boolean
+    startStudyingDate?: boolean
+    teachingMethod?: boolean
+    studyLocation?: boolean
+    yourCity?: boolean
+    note?: boolean
+    assignedTutorId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
+    assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+  }, ExtArgs["result"]["bookingTutor"]>
+
+  export type BookingTutorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fullName?: boolean
+    phoneNumber?: boolean
+    email?: boolean
+    subjectId?: boolean
+    subjectName?: boolean
+    level?: boolean
+    target?: boolean
+    nationalityTeacher?: boolean
+    teacherSex?: boolean
+    studyingDays?: boolean
+    studyingTimes?: boolean
+    startStudyingDate?: boolean
+    teachingMethod?: boolean
+    studyLocation?: boolean
+    yourCity?: boolean
+    note?: boolean
+    assignedTutorId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
+    assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+  }, ExtArgs["result"]["bookingTutor"]>
+
+  export type BookingTutorSelectScalar = {
+    id?: boolean
+    fullName?: boolean
+    phoneNumber?: boolean
+    email?: boolean
+    subjectId?: boolean
+    subjectName?: boolean
+    level?: boolean
+    target?: boolean
+    nationalityTeacher?: boolean
+    teacherSex?: boolean
+    studyingDays?: boolean
+    studyingTimes?: boolean
+    startStudyingDate?: boolean
+    teachingMethod?: boolean
+    studyLocation?: boolean
+    yourCity?: boolean
+    note?: boolean
+    assignedTutorId?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BookingTutorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "phoneNumber" | "email" | "subjectId" | "subjectName" | "level" | "target" | "nationalityTeacher" | "teacherSex" | "studyingDays" | "studyingTimes" | "startStudyingDate" | "teachingMethod" | "studyLocation" | "yourCity" | "note" | "assignedTutorId" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["bookingTutor"]>
+  export type BookingTutorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
+    assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+  }
+  export type BookingTutorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
+    assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+  }
+  export type BookingTutorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
+    assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+  }
+
+  export type $BookingTutorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BookingTutor"
+    objects: {
+      subject: Prisma.$SubjectCategoryPayload<ExtArgs> | null
+      assignedTutor: Prisma.$TutorProfilePayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      fullName: string
+      phoneNumber: string
+      email: string | null
+      subjectId: number | null
+      subjectName: string | null
+      level: string | null
+      target: string | null
+      nationalityTeacher: string | null
+      teacherSex: $Enums.SexMethod | null
+      studyingDays: $Enums.TeachingTime | null
+      studyingTimes: string | null
+      startStudyingDate: string | null
+      teachingMethod: $Enums.TeachingMethod | null
+      studyLocation: string | null
+      yourCity: string | null
+      note: string | null
+      assignedTutorId: number | null
+      status: $Enums.BookingStatus | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["bookingTutor"]>
+    composites: {}
+  }
+
+  type BookingTutorGetPayload<S extends boolean | null | undefined | BookingTutorDefaultArgs> = $Result.GetResult<Prisma.$BookingTutorPayload, S>
+
+  type BookingTutorCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BookingTutorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BookingTutorCountAggregateInputType | true
+    }
+
+  export interface BookingTutorDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BookingTutor'], meta: { name: 'BookingTutor' } }
+    /**
+     * Find zero or one BookingTutor that matches the filter.
+     * @param {BookingTutorFindUniqueArgs} args - Arguments to find a BookingTutor
+     * @example
+     * // Get one BookingTutor
+     * const bookingTutor = await prisma.bookingTutor.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BookingTutorFindUniqueArgs>(args: SelectSubset<T, BookingTutorFindUniqueArgs<ExtArgs>>): Prisma__BookingTutorClient<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BookingTutor that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BookingTutorFindUniqueOrThrowArgs} args - Arguments to find a BookingTutor
+     * @example
+     * // Get one BookingTutor
+     * const bookingTutor = await prisma.bookingTutor.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BookingTutorFindUniqueOrThrowArgs>(args: SelectSubset<T, BookingTutorFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BookingTutorClient<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BookingTutor that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingTutorFindFirstArgs} args - Arguments to find a BookingTutor
+     * @example
+     * // Get one BookingTutor
+     * const bookingTutor = await prisma.bookingTutor.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BookingTutorFindFirstArgs>(args?: SelectSubset<T, BookingTutorFindFirstArgs<ExtArgs>>): Prisma__BookingTutorClient<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BookingTutor that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingTutorFindFirstOrThrowArgs} args - Arguments to find a BookingTutor
+     * @example
+     * // Get one BookingTutor
+     * const bookingTutor = await prisma.bookingTutor.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BookingTutorFindFirstOrThrowArgs>(args?: SelectSubset<T, BookingTutorFindFirstOrThrowArgs<ExtArgs>>): Prisma__BookingTutorClient<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BookingTutors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingTutorFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BookingTutors
+     * const bookingTutors = await prisma.bookingTutor.findMany()
+     * 
+     * // Get first 10 BookingTutors
+     * const bookingTutors = await prisma.bookingTutor.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bookingTutorWithIdOnly = await prisma.bookingTutor.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BookingTutorFindManyArgs>(args?: SelectSubset<T, BookingTutorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BookingTutor.
+     * @param {BookingTutorCreateArgs} args - Arguments to create a BookingTutor.
+     * @example
+     * // Create one BookingTutor
+     * const BookingTutor = await prisma.bookingTutor.create({
+     *   data: {
+     *     // ... data to create a BookingTutor
+     *   }
+     * })
+     * 
+     */
+    create<T extends BookingTutorCreateArgs>(args: SelectSubset<T, BookingTutorCreateArgs<ExtArgs>>): Prisma__BookingTutorClient<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BookingTutors.
+     * @param {BookingTutorCreateManyArgs} args - Arguments to create many BookingTutors.
+     * @example
+     * // Create many BookingTutors
+     * const bookingTutor = await prisma.bookingTutor.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BookingTutorCreateManyArgs>(args?: SelectSubset<T, BookingTutorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BookingTutors and returns the data saved in the database.
+     * @param {BookingTutorCreateManyAndReturnArgs} args - Arguments to create many BookingTutors.
+     * @example
+     * // Create many BookingTutors
+     * const bookingTutor = await prisma.bookingTutor.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BookingTutors and only return the `id`
+     * const bookingTutorWithIdOnly = await prisma.bookingTutor.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BookingTutorCreateManyAndReturnArgs>(args?: SelectSubset<T, BookingTutorCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BookingTutor.
+     * @param {BookingTutorDeleteArgs} args - Arguments to delete one BookingTutor.
+     * @example
+     * // Delete one BookingTutor
+     * const BookingTutor = await prisma.bookingTutor.delete({
+     *   where: {
+     *     // ... filter to delete one BookingTutor
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BookingTutorDeleteArgs>(args: SelectSubset<T, BookingTutorDeleteArgs<ExtArgs>>): Prisma__BookingTutorClient<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BookingTutor.
+     * @param {BookingTutorUpdateArgs} args - Arguments to update one BookingTutor.
+     * @example
+     * // Update one BookingTutor
+     * const bookingTutor = await prisma.bookingTutor.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BookingTutorUpdateArgs>(args: SelectSubset<T, BookingTutorUpdateArgs<ExtArgs>>): Prisma__BookingTutorClient<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BookingTutors.
+     * @param {BookingTutorDeleteManyArgs} args - Arguments to filter BookingTutors to delete.
+     * @example
+     * // Delete a few BookingTutors
+     * const { count } = await prisma.bookingTutor.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BookingTutorDeleteManyArgs>(args?: SelectSubset<T, BookingTutorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BookingTutors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingTutorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BookingTutors
+     * const bookingTutor = await prisma.bookingTutor.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BookingTutorUpdateManyArgs>(args: SelectSubset<T, BookingTutorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BookingTutors and returns the data updated in the database.
+     * @param {BookingTutorUpdateManyAndReturnArgs} args - Arguments to update many BookingTutors.
+     * @example
+     * // Update many BookingTutors
+     * const bookingTutor = await prisma.bookingTutor.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BookingTutors and only return the `id`
+     * const bookingTutorWithIdOnly = await prisma.bookingTutor.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BookingTutorUpdateManyAndReturnArgs>(args: SelectSubset<T, BookingTutorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BookingTutor.
+     * @param {BookingTutorUpsertArgs} args - Arguments to update or create a BookingTutor.
+     * @example
+     * // Update or create a BookingTutor
+     * const bookingTutor = await prisma.bookingTutor.upsert({
+     *   create: {
+     *     // ... data to create a BookingTutor
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BookingTutor we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BookingTutorUpsertArgs>(args: SelectSubset<T, BookingTutorUpsertArgs<ExtArgs>>): Prisma__BookingTutorClient<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BookingTutors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingTutorCountArgs} args - Arguments to filter BookingTutors to count.
+     * @example
+     * // Count the number of BookingTutors
+     * const count = await prisma.bookingTutor.count({
+     *   where: {
+     *     // ... the filter for the BookingTutors we want to count
+     *   }
+     * })
+    **/
+    count<T extends BookingTutorCountArgs>(
+      args?: Subset<T, BookingTutorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BookingTutorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BookingTutor.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingTutorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BookingTutorAggregateArgs>(args: Subset<T, BookingTutorAggregateArgs>): Prisma.PrismaPromise<GetBookingTutorAggregateType<T>>
+
+    /**
+     * Group by BookingTutor.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingTutorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BookingTutorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BookingTutorGroupByArgs['orderBy'] }
+        : { orderBy?: BookingTutorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BookingTutorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBookingTutorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BookingTutor model
+   */
+  readonly fields: BookingTutorFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BookingTutor.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BookingTutorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    subject<T extends BookingTutor$subjectArgs<ExtArgs> = {}>(args?: Subset<T, BookingTutor$subjectArgs<ExtArgs>>): Prisma__SubjectCategoryClient<$Result.GetResult<Prisma.$SubjectCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    assignedTutor<T extends BookingTutor$assignedTutorArgs<ExtArgs> = {}>(args?: Subset<T, BookingTutor$assignedTutorArgs<ExtArgs>>): Prisma__TutorProfileClient<$Result.GetResult<Prisma.$TutorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BookingTutor model
+   */
+  interface BookingTutorFieldRefs {
+    readonly id: FieldRef<"BookingTutor", 'Int'>
+    readonly fullName: FieldRef<"BookingTutor", 'String'>
+    readonly phoneNumber: FieldRef<"BookingTutor", 'String'>
+    readonly email: FieldRef<"BookingTutor", 'String'>
+    readonly subjectId: FieldRef<"BookingTutor", 'Int'>
+    readonly subjectName: FieldRef<"BookingTutor", 'String'>
+    readonly level: FieldRef<"BookingTutor", 'String'>
+    readonly target: FieldRef<"BookingTutor", 'String'>
+    readonly nationalityTeacher: FieldRef<"BookingTutor", 'String'>
+    readonly teacherSex: FieldRef<"BookingTutor", 'SexMethod'>
+    readonly studyingDays: FieldRef<"BookingTutor", 'TeachingTime'>
+    readonly studyingTimes: FieldRef<"BookingTutor", 'String'>
+    readonly startStudyingDate: FieldRef<"BookingTutor", 'String'>
+    readonly teachingMethod: FieldRef<"BookingTutor", 'TeachingMethod'>
+    readonly studyLocation: FieldRef<"BookingTutor", 'String'>
+    readonly yourCity: FieldRef<"BookingTutor", 'String'>
+    readonly note: FieldRef<"BookingTutor", 'String'>
+    readonly assignedTutorId: FieldRef<"BookingTutor", 'Int'>
+    readonly status: FieldRef<"BookingTutor", 'BookingStatus'>
+    readonly createdAt: FieldRef<"BookingTutor", 'DateTime'>
+    readonly updatedAt: FieldRef<"BookingTutor", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BookingTutor findUnique
+   */
+  export type BookingTutorFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    /**
+     * Filter, which BookingTutor to fetch.
+     */
+    where: BookingTutorWhereUniqueInput
+  }
+
+  /**
+   * BookingTutor findUniqueOrThrow
+   */
+  export type BookingTutorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    /**
+     * Filter, which BookingTutor to fetch.
+     */
+    where: BookingTutorWhereUniqueInput
+  }
+
+  /**
+   * BookingTutor findFirst
+   */
+  export type BookingTutorFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    /**
+     * Filter, which BookingTutor to fetch.
+     */
+    where?: BookingTutorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookingTutors to fetch.
+     */
+    orderBy?: BookingTutorOrderByWithRelationInput | BookingTutorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BookingTutors.
+     */
+    cursor?: BookingTutorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookingTutors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookingTutors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BookingTutors.
+     */
+    distinct?: BookingTutorScalarFieldEnum | BookingTutorScalarFieldEnum[]
+  }
+
+  /**
+   * BookingTutor findFirstOrThrow
+   */
+  export type BookingTutorFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    /**
+     * Filter, which BookingTutor to fetch.
+     */
+    where?: BookingTutorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookingTutors to fetch.
+     */
+    orderBy?: BookingTutorOrderByWithRelationInput | BookingTutorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BookingTutors.
+     */
+    cursor?: BookingTutorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookingTutors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookingTutors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BookingTutors.
+     */
+    distinct?: BookingTutorScalarFieldEnum | BookingTutorScalarFieldEnum[]
+  }
+
+  /**
+   * BookingTutor findMany
+   */
+  export type BookingTutorFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    /**
+     * Filter, which BookingTutors to fetch.
+     */
+    where?: BookingTutorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookingTutors to fetch.
+     */
+    orderBy?: BookingTutorOrderByWithRelationInput | BookingTutorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BookingTutors.
+     */
+    cursor?: BookingTutorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookingTutors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookingTutors.
+     */
+    skip?: number
+    distinct?: BookingTutorScalarFieldEnum | BookingTutorScalarFieldEnum[]
+  }
+
+  /**
+   * BookingTutor create
+   */
+  export type BookingTutorCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BookingTutor.
+     */
+    data: XOR<BookingTutorCreateInput, BookingTutorUncheckedCreateInput>
+  }
+
+  /**
+   * BookingTutor createMany
+   */
+  export type BookingTutorCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BookingTutors.
+     */
+    data: BookingTutorCreateManyInput | BookingTutorCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BookingTutor createManyAndReturn
+   */
+  export type BookingTutorCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * The data used to create many BookingTutors.
+     */
+    data: BookingTutorCreateManyInput | BookingTutorCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BookingTutor update
+   */
+  export type BookingTutorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BookingTutor.
+     */
+    data: XOR<BookingTutorUpdateInput, BookingTutorUncheckedUpdateInput>
+    /**
+     * Choose, which BookingTutor to update.
+     */
+    where: BookingTutorWhereUniqueInput
+  }
+
+  /**
+   * BookingTutor updateMany
+   */
+  export type BookingTutorUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BookingTutors.
+     */
+    data: XOR<BookingTutorUpdateManyMutationInput, BookingTutorUncheckedUpdateManyInput>
+    /**
+     * Filter which BookingTutors to update
+     */
+    where?: BookingTutorWhereInput
+    /**
+     * Limit how many BookingTutors to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BookingTutor updateManyAndReturn
+   */
+  export type BookingTutorUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * The data used to update BookingTutors.
+     */
+    data: XOR<BookingTutorUpdateManyMutationInput, BookingTutorUncheckedUpdateManyInput>
+    /**
+     * Filter which BookingTutors to update
+     */
+    where?: BookingTutorWhereInput
+    /**
+     * Limit how many BookingTutors to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BookingTutor upsert
+   */
+  export type BookingTutorUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BookingTutor to update in case it exists.
+     */
+    where: BookingTutorWhereUniqueInput
+    /**
+     * In case the BookingTutor found by the `where` argument doesn't exist, create a new BookingTutor with this data.
+     */
+    create: XOR<BookingTutorCreateInput, BookingTutorUncheckedCreateInput>
+    /**
+     * In case the BookingTutor was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BookingTutorUpdateInput, BookingTutorUncheckedUpdateInput>
+  }
+
+  /**
+   * BookingTutor delete
+   */
+  export type BookingTutorDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    /**
+     * Filter which BookingTutor to delete.
+     */
+    where: BookingTutorWhereUniqueInput
+  }
+
+  /**
+   * BookingTutor deleteMany
+   */
+  export type BookingTutorDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BookingTutors to delete
+     */
+    where?: BookingTutorWhereInput
+    /**
+     * Limit how many BookingTutors to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BookingTutor.subject
+   */
+  export type BookingTutor$subjectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubjectCategory
+     */
+    select?: SubjectCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubjectCategory
+     */
+    omit?: SubjectCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectCategoryInclude<ExtArgs> | null
+    where?: SubjectCategoryWhereInput
+  }
+
+  /**
+   * BookingTutor.assignedTutor
+   */
+  export type BookingTutor$assignedTutorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TutorProfile
+     */
+    select?: TutorProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TutorProfile
+     */
+    omit?: TutorProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TutorProfileInclude<ExtArgs> | null
+    where?: TutorProfileWhereInput
+  }
+
+  /**
+   * BookingTutor without action
+   */
+  export type BookingTutorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
   }
 
 
@@ -7298,16 +10106,19 @@ export namespace Prisma {
   export type SubjectCategoryMinAggregateOutputType = {
     id: number | null
     name: string | null
+    icon: string | null
   }
 
   export type SubjectCategoryMaxAggregateOutputType = {
     id: number | null
     name: string | null
+    icon: string | null
   }
 
   export type SubjectCategoryCountAggregateOutputType = {
     id: number
     name: number
+    icon: number
     _all: number
   }
 
@@ -7323,16 +10134,19 @@ export namespace Prisma {
   export type SubjectCategoryMinAggregateInputType = {
     id?: true
     name?: true
+    icon?: true
   }
 
   export type SubjectCategoryMaxAggregateInputType = {
     id?: true
     name?: true
+    icon?: true
   }
 
   export type SubjectCategoryCountAggregateInputType = {
     id?: true
     name?: true
+    icon?: true
     _all?: true
   }
 
@@ -7425,6 +10239,7 @@ export namespace Prisma {
   export type SubjectCategoryGroupByOutputType = {
     id: number
     name: string
+    icon: string | null
     _count: SubjectCategoryCountAggregateOutputType | null
     _avg: SubjectCategoryAvgAggregateOutputType | null
     _sum: SubjectCategorySumAggregateOutputType | null
@@ -7449,28 +10264,34 @@ export namespace Prisma {
   export type SubjectCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    icon?: boolean
     tutors?: boolean | SubjectCategory$tutorsArgs<ExtArgs>
+    BookingTutor?: boolean | SubjectCategory$BookingTutorArgs<ExtArgs>
     _count?: boolean | SubjectCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subjectCategory"]>
 
   export type SubjectCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    icon?: boolean
   }, ExtArgs["result"]["subjectCategory"]>
 
   export type SubjectCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    icon?: boolean
   }, ExtArgs["result"]["subjectCategory"]>
 
   export type SubjectCategorySelectScalar = {
     id?: boolean
     name?: boolean
+    icon?: boolean
   }
 
-  export type SubjectCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["subjectCategory"]>
+  export type SubjectCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "icon", ExtArgs["result"]["subjectCategory"]>
   export type SubjectCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tutors?: boolean | SubjectCategory$tutorsArgs<ExtArgs>
+    BookingTutor?: boolean | SubjectCategory$BookingTutorArgs<ExtArgs>
     _count?: boolean | SubjectCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SubjectCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7480,10 +10301,12 @@ export namespace Prisma {
     name: "SubjectCategory"
     objects: {
       tutors: Prisma.$TutorSubjectPayload<ExtArgs>[]
+      BookingTutor: Prisma.$BookingTutorPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
+      icon: string | null
     }, ExtArgs["result"]["subjectCategory"]>
     composites: {}
   }
@@ -7879,6 +10702,7 @@ export namespace Prisma {
   export interface Prisma__SubjectCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     tutors<T extends SubjectCategory$tutorsArgs<ExtArgs> = {}>(args?: Subset<T, SubjectCategory$tutorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TutorSubjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    BookingTutor<T extends SubjectCategory$BookingTutorArgs<ExtArgs> = {}>(args?: Subset<T, SubjectCategory$BookingTutorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingTutorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7910,6 +10734,7 @@ export namespace Prisma {
   interface SubjectCategoryFieldRefs {
     readonly id: FieldRef<"SubjectCategory", 'Int'>
     readonly name: FieldRef<"SubjectCategory", 'String'>
+    readonly icon: FieldRef<"SubjectCategory", 'String'>
   }
     
 
@@ -8319,6 +11144,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TutorSubjectScalarFieldEnum | TutorSubjectScalarFieldEnum[]
+  }
+
+  /**
+   * SubjectCategory.BookingTutor
+   */
+  export type SubjectCategory$BookingTutorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingTutor
+     */
+    select?: BookingTutorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookingTutor
+     */
+    omit?: BookingTutorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingTutorInclude<ExtArgs> | null
+    where?: BookingTutorWhereInput
+    orderBy?: BookingTutorOrderByWithRelationInput | BookingTutorOrderByWithRelationInput[]
+    cursor?: BookingTutorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BookingTutorScalarFieldEnum | BookingTutorScalarFieldEnum[]
   }
 
   /**
@@ -9438,7 +12287,6 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    name: 'name',
     email: 'email',
     password: 'password',
     role: 'role',
@@ -9456,24 +12304,64 @@ export namespace Prisma {
     province: 'province',
     image: 'image',
     pricePerHour: 'pricePerHour',
+    languageTaught: 'languageTaught',
+    sex: 'sex',
     description: 'description',
     phoneNumber: 'phoneNumber',
-    verifyed: 'verifyed'
+    verifyed: 'verifyed',
+    technique: 'technique',
+    teachingMethod: 'teachingMethod',
+    teachingTime: 'teachingTime',
+    timeStart: 'timeStart',
+    timeEnd: 'timeEnd',
+    availableTimes: 'availableTimes'
   };
 
   export type TutorProfileScalarFieldEnum = (typeof TutorProfileScalarFieldEnum)[keyof typeof TutorProfileScalarFieldEnum]
 
 
-  export const AvailableTimeScalarFieldEnum: {
+  export const TeachingLevelScalarFieldEnum: {
     id: 'id',
-    dayStart: 'dayStart',
-    dayEnd: 'dayEnd',
-    timeStart: 'timeStart',
-    timeEnd: 'timeEnd',
-    tutorId: 'tutorId'
+    name: 'name'
   };
 
-  export type AvailableTimeScalarFieldEnum = (typeof AvailableTimeScalarFieldEnum)[keyof typeof AvailableTimeScalarFieldEnum]
+  export type TeachingLevelScalarFieldEnum = (typeof TeachingLevelScalarFieldEnum)[keyof typeof TeachingLevelScalarFieldEnum]
+
+
+  export const TutorLevelScalarFieldEnum: {
+    id: 'id',
+    tutorProfileId: 'tutorProfileId',
+    teachingLevelId: 'teachingLevelId'
+  };
+
+  export type TutorLevelScalarFieldEnum = (typeof TutorLevelScalarFieldEnum)[keyof typeof TutorLevelScalarFieldEnum]
+
+
+  export const BookingTutorScalarFieldEnum: {
+    id: 'id',
+    fullName: 'fullName',
+    phoneNumber: 'phoneNumber',
+    email: 'email',
+    subjectId: 'subjectId',
+    subjectName: 'subjectName',
+    level: 'level',
+    target: 'target',
+    nationalityTeacher: 'nationalityTeacher',
+    teacherSex: 'teacherSex',
+    studyingDays: 'studyingDays',
+    studyingTimes: 'studyingTimes',
+    startStudyingDate: 'startStudyingDate',
+    teachingMethod: 'teachingMethod',
+    studyLocation: 'studyLocation',
+    yourCity: 'yourCity',
+    note: 'note',
+    assignedTutorId: 'assignedTutorId',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BookingTutorScalarFieldEnum = (typeof BookingTutorScalarFieldEnum)[keyof typeof BookingTutorScalarFieldEnum]
 
 
   export const ExperienceScalarFieldEnum: {
@@ -9499,7 +12387,8 @@ export namespace Prisma {
 
   export const SubjectCategoryScalarFieldEnum: {
     id: 'id',
-    name: 'name'
+    name: 'name',
+    icon: 'icon'
   };
 
   export type SubjectCategoryScalarFieldEnum = (typeof SubjectCategoryScalarFieldEnum)[keyof typeof SubjectCategoryScalarFieldEnum]
@@ -9528,6 +12417,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -9592,9 +12489,79 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Language'
+   */
+  export type EnumLanguageFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Language'>
+    
+
+
+  /**
+   * Reference to a field of type 'Language[]'
+   */
+  export type ListEnumLanguageFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Language[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'SexMethod'
+   */
+  export type EnumSexMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SexMethod'>
+    
+
+
+  /**
+   * Reference to a field of type 'SexMethod[]'
+   */
+  export type ListEnumSexMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SexMethod[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'TeachingMethod'
+   */
+  export type EnumTeachingMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TeachingMethod'>
+    
+
+
+  /**
+   * Reference to a field of type 'TeachingMethod[]'
+   */
+  export type ListEnumTeachingMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TeachingMethod[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TeachingTime'
+   */
+  export type EnumTeachingTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TeachingTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'TeachingTime[]'
+   */
+  export type ListEnumTeachingTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TeachingTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'BookingStatus'
+   */
+  export type EnumBookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BookingStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'BookingStatus[]'
+   */
+  export type ListEnumBookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BookingStatus[]'>
     
 
 
@@ -9620,7 +12587,6 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
-    name?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
@@ -9632,7 +12598,6 @@ export namespace Prisma {
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
@@ -9648,7 +12613,6 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -9659,7 +12623,6 @@ export namespace Prisma {
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
@@ -9677,7 +12640,6 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
-    name?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
@@ -9695,14 +12657,23 @@ export namespace Prisma {
     province?: StringFilter<"TutorProfile"> | string
     image?: StringFilter<"TutorProfile"> | string
     pricePerHour?: IntFilter<"TutorProfile"> | number
-    description?: StringFilter<"TutorProfile"> | string
+    languageTaught?: EnumLanguageFilter<"TutorProfile"> | $Enums.Language
+    sex?: EnumSexMethodFilter<"TutorProfile"> | $Enums.SexMethod
+    description?: StringNullableFilter<"TutorProfile"> | string | null
     phoneNumber?: StringFilter<"TutorProfile"> | string
     verifyed?: BoolFilter<"TutorProfile"> | boolean
+    technique?: StringNullableFilter<"TutorProfile"> | string | null
+    teachingMethod?: EnumTeachingMethodFilter<"TutorProfile"> | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFilter<"TutorProfile"> | $Enums.TeachingTime
+    timeStart?: StringFilter<"TutorProfile"> | string
+    timeEnd?: StringFilter<"TutorProfile"> | string
+    availableTimes?: EnumTeachingTimeFilter<"TutorProfile"> | $Enums.TeachingTime
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    availableTimes?: AvailableTimeListRelationFilter
     tutorSubjects?: TutorSubjectListRelationFilter
     experiences?: ExperienceListRelationFilter
     reviews?: ReviewListRelationFilter
+    levels?: TutorLevelListRelationFilter
+    BookingTutor?: BookingTutorListRelationFilter
   }
 
   export type TutorProfileOrderByWithRelationInput = {
@@ -9712,14 +12683,23 @@ export namespace Prisma {
     province?: SortOrder
     image?: SortOrder
     pricePerHour?: SortOrder
-    description?: SortOrder
+    languageTaught?: SortOrder
+    sex?: SortOrder
+    description?: SortOrderInput | SortOrder
     phoneNumber?: SortOrder
     verifyed?: SortOrder
+    technique?: SortOrderInput | SortOrder
+    teachingMethod?: SortOrder
+    teachingTime?: SortOrder
+    timeStart?: SortOrder
+    timeEnd?: SortOrder
+    availableTimes?: SortOrder
     user?: UserOrderByWithRelationInput
-    availableTimes?: AvailableTimeOrderByRelationAggregateInput
     tutorSubjects?: TutorSubjectOrderByRelationAggregateInput
     experiences?: ExperienceOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
+    levels?: TutorLevelOrderByRelationAggregateInput
+    BookingTutor?: BookingTutorOrderByRelationAggregateInput
   }
 
   export type TutorProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -9732,14 +12712,23 @@ export namespace Prisma {
     province?: StringFilter<"TutorProfile"> | string
     image?: StringFilter<"TutorProfile"> | string
     pricePerHour?: IntFilter<"TutorProfile"> | number
-    description?: StringFilter<"TutorProfile"> | string
+    languageTaught?: EnumLanguageFilter<"TutorProfile"> | $Enums.Language
+    sex?: EnumSexMethodFilter<"TutorProfile"> | $Enums.SexMethod
+    description?: StringNullableFilter<"TutorProfile"> | string | null
     phoneNumber?: StringFilter<"TutorProfile"> | string
     verifyed?: BoolFilter<"TutorProfile"> | boolean
+    technique?: StringNullableFilter<"TutorProfile"> | string | null
+    teachingMethod?: EnumTeachingMethodFilter<"TutorProfile"> | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFilter<"TutorProfile"> | $Enums.TeachingTime
+    timeStart?: StringFilter<"TutorProfile"> | string
+    timeEnd?: StringFilter<"TutorProfile"> | string
+    availableTimes?: EnumTeachingTimeFilter<"TutorProfile"> | $Enums.TeachingTime
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    availableTimes?: AvailableTimeListRelationFilter
     tutorSubjects?: TutorSubjectListRelationFilter
     experiences?: ExperienceListRelationFilter
     reviews?: ReviewListRelationFilter
+    levels?: TutorLevelListRelationFilter
+    BookingTutor?: BookingTutorListRelationFilter
   }, "id" | "userId">
 
   export type TutorProfileOrderByWithAggregationInput = {
@@ -9749,9 +12738,17 @@ export namespace Prisma {
     province?: SortOrder
     image?: SortOrder
     pricePerHour?: SortOrder
-    description?: SortOrder
+    languageTaught?: SortOrder
+    sex?: SortOrder
+    description?: SortOrderInput | SortOrder
     phoneNumber?: SortOrder
     verifyed?: SortOrder
+    technique?: SortOrderInput | SortOrder
+    teachingMethod?: SortOrder
+    teachingTime?: SortOrder
+    timeStart?: SortOrder
+    timeEnd?: SortOrder
+    availableTimes?: SortOrder
     _count?: TutorProfileCountOrderByAggregateInput
     _avg?: TutorProfileAvgOrderByAggregateInput
     _max?: TutorProfileMaxOrderByAggregateInput
@@ -9769,71 +12766,250 @@ export namespace Prisma {
     province?: StringWithAggregatesFilter<"TutorProfile"> | string
     image?: StringWithAggregatesFilter<"TutorProfile"> | string
     pricePerHour?: IntWithAggregatesFilter<"TutorProfile"> | number
-    description?: StringWithAggregatesFilter<"TutorProfile"> | string
+    languageTaught?: EnumLanguageWithAggregatesFilter<"TutorProfile"> | $Enums.Language
+    sex?: EnumSexMethodWithAggregatesFilter<"TutorProfile"> | $Enums.SexMethod
+    description?: StringNullableWithAggregatesFilter<"TutorProfile"> | string | null
     phoneNumber?: StringWithAggregatesFilter<"TutorProfile"> | string
     verifyed?: BoolWithAggregatesFilter<"TutorProfile"> | boolean
+    technique?: StringNullableWithAggregatesFilter<"TutorProfile"> | string | null
+    teachingMethod?: EnumTeachingMethodWithAggregatesFilter<"TutorProfile"> | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeWithAggregatesFilter<"TutorProfile"> | $Enums.TeachingTime
+    timeStart?: StringWithAggregatesFilter<"TutorProfile"> | string
+    timeEnd?: StringWithAggregatesFilter<"TutorProfile"> | string
+    availableTimes?: EnumTeachingTimeWithAggregatesFilter<"TutorProfile"> | $Enums.TeachingTime
   }
 
-  export type AvailableTimeWhereInput = {
-    AND?: AvailableTimeWhereInput | AvailableTimeWhereInput[]
-    OR?: AvailableTimeWhereInput[]
-    NOT?: AvailableTimeWhereInput | AvailableTimeWhereInput[]
-    id?: IntFilter<"AvailableTime"> | number
-    dayStart?: StringFilter<"AvailableTime"> | string
-    dayEnd?: StringFilter<"AvailableTime"> | string
-    timeStart?: StringFilter<"AvailableTime"> | string
-    timeEnd?: StringFilter<"AvailableTime"> | string
-    tutorId?: IntFilter<"AvailableTime"> | number
-    tutor?: XOR<TutorProfileScalarRelationFilter, TutorProfileWhereInput>
+  export type TeachingLevelWhereInput = {
+    AND?: TeachingLevelWhereInput | TeachingLevelWhereInput[]
+    OR?: TeachingLevelWhereInput[]
+    NOT?: TeachingLevelWhereInput | TeachingLevelWhereInput[]
+    id?: IntFilter<"TeachingLevel"> | number
+    name?: StringFilter<"TeachingLevel"> | string
+    tutors?: TutorLevelListRelationFilter
   }
 
-  export type AvailableTimeOrderByWithRelationInput = {
+  export type TeachingLevelOrderByWithRelationInput = {
     id?: SortOrder
-    dayStart?: SortOrder
-    dayEnd?: SortOrder
-    timeStart?: SortOrder
-    timeEnd?: SortOrder
-    tutorId?: SortOrder
-    tutor?: TutorProfileOrderByWithRelationInput
+    name?: SortOrder
+    tutors?: TutorLevelOrderByRelationAggregateInput
   }
 
-  export type AvailableTimeWhereUniqueInput = Prisma.AtLeast<{
+  export type TeachingLevelWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: AvailableTimeWhereInput | AvailableTimeWhereInput[]
-    OR?: AvailableTimeWhereInput[]
-    NOT?: AvailableTimeWhereInput | AvailableTimeWhereInput[]
-    dayStart?: StringFilter<"AvailableTime"> | string
-    dayEnd?: StringFilter<"AvailableTime"> | string
-    timeStart?: StringFilter<"AvailableTime"> | string
-    timeEnd?: StringFilter<"AvailableTime"> | string
-    tutorId?: IntFilter<"AvailableTime"> | number
-    tutor?: XOR<TutorProfileScalarRelationFilter, TutorProfileWhereInput>
+    name?: string
+    AND?: TeachingLevelWhereInput | TeachingLevelWhereInput[]
+    OR?: TeachingLevelWhereInput[]
+    NOT?: TeachingLevelWhereInput | TeachingLevelWhereInput[]
+    tutors?: TutorLevelListRelationFilter
+  }, "id" | "name">
+
+  export type TeachingLevelOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: TeachingLevelCountOrderByAggregateInput
+    _avg?: TeachingLevelAvgOrderByAggregateInput
+    _max?: TeachingLevelMaxOrderByAggregateInput
+    _min?: TeachingLevelMinOrderByAggregateInput
+    _sum?: TeachingLevelSumOrderByAggregateInput
+  }
+
+  export type TeachingLevelScalarWhereWithAggregatesInput = {
+    AND?: TeachingLevelScalarWhereWithAggregatesInput | TeachingLevelScalarWhereWithAggregatesInput[]
+    OR?: TeachingLevelScalarWhereWithAggregatesInput[]
+    NOT?: TeachingLevelScalarWhereWithAggregatesInput | TeachingLevelScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TeachingLevel"> | number
+    name?: StringWithAggregatesFilter<"TeachingLevel"> | string
+  }
+
+  export type TutorLevelWhereInput = {
+    AND?: TutorLevelWhereInput | TutorLevelWhereInput[]
+    OR?: TutorLevelWhereInput[]
+    NOT?: TutorLevelWhereInput | TutorLevelWhereInput[]
+    id?: IntFilter<"TutorLevel"> | number
+    tutorProfileId?: IntFilter<"TutorLevel"> | number
+    teachingLevelId?: IntFilter<"TutorLevel"> | number
+    tutorProfile?: XOR<TutorProfileScalarRelationFilter, TutorProfileWhereInput>
+    teachingLevel?: XOR<TeachingLevelScalarRelationFilter, TeachingLevelWhereInput>
+  }
+
+  export type TutorLevelOrderByWithRelationInput = {
+    id?: SortOrder
+    tutorProfileId?: SortOrder
+    teachingLevelId?: SortOrder
+    tutorProfile?: TutorProfileOrderByWithRelationInput
+    teachingLevel?: TeachingLevelOrderByWithRelationInput
+  }
+
+  export type TutorLevelWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    tutorProfileId_teachingLevelId?: TutorLevelTutorProfileIdTeachingLevelIdCompoundUniqueInput
+    AND?: TutorLevelWhereInput | TutorLevelWhereInput[]
+    OR?: TutorLevelWhereInput[]
+    NOT?: TutorLevelWhereInput | TutorLevelWhereInput[]
+    tutorProfileId?: IntFilter<"TutorLevel"> | number
+    teachingLevelId?: IntFilter<"TutorLevel"> | number
+    tutorProfile?: XOR<TutorProfileScalarRelationFilter, TutorProfileWhereInput>
+    teachingLevel?: XOR<TeachingLevelScalarRelationFilter, TeachingLevelWhereInput>
+  }, "id" | "tutorProfileId_teachingLevelId">
+
+  export type TutorLevelOrderByWithAggregationInput = {
+    id?: SortOrder
+    tutorProfileId?: SortOrder
+    teachingLevelId?: SortOrder
+    _count?: TutorLevelCountOrderByAggregateInput
+    _avg?: TutorLevelAvgOrderByAggregateInput
+    _max?: TutorLevelMaxOrderByAggregateInput
+    _min?: TutorLevelMinOrderByAggregateInput
+    _sum?: TutorLevelSumOrderByAggregateInput
+  }
+
+  export type TutorLevelScalarWhereWithAggregatesInput = {
+    AND?: TutorLevelScalarWhereWithAggregatesInput | TutorLevelScalarWhereWithAggregatesInput[]
+    OR?: TutorLevelScalarWhereWithAggregatesInput[]
+    NOT?: TutorLevelScalarWhereWithAggregatesInput | TutorLevelScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TutorLevel"> | number
+    tutorProfileId?: IntWithAggregatesFilter<"TutorLevel"> | number
+    teachingLevelId?: IntWithAggregatesFilter<"TutorLevel"> | number
+  }
+
+  export type BookingTutorWhereInput = {
+    AND?: BookingTutorWhereInput | BookingTutorWhereInput[]
+    OR?: BookingTutorWhereInput[]
+    NOT?: BookingTutorWhereInput | BookingTutorWhereInput[]
+    id?: IntFilter<"BookingTutor"> | number
+    fullName?: StringFilter<"BookingTutor"> | string
+    phoneNumber?: StringFilter<"BookingTutor"> | string
+    email?: StringNullableFilter<"BookingTutor"> | string | null
+    subjectId?: IntNullableFilter<"BookingTutor"> | number | null
+    subjectName?: StringNullableFilter<"BookingTutor"> | string | null
+    level?: StringNullableFilter<"BookingTutor"> | string | null
+    target?: StringNullableFilter<"BookingTutor"> | string | null
+    nationalityTeacher?: StringNullableFilter<"BookingTutor"> | string | null
+    teacherSex?: EnumSexMethodNullableFilter<"BookingTutor"> | $Enums.SexMethod | null
+    studyingDays?: EnumTeachingTimeNullableFilter<"BookingTutor"> | $Enums.TeachingTime | null
+    studyingTimes?: StringNullableFilter<"BookingTutor"> | string | null
+    startStudyingDate?: StringNullableFilter<"BookingTutor"> | string | null
+    teachingMethod?: EnumTeachingMethodNullableFilter<"BookingTutor"> | $Enums.TeachingMethod | null
+    studyLocation?: StringNullableFilter<"BookingTutor"> | string | null
+    yourCity?: StringNullableFilter<"BookingTutor"> | string | null
+    note?: StringNullableFilter<"BookingTutor"> | string | null
+    assignedTutorId?: IntNullableFilter<"BookingTutor"> | number | null
+    status?: EnumBookingStatusNullableFilter<"BookingTutor"> | $Enums.BookingStatus | null
+    createdAt?: DateTimeFilter<"BookingTutor"> | Date | string
+    updatedAt?: DateTimeFilter<"BookingTutor"> | Date | string
+    subject?: XOR<SubjectCategoryNullableScalarRelationFilter, SubjectCategoryWhereInput> | null
+    assignedTutor?: XOR<TutorProfileNullableScalarRelationFilter, TutorProfileWhereInput> | null
+  }
+
+  export type BookingTutorOrderByWithRelationInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    phoneNumber?: SortOrder
+    email?: SortOrderInput | SortOrder
+    subjectId?: SortOrderInput | SortOrder
+    subjectName?: SortOrderInput | SortOrder
+    level?: SortOrderInput | SortOrder
+    target?: SortOrderInput | SortOrder
+    nationalityTeacher?: SortOrderInput | SortOrder
+    teacherSex?: SortOrderInput | SortOrder
+    studyingDays?: SortOrderInput | SortOrder
+    studyingTimes?: SortOrderInput | SortOrder
+    startStudyingDate?: SortOrderInput | SortOrder
+    teachingMethod?: SortOrderInput | SortOrder
+    studyLocation?: SortOrderInput | SortOrder
+    yourCity?: SortOrderInput | SortOrder
+    note?: SortOrderInput | SortOrder
+    assignedTutorId?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    subject?: SubjectCategoryOrderByWithRelationInput
+    assignedTutor?: TutorProfileOrderByWithRelationInput
+  }
+
+  export type BookingTutorWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: BookingTutorWhereInput | BookingTutorWhereInput[]
+    OR?: BookingTutorWhereInput[]
+    NOT?: BookingTutorWhereInput | BookingTutorWhereInput[]
+    fullName?: StringFilter<"BookingTutor"> | string
+    phoneNumber?: StringFilter<"BookingTutor"> | string
+    email?: StringNullableFilter<"BookingTutor"> | string | null
+    subjectId?: IntNullableFilter<"BookingTutor"> | number | null
+    subjectName?: StringNullableFilter<"BookingTutor"> | string | null
+    level?: StringNullableFilter<"BookingTutor"> | string | null
+    target?: StringNullableFilter<"BookingTutor"> | string | null
+    nationalityTeacher?: StringNullableFilter<"BookingTutor"> | string | null
+    teacherSex?: EnumSexMethodNullableFilter<"BookingTutor"> | $Enums.SexMethod | null
+    studyingDays?: EnumTeachingTimeNullableFilter<"BookingTutor"> | $Enums.TeachingTime | null
+    studyingTimes?: StringNullableFilter<"BookingTutor"> | string | null
+    startStudyingDate?: StringNullableFilter<"BookingTutor"> | string | null
+    teachingMethod?: EnumTeachingMethodNullableFilter<"BookingTutor"> | $Enums.TeachingMethod | null
+    studyLocation?: StringNullableFilter<"BookingTutor"> | string | null
+    yourCity?: StringNullableFilter<"BookingTutor"> | string | null
+    note?: StringNullableFilter<"BookingTutor"> | string | null
+    assignedTutorId?: IntNullableFilter<"BookingTutor"> | number | null
+    status?: EnumBookingStatusNullableFilter<"BookingTutor"> | $Enums.BookingStatus | null
+    createdAt?: DateTimeFilter<"BookingTutor"> | Date | string
+    updatedAt?: DateTimeFilter<"BookingTutor"> | Date | string
+    subject?: XOR<SubjectCategoryNullableScalarRelationFilter, SubjectCategoryWhereInput> | null
+    assignedTutor?: XOR<TutorProfileNullableScalarRelationFilter, TutorProfileWhereInput> | null
   }, "id">
 
-  export type AvailableTimeOrderByWithAggregationInput = {
+  export type BookingTutorOrderByWithAggregationInput = {
     id?: SortOrder
-    dayStart?: SortOrder
-    dayEnd?: SortOrder
-    timeStart?: SortOrder
-    timeEnd?: SortOrder
-    tutorId?: SortOrder
-    _count?: AvailableTimeCountOrderByAggregateInput
-    _avg?: AvailableTimeAvgOrderByAggregateInput
-    _max?: AvailableTimeMaxOrderByAggregateInput
-    _min?: AvailableTimeMinOrderByAggregateInput
-    _sum?: AvailableTimeSumOrderByAggregateInput
+    fullName?: SortOrder
+    phoneNumber?: SortOrder
+    email?: SortOrderInput | SortOrder
+    subjectId?: SortOrderInput | SortOrder
+    subjectName?: SortOrderInput | SortOrder
+    level?: SortOrderInput | SortOrder
+    target?: SortOrderInput | SortOrder
+    nationalityTeacher?: SortOrderInput | SortOrder
+    teacherSex?: SortOrderInput | SortOrder
+    studyingDays?: SortOrderInput | SortOrder
+    studyingTimes?: SortOrderInput | SortOrder
+    startStudyingDate?: SortOrderInput | SortOrder
+    teachingMethod?: SortOrderInput | SortOrder
+    studyLocation?: SortOrderInput | SortOrder
+    yourCity?: SortOrderInput | SortOrder
+    note?: SortOrderInput | SortOrder
+    assignedTutorId?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BookingTutorCountOrderByAggregateInput
+    _avg?: BookingTutorAvgOrderByAggregateInput
+    _max?: BookingTutorMaxOrderByAggregateInput
+    _min?: BookingTutorMinOrderByAggregateInput
+    _sum?: BookingTutorSumOrderByAggregateInput
   }
 
-  export type AvailableTimeScalarWhereWithAggregatesInput = {
-    AND?: AvailableTimeScalarWhereWithAggregatesInput | AvailableTimeScalarWhereWithAggregatesInput[]
-    OR?: AvailableTimeScalarWhereWithAggregatesInput[]
-    NOT?: AvailableTimeScalarWhereWithAggregatesInput | AvailableTimeScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"AvailableTime"> | number
-    dayStart?: StringWithAggregatesFilter<"AvailableTime"> | string
-    dayEnd?: StringWithAggregatesFilter<"AvailableTime"> | string
-    timeStart?: StringWithAggregatesFilter<"AvailableTime"> | string
-    timeEnd?: StringWithAggregatesFilter<"AvailableTime"> | string
-    tutorId?: IntWithAggregatesFilter<"AvailableTime"> | number
+  export type BookingTutorScalarWhereWithAggregatesInput = {
+    AND?: BookingTutorScalarWhereWithAggregatesInput | BookingTutorScalarWhereWithAggregatesInput[]
+    OR?: BookingTutorScalarWhereWithAggregatesInput[]
+    NOT?: BookingTutorScalarWhereWithAggregatesInput | BookingTutorScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"BookingTutor"> | number
+    fullName?: StringWithAggregatesFilter<"BookingTutor"> | string
+    phoneNumber?: StringWithAggregatesFilter<"BookingTutor"> | string
+    email?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    subjectId?: IntNullableWithAggregatesFilter<"BookingTutor"> | number | null
+    subjectName?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    level?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    target?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    nationalityTeacher?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    teacherSex?: EnumSexMethodNullableWithAggregatesFilter<"BookingTutor"> | $Enums.SexMethod | null
+    studyingDays?: EnumTeachingTimeNullableWithAggregatesFilter<"BookingTutor"> | $Enums.TeachingTime | null
+    studyingTimes?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    startStudyingDate?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    teachingMethod?: EnumTeachingMethodNullableWithAggregatesFilter<"BookingTutor"> | $Enums.TeachingMethod | null
+    studyLocation?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    yourCity?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    note?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    assignedTutorId?: IntNullableWithAggregatesFilter<"BookingTutor"> | number | null
+    status?: EnumBookingStatusNullableWithAggregatesFilter<"BookingTutor"> | $Enums.BookingStatus | null
+    createdAt?: DateTimeWithAggregatesFilter<"BookingTutor"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BookingTutor"> | Date | string
   }
 
   export type ExperienceWhereInput = {
@@ -9954,13 +13130,17 @@ export namespace Prisma {
     NOT?: SubjectCategoryWhereInput | SubjectCategoryWhereInput[]
     id?: IntFilter<"SubjectCategory"> | number
     name?: StringFilter<"SubjectCategory"> | string
+    icon?: StringNullableFilter<"SubjectCategory"> | string | null
     tutors?: TutorSubjectListRelationFilter
+    BookingTutor?: BookingTutorListRelationFilter
   }
 
   export type SubjectCategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    icon?: SortOrderInput | SortOrder
     tutors?: TutorSubjectOrderByRelationAggregateInput
+    BookingTutor?: BookingTutorOrderByRelationAggregateInput
   }
 
   export type SubjectCategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -9969,12 +13149,15 @@ export namespace Prisma {
     AND?: SubjectCategoryWhereInput | SubjectCategoryWhereInput[]
     OR?: SubjectCategoryWhereInput[]
     NOT?: SubjectCategoryWhereInput | SubjectCategoryWhereInput[]
+    icon?: StringNullableFilter<"SubjectCategory"> | string | null
     tutors?: TutorSubjectListRelationFilter
+    BookingTutor?: BookingTutorListRelationFilter
   }, "id" | "name">
 
   export type SubjectCategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    icon?: SortOrderInput | SortOrder
     _count?: SubjectCategoryCountOrderByAggregateInput
     _avg?: SubjectCategoryAvgOrderByAggregateInput
     _max?: SubjectCategoryMaxOrderByAggregateInput
@@ -9988,6 +13171,7 @@ export namespace Prisma {
     NOT?: SubjectCategoryScalarWhereWithAggregatesInput | SubjectCategoryScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"SubjectCategory"> | number
     name?: StringWithAggregatesFilter<"SubjectCategory"> | string
+    icon?: StringNullableWithAggregatesFilter<"SubjectCategory"> | string | null
   }
 
   export type TutorSubjectWhereInput = {
@@ -10041,7 +13225,6 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
-    name: string
     email: string
     password: string
     role?: $Enums.Role
@@ -10053,7 +13236,6 @@ export namespace Prisma {
 
   export type UserUncheckedCreateInput = {
     id?: number
-    name: string
     email: string
     password: string
     role?: $Enums.Role
@@ -10064,7 +13246,6 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -10076,7 +13257,6 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -10088,7 +13268,6 @@ export namespace Prisma {
 
   export type UserCreateManyInput = {
     id?: number
-    name: string
     email: string
     password: string
     role?: $Enums.Role
@@ -10097,7 +13276,6 @@ export namespace Prisma {
   }
 
   export type UserUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -10107,7 +13285,6 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -10120,14 +13297,23 @@ export namespace Prisma {
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     user: UserCreateNestedOneWithoutTutorProfileInput
-    availableTimes?: AvailableTimeCreateNestedManyWithoutTutorInput
     tutorSubjects?: TutorSubjectCreateNestedManyWithoutTutorInput
     experiences?: ExperienceCreateNestedManyWithoutTutorInput
     reviews?: ReviewCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelCreateNestedManyWithoutTutorProfileInput
+    BookingTutor?: BookingTutorCreateNestedManyWithoutAssignedTutorInput
   }
 
   export type TutorProfileUncheckedCreateInput = {
@@ -10137,13 +13323,22 @@ export namespace Prisma {
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
-    availableTimes?: AvailableTimeUncheckedCreateNestedManyWithoutTutorInput
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUncheckedCreateNestedManyWithoutTutorInput
     experiences?: ExperienceUncheckedCreateNestedManyWithoutTutorInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelUncheckedCreateNestedManyWithoutTutorProfileInput
+    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutAssignedTutorInput
   }
 
   export type TutorProfileUpdateInput = {
@@ -10151,14 +13346,23 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     user?: UserUpdateOneRequiredWithoutTutorProfileNestedInput
-    availableTimes?: AvailableTimeUpdateManyWithoutTutorNestedInput
     tutorSubjects?: TutorSubjectUpdateManyWithoutTutorNestedInput
     experiences?: ExperienceUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUpdateManyWithoutTutorProfileNestedInput
+    BookingTutor?: BookingTutorUpdateManyWithoutAssignedTutorNestedInput
   }
 
   export type TutorProfileUncheckedUpdateInput = {
@@ -10168,13 +13372,22 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
-    availableTimes?: AvailableTimeUncheckedUpdateManyWithoutTutorNestedInput
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUncheckedUpdateManyWithoutTutorNestedInput
     experiences?: ExperienceUncheckedUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUncheckedUpdateManyWithoutTutorProfileNestedInput
+    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutAssignedTutorNestedInput
   }
 
   export type TutorProfileCreateManyInput = {
@@ -10184,9 +13397,17 @@ export namespace Prisma {
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
   }
 
   export type TutorProfileUpdateManyMutationInput = {
@@ -10194,9 +13415,17 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
   }
 
   export type TutorProfileUncheckedUpdateManyInput = {
@@ -10206,68 +13435,254 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
   }
 
-  export type AvailableTimeCreateInput = {
-    dayStart: string
-    dayEnd: string
-    timeStart: string
-    timeEnd: string
-    tutor: TutorProfileCreateNestedOneWithoutAvailableTimesInput
+  export type TeachingLevelCreateInput = {
+    name: string
+    tutors?: TutorLevelCreateNestedManyWithoutTeachingLevelInput
   }
 
-  export type AvailableTimeUncheckedCreateInput = {
+  export type TeachingLevelUncheckedCreateInput = {
     id?: number
-    dayStart: string
-    dayEnd: string
-    timeStart: string
-    timeEnd: string
-    tutorId: number
+    name: string
+    tutors?: TutorLevelUncheckedCreateNestedManyWithoutTeachingLevelInput
   }
 
-  export type AvailableTimeUpdateInput = {
-    dayStart?: StringFieldUpdateOperationsInput | string
-    dayEnd?: StringFieldUpdateOperationsInput | string
-    timeStart?: StringFieldUpdateOperationsInput | string
-    timeEnd?: StringFieldUpdateOperationsInput | string
-    tutor?: TutorProfileUpdateOneRequiredWithoutAvailableTimesNestedInput
+  export type TeachingLevelUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    tutors?: TutorLevelUpdateManyWithoutTeachingLevelNestedInput
   }
 
-  export type AvailableTimeUncheckedUpdateInput = {
+  export type TeachingLevelUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    dayStart?: StringFieldUpdateOperationsInput | string
-    dayEnd?: StringFieldUpdateOperationsInput | string
-    timeStart?: StringFieldUpdateOperationsInput | string
-    timeEnd?: StringFieldUpdateOperationsInput | string
-    tutorId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    tutors?: TutorLevelUncheckedUpdateManyWithoutTeachingLevelNestedInput
   }
 
-  export type AvailableTimeCreateManyInput = {
+  export type TeachingLevelCreateManyInput = {
     id?: number
-    dayStart: string
-    dayEnd: string
-    timeStart: string
-    timeEnd: string
-    tutorId: number
+    name: string
   }
 
-  export type AvailableTimeUpdateManyMutationInput = {
-    dayStart?: StringFieldUpdateOperationsInput | string
-    dayEnd?: StringFieldUpdateOperationsInput | string
-    timeStart?: StringFieldUpdateOperationsInput | string
-    timeEnd?: StringFieldUpdateOperationsInput | string
+  export type TeachingLevelUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
   }
 
-  export type AvailableTimeUncheckedUpdateManyInput = {
+  export type TeachingLevelUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    dayStart?: StringFieldUpdateOperationsInput | string
-    dayEnd?: StringFieldUpdateOperationsInput | string
-    timeStart?: StringFieldUpdateOperationsInput | string
-    timeEnd?: StringFieldUpdateOperationsInput | string
-    tutorId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TutorLevelCreateInput = {
+    tutorProfile: TutorProfileCreateNestedOneWithoutLevelsInput
+    teachingLevel: TeachingLevelCreateNestedOneWithoutTutorsInput
+  }
+
+  export type TutorLevelUncheckedCreateInput = {
+    id?: number
+    tutorProfileId: number
+    teachingLevelId: number
+  }
+
+  export type TutorLevelUpdateInput = {
+    tutorProfile?: TutorProfileUpdateOneRequiredWithoutLevelsNestedInput
+    teachingLevel?: TeachingLevelUpdateOneRequiredWithoutTutorsNestedInput
+  }
+
+  export type TutorLevelUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tutorProfileId?: IntFieldUpdateOperationsInput | number
+    teachingLevelId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TutorLevelCreateManyInput = {
+    id?: number
+    tutorProfileId: number
+    teachingLevelId: number
+  }
+
+  export type TutorLevelUpdateManyMutationInput = {
+
+  }
+
+  export type TutorLevelUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tutorProfileId?: IntFieldUpdateOperationsInput | number
+    teachingLevelId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BookingTutorCreateInput = {
+    fullName: string
+    phoneNumber: string
+    email?: string | null
+    subjectName?: string | null
+    level?: string | null
+    target?: string | null
+    nationalityTeacher?: string | null
+    teacherSex?: $Enums.SexMethod | null
+    studyingDays?: $Enums.TeachingTime | null
+    studyingTimes?: string | null
+    startStudyingDate?: string | null
+    teachingMethod?: $Enums.TeachingMethod | null
+    studyLocation?: string | null
+    yourCity?: string | null
+    note?: string | null
+    status?: $Enums.BookingStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subject?: SubjectCategoryCreateNestedOneWithoutBookingTutorInput
+    assignedTutor?: TutorProfileCreateNestedOneWithoutBookingTutorInput
+  }
+
+  export type BookingTutorUncheckedCreateInput = {
+    id?: number
+    fullName: string
+    phoneNumber: string
+    email?: string | null
+    subjectId?: number | null
+    subjectName?: string | null
+    level?: string | null
+    target?: string | null
+    nationalityTeacher?: string | null
+    teacherSex?: $Enums.SexMethod | null
+    studyingDays?: $Enums.TeachingTime | null
+    studyingTimes?: string | null
+    startStudyingDate?: string | null
+    teachingMethod?: $Enums.TeachingMethod | null
+    studyLocation?: string | null
+    yourCity?: string | null
+    note?: string | null
+    assignedTutorId?: number | null
+    status?: $Enums.BookingStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookingTutorUpdateInput = {
+    fullName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
+    level?: NullableStringFieldUpdateOperationsInput | string | null
+    target?: NullableStringFieldUpdateOperationsInput | string | null
+    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
+    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
+    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
+    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
+    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
+    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    yourCity?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subject?: SubjectCategoryUpdateOneWithoutBookingTutorNestedInput
+    assignedTutor?: TutorProfileUpdateOneWithoutBookingTutorNestedInput
+  }
+
+  export type BookingTutorUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectId?: NullableIntFieldUpdateOperationsInput | number | null
+    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
+    level?: NullableStringFieldUpdateOperationsInput | string | null
+    target?: NullableStringFieldUpdateOperationsInput | string | null
+    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
+    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
+    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
+    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
+    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
+    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    yourCity?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    assignedTutorId?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingTutorCreateManyInput = {
+    id?: number
+    fullName: string
+    phoneNumber: string
+    email?: string | null
+    subjectId?: number | null
+    subjectName?: string | null
+    level?: string | null
+    target?: string | null
+    nationalityTeacher?: string | null
+    teacherSex?: $Enums.SexMethod | null
+    studyingDays?: $Enums.TeachingTime | null
+    studyingTimes?: string | null
+    startStudyingDate?: string | null
+    teachingMethod?: $Enums.TeachingMethod | null
+    studyLocation?: string | null
+    yourCity?: string | null
+    note?: string | null
+    assignedTutorId?: number | null
+    status?: $Enums.BookingStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookingTutorUpdateManyMutationInput = {
+    fullName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
+    level?: NullableStringFieldUpdateOperationsInput | string | null
+    target?: NullableStringFieldUpdateOperationsInput | string | null
+    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
+    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
+    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
+    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
+    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
+    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    yourCity?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingTutorUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectId?: NullableIntFieldUpdateOperationsInput | number | null
+    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
+    level?: NullableStringFieldUpdateOperationsInput | string | null
+    target?: NullableStringFieldUpdateOperationsInput | string | null
+    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
+    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
+    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
+    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
+    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
+    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    yourCity?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    assignedTutorId?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ExperienceCreateInput = {
@@ -10368,38 +13783,49 @@ export namespace Prisma {
 
   export type SubjectCategoryCreateInput = {
     name: string
+    icon?: string | null
     tutors?: TutorSubjectCreateNestedManyWithoutCategoryInput
+    BookingTutor?: BookingTutorCreateNestedManyWithoutSubjectInput
   }
 
   export type SubjectCategoryUncheckedCreateInput = {
     id?: number
     name: string
+    icon?: string | null
     tutors?: TutorSubjectUncheckedCreateNestedManyWithoutCategoryInput
+    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutSubjectInput
   }
 
   export type SubjectCategoryUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
     tutors?: TutorSubjectUpdateManyWithoutCategoryNestedInput
+    BookingTutor?: BookingTutorUpdateManyWithoutSubjectNestedInput
   }
 
   export type SubjectCategoryUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
     tutors?: TutorSubjectUncheckedUpdateManyWithoutCategoryNestedInput
+    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutSubjectNestedInput
   }
 
   export type SubjectCategoryCreateManyInput = {
     id?: number
     name: string
+    icon?: string | null
   }
 
   export type SubjectCategoryUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SubjectCategoryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TutorSubjectCreateInput = {
@@ -10501,7 +13927,6 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
@@ -10515,7 +13940,6 @@ export namespace Prisma {
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
@@ -10525,7 +13949,6 @@ export namespace Prisma {
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
@@ -10595,20 +14018,57 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type EnumLanguageFilter<$PrismaModel = never> = {
+    equals?: $Enums.Language | EnumLanguageFieldRefInput<$PrismaModel>
+    in?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageFilter<$PrismaModel> | $Enums.Language
+  }
+
+  export type EnumSexMethodFilter<$PrismaModel = never> = {
+    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumSexMethodFilter<$PrismaModel> | $Enums.SexMethod
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type EnumTeachingMethodFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumTeachingMethodFilter<$PrismaModel> | $Enums.TeachingMethod
+  }
+
+  export type EnumTeachingTimeFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel>
+    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTeachingTimeFilter<$PrismaModel> | $Enums.TeachingTime
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
-  }
-
-  export type AvailableTimeListRelationFilter = {
-    every?: AvailableTimeWhereInput
-    some?: AvailableTimeWhereInput
-    none?: AvailableTimeWhereInput
   }
 
   export type TutorSubjectListRelationFilter = {
@@ -10623,8 +14083,21 @@ export namespace Prisma {
     none?: ExperienceWhereInput
   }
 
-  export type AvailableTimeOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type TutorLevelListRelationFilter = {
+    every?: TutorLevelWhereInput
+    some?: TutorLevelWhereInput
+    none?: TutorLevelWhereInput
+  }
+
+  export type BookingTutorListRelationFilter = {
+    every?: BookingTutorWhereInput
+    some?: BookingTutorWhereInput
+    none?: BookingTutorWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type TutorSubjectOrderByRelationAggregateInput = {
@@ -10635,6 +14108,14 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type TutorLevelOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BookingTutorOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type TutorProfileCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -10642,9 +14123,17 @@ export namespace Prisma {
     province?: SortOrder
     image?: SortOrder
     pricePerHour?: SortOrder
+    languageTaught?: SortOrder
+    sex?: SortOrder
     description?: SortOrder
     phoneNumber?: SortOrder
     verifyed?: SortOrder
+    technique?: SortOrder
+    teachingMethod?: SortOrder
+    teachingTime?: SortOrder
+    timeStart?: SortOrder
+    timeEnd?: SortOrder
+    availableTimes?: SortOrder
   }
 
   export type TutorProfileAvgOrderByAggregateInput = {
@@ -10660,9 +14149,17 @@ export namespace Prisma {
     province?: SortOrder
     image?: SortOrder
     pricePerHour?: SortOrder
+    languageTaught?: SortOrder
+    sex?: SortOrder
     description?: SortOrder
     phoneNumber?: SortOrder
     verifyed?: SortOrder
+    technique?: SortOrder
+    teachingMethod?: SortOrder
+    teachingTime?: SortOrder
+    timeStart?: SortOrder
+    timeEnd?: SortOrder
+    availableTimes?: SortOrder
   }
 
   export type TutorProfileMinOrderByAggregateInput = {
@@ -10672,15 +14169,61 @@ export namespace Prisma {
     province?: SortOrder
     image?: SortOrder
     pricePerHour?: SortOrder
+    languageTaught?: SortOrder
+    sex?: SortOrder
     description?: SortOrder
     phoneNumber?: SortOrder
     verifyed?: SortOrder
+    technique?: SortOrder
+    teachingMethod?: SortOrder
+    teachingTime?: SortOrder
+    timeStart?: SortOrder
+    timeEnd?: SortOrder
+    availableTimes?: SortOrder
   }
 
   export type TutorProfileSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     pricePerHour?: SortOrder
+  }
+
+  export type EnumLanguageWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Language | EnumLanguageFieldRefInput<$PrismaModel>
+    in?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageWithAggregatesFilter<$PrismaModel> | $Enums.Language
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLanguageFilter<$PrismaModel>
+    _max?: NestedEnumLanguageFilter<$PrismaModel>
+  }
+
+  export type EnumSexMethodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumSexMethodWithAggregatesFilter<$PrismaModel> | $Enums.SexMethod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSexMethodFilter<$PrismaModel>
+    _max?: NestedEnumSexMethodFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -10691,46 +14234,276 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type EnumTeachingMethodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumTeachingMethodWithAggregatesFilter<$PrismaModel> | $Enums.TeachingMethod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTeachingMethodFilter<$PrismaModel>
+    _max?: NestedEnumTeachingMethodFilter<$PrismaModel>
+  }
+
+  export type EnumTeachingTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel>
+    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTeachingTimeWithAggregatesFilter<$PrismaModel> | $Enums.TeachingTime
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTeachingTimeFilter<$PrismaModel>
+    _max?: NestedEnumTeachingTimeFilter<$PrismaModel>
+  }
+
+  export type TeachingLevelCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type TeachingLevelAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TeachingLevelMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type TeachingLevelMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type TeachingLevelSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type TutorProfileScalarRelationFilter = {
     is?: TutorProfileWhereInput
     isNot?: TutorProfileWhereInput
   }
 
-  export type AvailableTimeCountOrderByAggregateInput = {
-    id?: SortOrder
-    dayStart?: SortOrder
-    dayEnd?: SortOrder
-    timeStart?: SortOrder
-    timeEnd?: SortOrder
-    tutorId?: SortOrder
+  export type TeachingLevelScalarRelationFilter = {
+    is?: TeachingLevelWhereInput
+    isNot?: TeachingLevelWhereInput
   }
 
-  export type AvailableTimeAvgOrderByAggregateInput = {
-    id?: SortOrder
-    tutorId?: SortOrder
+  export type TutorLevelTutorProfileIdTeachingLevelIdCompoundUniqueInput = {
+    tutorProfileId: number
+    teachingLevelId: number
   }
 
-  export type AvailableTimeMaxOrderByAggregateInput = {
+  export type TutorLevelCountOrderByAggregateInput = {
     id?: SortOrder
-    dayStart?: SortOrder
-    dayEnd?: SortOrder
-    timeStart?: SortOrder
-    timeEnd?: SortOrder
-    tutorId?: SortOrder
+    tutorProfileId?: SortOrder
+    teachingLevelId?: SortOrder
   }
 
-  export type AvailableTimeMinOrderByAggregateInput = {
+  export type TutorLevelAvgOrderByAggregateInput = {
     id?: SortOrder
-    dayStart?: SortOrder
-    dayEnd?: SortOrder
-    timeStart?: SortOrder
-    timeEnd?: SortOrder
-    tutorId?: SortOrder
+    tutorProfileId?: SortOrder
+    teachingLevelId?: SortOrder
   }
 
-  export type AvailableTimeSumOrderByAggregateInput = {
+  export type TutorLevelMaxOrderByAggregateInput = {
     id?: SortOrder
-    tutorId?: SortOrder
+    tutorProfileId?: SortOrder
+    teachingLevelId?: SortOrder
+  }
+
+  export type TutorLevelMinOrderByAggregateInput = {
+    id?: SortOrder
+    tutorProfileId?: SortOrder
+    teachingLevelId?: SortOrder
+  }
+
+  export type TutorLevelSumOrderByAggregateInput = {
+    id?: SortOrder
+    tutorProfileId?: SortOrder
+    teachingLevelId?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type EnumSexMethodNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSexMethodNullableFilter<$PrismaModel> | $Enums.SexMethod | null
+  }
+
+  export type EnumTeachingTimeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTeachingTimeNullableFilter<$PrismaModel> | $Enums.TeachingTime | null
+  }
+
+  export type EnumTeachingMethodNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTeachingMethodNullableFilter<$PrismaModel> | $Enums.TeachingMethod | null
+  }
+
+  export type EnumBookingStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.BookingStatus | EnumBookingStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumBookingStatusNullableFilter<$PrismaModel> | $Enums.BookingStatus | null
+  }
+
+  export type SubjectCategoryNullableScalarRelationFilter = {
+    is?: SubjectCategoryWhereInput | null
+    isNot?: SubjectCategoryWhereInput | null
+  }
+
+  export type BookingTutorCountOrderByAggregateInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    phoneNumber?: SortOrder
+    email?: SortOrder
+    subjectId?: SortOrder
+    subjectName?: SortOrder
+    level?: SortOrder
+    target?: SortOrder
+    nationalityTeacher?: SortOrder
+    teacherSex?: SortOrder
+    studyingDays?: SortOrder
+    studyingTimes?: SortOrder
+    startStudyingDate?: SortOrder
+    teachingMethod?: SortOrder
+    studyLocation?: SortOrder
+    yourCity?: SortOrder
+    note?: SortOrder
+    assignedTutorId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BookingTutorAvgOrderByAggregateInput = {
+    id?: SortOrder
+    subjectId?: SortOrder
+    assignedTutorId?: SortOrder
+  }
+
+  export type BookingTutorMaxOrderByAggregateInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    phoneNumber?: SortOrder
+    email?: SortOrder
+    subjectId?: SortOrder
+    subjectName?: SortOrder
+    level?: SortOrder
+    target?: SortOrder
+    nationalityTeacher?: SortOrder
+    teacherSex?: SortOrder
+    studyingDays?: SortOrder
+    studyingTimes?: SortOrder
+    startStudyingDate?: SortOrder
+    teachingMethod?: SortOrder
+    studyLocation?: SortOrder
+    yourCity?: SortOrder
+    note?: SortOrder
+    assignedTutorId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BookingTutorMinOrderByAggregateInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    phoneNumber?: SortOrder
+    email?: SortOrder
+    subjectId?: SortOrder
+    subjectName?: SortOrder
+    level?: SortOrder
+    target?: SortOrder
+    nationalityTeacher?: SortOrder
+    teacherSex?: SortOrder
+    studyingDays?: SortOrder
+    studyingTimes?: SortOrder
+    startStudyingDate?: SortOrder
+    teachingMethod?: SortOrder
+    studyLocation?: SortOrder
+    yourCity?: SortOrder
+    note?: SortOrder
+    assignedTutorId?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BookingTutorSumOrderByAggregateInput = {
+    id?: SortOrder
+    subjectId?: SortOrder
+    assignedTutorId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type EnumSexMethodNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSexMethodNullableWithAggregatesFilter<$PrismaModel> | $Enums.SexMethod | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumSexMethodNullableFilter<$PrismaModel>
+    _max?: NestedEnumSexMethodNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTeachingTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTeachingTimeNullableWithAggregatesFilter<$PrismaModel> | $Enums.TeachingTime | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTeachingTimeNullableFilter<$PrismaModel>
+    _max?: NestedEnumTeachingTimeNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTeachingMethodNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTeachingMethodNullableWithAggregatesFilter<$PrismaModel> | $Enums.TeachingMethod | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTeachingMethodNullableFilter<$PrismaModel>
+    _max?: NestedEnumTeachingMethodNullableFilter<$PrismaModel>
+  }
+
+  export type EnumBookingStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.BookingStatus | EnumBookingStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumBookingStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.BookingStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumBookingStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumBookingStatusNullableFilter<$PrismaModel>
   }
 
   export type ExperienceCountOrderByAggregateInput = {
@@ -10805,6 +14578,7 @@ export namespace Prisma {
   export type SubjectCategoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    icon?: SortOrder
   }
 
   export type SubjectCategoryAvgOrderByAggregateInput = {
@@ -10814,11 +14588,13 @@ export namespace Prisma {
   export type SubjectCategoryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    icon?: SortOrder
   }
 
   export type SubjectCategoryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    icon?: SortOrder
   }
 
   export type SubjectCategorySumOrderByAggregateInput = {
@@ -10960,13 +14736,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type AvailableTimeCreateNestedManyWithoutTutorInput = {
-    create?: XOR<AvailableTimeCreateWithoutTutorInput, AvailableTimeUncheckedCreateWithoutTutorInput> | AvailableTimeCreateWithoutTutorInput[] | AvailableTimeUncheckedCreateWithoutTutorInput[]
-    connectOrCreate?: AvailableTimeCreateOrConnectWithoutTutorInput | AvailableTimeCreateOrConnectWithoutTutorInput[]
-    createMany?: AvailableTimeCreateManyTutorInputEnvelope
-    connect?: AvailableTimeWhereUniqueInput | AvailableTimeWhereUniqueInput[]
-  }
-
   export type TutorSubjectCreateNestedManyWithoutTutorInput = {
     create?: XOR<TutorSubjectCreateWithoutTutorInput, TutorSubjectUncheckedCreateWithoutTutorInput> | TutorSubjectCreateWithoutTutorInput[] | TutorSubjectUncheckedCreateWithoutTutorInput[]
     connectOrCreate?: TutorSubjectCreateOrConnectWithoutTutorInput | TutorSubjectCreateOrConnectWithoutTutorInput[]
@@ -10988,11 +14757,18 @@ export namespace Prisma {
     connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
-  export type AvailableTimeUncheckedCreateNestedManyWithoutTutorInput = {
-    create?: XOR<AvailableTimeCreateWithoutTutorInput, AvailableTimeUncheckedCreateWithoutTutorInput> | AvailableTimeCreateWithoutTutorInput[] | AvailableTimeUncheckedCreateWithoutTutorInput[]
-    connectOrCreate?: AvailableTimeCreateOrConnectWithoutTutorInput | AvailableTimeCreateOrConnectWithoutTutorInput[]
-    createMany?: AvailableTimeCreateManyTutorInputEnvelope
-    connect?: AvailableTimeWhereUniqueInput | AvailableTimeWhereUniqueInput[]
+  export type TutorLevelCreateNestedManyWithoutTutorProfileInput = {
+    create?: XOR<TutorLevelCreateWithoutTutorProfileInput, TutorLevelUncheckedCreateWithoutTutorProfileInput> | TutorLevelCreateWithoutTutorProfileInput[] | TutorLevelUncheckedCreateWithoutTutorProfileInput[]
+    connectOrCreate?: TutorLevelCreateOrConnectWithoutTutorProfileInput | TutorLevelCreateOrConnectWithoutTutorProfileInput[]
+    createMany?: TutorLevelCreateManyTutorProfileInputEnvelope
+    connect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+  }
+
+  export type BookingTutorCreateNestedManyWithoutAssignedTutorInput = {
+    create?: XOR<BookingTutorCreateWithoutAssignedTutorInput, BookingTutorUncheckedCreateWithoutAssignedTutorInput> | BookingTutorCreateWithoutAssignedTutorInput[] | BookingTutorUncheckedCreateWithoutAssignedTutorInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutAssignedTutorInput | BookingTutorCreateOrConnectWithoutAssignedTutorInput[]
+    createMany?: BookingTutorCreateManyAssignedTutorInputEnvelope
+    connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
   }
 
   export type TutorSubjectUncheckedCreateNestedManyWithoutTutorInput = {
@@ -11016,8 +14792,42 @@ export namespace Prisma {
     connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
+  export type TutorLevelUncheckedCreateNestedManyWithoutTutorProfileInput = {
+    create?: XOR<TutorLevelCreateWithoutTutorProfileInput, TutorLevelUncheckedCreateWithoutTutorProfileInput> | TutorLevelCreateWithoutTutorProfileInput[] | TutorLevelUncheckedCreateWithoutTutorProfileInput[]
+    connectOrCreate?: TutorLevelCreateOrConnectWithoutTutorProfileInput | TutorLevelCreateOrConnectWithoutTutorProfileInput[]
+    createMany?: TutorLevelCreateManyTutorProfileInputEnvelope
+    connect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+  }
+
+  export type BookingTutorUncheckedCreateNestedManyWithoutAssignedTutorInput = {
+    create?: XOR<BookingTutorCreateWithoutAssignedTutorInput, BookingTutorUncheckedCreateWithoutAssignedTutorInput> | BookingTutorCreateWithoutAssignedTutorInput[] | BookingTutorUncheckedCreateWithoutAssignedTutorInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutAssignedTutorInput | BookingTutorCreateOrConnectWithoutAssignedTutorInput[]
+    createMany?: BookingTutorCreateManyAssignedTutorInputEnvelope
+    connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+  }
+
+  export type EnumLanguageFieldUpdateOperationsInput = {
+    set?: $Enums.Language
+  }
+
+  export type EnumSexMethodFieldUpdateOperationsInput = {
+    set?: $Enums.SexMethod
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type EnumTeachingMethodFieldUpdateOperationsInput = {
+    set?: $Enums.TeachingMethod
+  }
+
+  export type EnumTeachingTimeFieldUpdateOperationsInput = {
+    set?: $Enums.TeachingTime
   }
 
   export type UserUpdateOneRequiredWithoutTutorProfileNestedInput = {
@@ -11026,20 +14836,6 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutTutorProfileInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTutorProfileInput, UserUpdateWithoutTutorProfileInput>, UserUncheckedUpdateWithoutTutorProfileInput>
-  }
-
-  export type AvailableTimeUpdateManyWithoutTutorNestedInput = {
-    create?: XOR<AvailableTimeCreateWithoutTutorInput, AvailableTimeUncheckedCreateWithoutTutorInput> | AvailableTimeCreateWithoutTutorInput[] | AvailableTimeUncheckedCreateWithoutTutorInput[]
-    connectOrCreate?: AvailableTimeCreateOrConnectWithoutTutorInput | AvailableTimeCreateOrConnectWithoutTutorInput[]
-    upsert?: AvailableTimeUpsertWithWhereUniqueWithoutTutorInput | AvailableTimeUpsertWithWhereUniqueWithoutTutorInput[]
-    createMany?: AvailableTimeCreateManyTutorInputEnvelope
-    set?: AvailableTimeWhereUniqueInput | AvailableTimeWhereUniqueInput[]
-    disconnect?: AvailableTimeWhereUniqueInput | AvailableTimeWhereUniqueInput[]
-    delete?: AvailableTimeWhereUniqueInput | AvailableTimeWhereUniqueInput[]
-    connect?: AvailableTimeWhereUniqueInput | AvailableTimeWhereUniqueInput[]
-    update?: AvailableTimeUpdateWithWhereUniqueWithoutTutorInput | AvailableTimeUpdateWithWhereUniqueWithoutTutorInput[]
-    updateMany?: AvailableTimeUpdateManyWithWhereWithoutTutorInput | AvailableTimeUpdateManyWithWhereWithoutTutorInput[]
-    deleteMany?: AvailableTimeScalarWhereInput | AvailableTimeScalarWhereInput[]
   }
 
   export type TutorSubjectUpdateManyWithoutTutorNestedInput = {
@@ -11084,18 +14880,32 @@ export namespace Prisma {
     deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
-  export type AvailableTimeUncheckedUpdateManyWithoutTutorNestedInput = {
-    create?: XOR<AvailableTimeCreateWithoutTutorInput, AvailableTimeUncheckedCreateWithoutTutorInput> | AvailableTimeCreateWithoutTutorInput[] | AvailableTimeUncheckedCreateWithoutTutorInput[]
-    connectOrCreate?: AvailableTimeCreateOrConnectWithoutTutorInput | AvailableTimeCreateOrConnectWithoutTutorInput[]
-    upsert?: AvailableTimeUpsertWithWhereUniqueWithoutTutorInput | AvailableTimeUpsertWithWhereUniqueWithoutTutorInput[]
-    createMany?: AvailableTimeCreateManyTutorInputEnvelope
-    set?: AvailableTimeWhereUniqueInput | AvailableTimeWhereUniqueInput[]
-    disconnect?: AvailableTimeWhereUniqueInput | AvailableTimeWhereUniqueInput[]
-    delete?: AvailableTimeWhereUniqueInput | AvailableTimeWhereUniqueInput[]
-    connect?: AvailableTimeWhereUniqueInput | AvailableTimeWhereUniqueInput[]
-    update?: AvailableTimeUpdateWithWhereUniqueWithoutTutorInput | AvailableTimeUpdateWithWhereUniqueWithoutTutorInput[]
-    updateMany?: AvailableTimeUpdateManyWithWhereWithoutTutorInput | AvailableTimeUpdateManyWithWhereWithoutTutorInput[]
-    deleteMany?: AvailableTimeScalarWhereInput | AvailableTimeScalarWhereInput[]
+  export type TutorLevelUpdateManyWithoutTutorProfileNestedInput = {
+    create?: XOR<TutorLevelCreateWithoutTutorProfileInput, TutorLevelUncheckedCreateWithoutTutorProfileInput> | TutorLevelCreateWithoutTutorProfileInput[] | TutorLevelUncheckedCreateWithoutTutorProfileInput[]
+    connectOrCreate?: TutorLevelCreateOrConnectWithoutTutorProfileInput | TutorLevelCreateOrConnectWithoutTutorProfileInput[]
+    upsert?: TutorLevelUpsertWithWhereUniqueWithoutTutorProfileInput | TutorLevelUpsertWithWhereUniqueWithoutTutorProfileInput[]
+    createMany?: TutorLevelCreateManyTutorProfileInputEnvelope
+    set?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    disconnect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    delete?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    connect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    update?: TutorLevelUpdateWithWhereUniqueWithoutTutorProfileInput | TutorLevelUpdateWithWhereUniqueWithoutTutorProfileInput[]
+    updateMany?: TutorLevelUpdateManyWithWhereWithoutTutorProfileInput | TutorLevelUpdateManyWithWhereWithoutTutorProfileInput[]
+    deleteMany?: TutorLevelScalarWhereInput | TutorLevelScalarWhereInput[]
+  }
+
+  export type BookingTutorUpdateManyWithoutAssignedTutorNestedInput = {
+    create?: XOR<BookingTutorCreateWithoutAssignedTutorInput, BookingTutorUncheckedCreateWithoutAssignedTutorInput> | BookingTutorCreateWithoutAssignedTutorInput[] | BookingTutorUncheckedCreateWithoutAssignedTutorInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutAssignedTutorInput | BookingTutorCreateOrConnectWithoutAssignedTutorInput[]
+    upsert?: BookingTutorUpsertWithWhereUniqueWithoutAssignedTutorInput | BookingTutorUpsertWithWhereUniqueWithoutAssignedTutorInput[]
+    createMany?: BookingTutorCreateManyAssignedTutorInputEnvelope
+    set?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    disconnect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    delete?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    update?: BookingTutorUpdateWithWhereUniqueWithoutAssignedTutorInput | BookingTutorUpdateWithWhereUniqueWithoutAssignedTutorInput[]
+    updateMany?: BookingTutorUpdateManyWithWhereWithoutAssignedTutorInput | BookingTutorUpdateManyWithWhereWithoutAssignedTutorInput[]
+    deleteMany?: BookingTutorScalarWhereInput | BookingTutorScalarWhereInput[]
   }
 
   export type TutorSubjectUncheckedUpdateManyWithoutTutorNestedInput = {
@@ -11140,18 +14950,158 @@ export namespace Prisma {
     deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
-  export type TutorProfileCreateNestedOneWithoutAvailableTimesInput = {
-    create?: XOR<TutorProfileCreateWithoutAvailableTimesInput, TutorProfileUncheckedCreateWithoutAvailableTimesInput>
-    connectOrCreate?: TutorProfileCreateOrConnectWithoutAvailableTimesInput
+  export type TutorLevelUncheckedUpdateManyWithoutTutorProfileNestedInput = {
+    create?: XOR<TutorLevelCreateWithoutTutorProfileInput, TutorLevelUncheckedCreateWithoutTutorProfileInput> | TutorLevelCreateWithoutTutorProfileInput[] | TutorLevelUncheckedCreateWithoutTutorProfileInput[]
+    connectOrCreate?: TutorLevelCreateOrConnectWithoutTutorProfileInput | TutorLevelCreateOrConnectWithoutTutorProfileInput[]
+    upsert?: TutorLevelUpsertWithWhereUniqueWithoutTutorProfileInput | TutorLevelUpsertWithWhereUniqueWithoutTutorProfileInput[]
+    createMany?: TutorLevelCreateManyTutorProfileInputEnvelope
+    set?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    disconnect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    delete?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    connect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    update?: TutorLevelUpdateWithWhereUniqueWithoutTutorProfileInput | TutorLevelUpdateWithWhereUniqueWithoutTutorProfileInput[]
+    updateMany?: TutorLevelUpdateManyWithWhereWithoutTutorProfileInput | TutorLevelUpdateManyWithWhereWithoutTutorProfileInput[]
+    deleteMany?: TutorLevelScalarWhereInput | TutorLevelScalarWhereInput[]
+  }
+
+  export type BookingTutorUncheckedUpdateManyWithoutAssignedTutorNestedInput = {
+    create?: XOR<BookingTutorCreateWithoutAssignedTutorInput, BookingTutorUncheckedCreateWithoutAssignedTutorInput> | BookingTutorCreateWithoutAssignedTutorInput[] | BookingTutorUncheckedCreateWithoutAssignedTutorInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutAssignedTutorInput | BookingTutorCreateOrConnectWithoutAssignedTutorInput[]
+    upsert?: BookingTutorUpsertWithWhereUniqueWithoutAssignedTutorInput | BookingTutorUpsertWithWhereUniqueWithoutAssignedTutorInput[]
+    createMany?: BookingTutorCreateManyAssignedTutorInputEnvelope
+    set?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    disconnect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    delete?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    update?: BookingTutorUpdateWithWhereUniqueWithoutAssignedTutorInput | BookingTutorUpdateWithWhereUniqueWithoutAssignedTutorInput[]
+    updateMany?: BookingTutorUpdateManyWithWhereWithoutAssignedTutorInput | BookingTutorUpdateManyWithWhereWithoutAssignedTutorInput[]
+    deleteMany?: BookingTutorScalarWhereInput | BookingTutorScalarWhereInput[]
+  }
+
+  export type TutorLevelCreateNestedManyWithoutTeachingLevelInput = {
+    create?: XOR<TutorLevelCreateWithoutTeachingLevelInput, TutorLevelUncheckedCreateWithoutTeachingLevelInput> | TutorLevelCreateWithoutTeachingLevelInput[] | TutorLevelUncheckedCreateWithoutTeachingLevelInput[]
+    connectOrCreate?: TutorLevelCreateOrConnectWithoutTeachingLevelInput | TutorLevelCreateOrConnectWithoutTeachingLevelInput[]
+    createMany?: TutorLevelCreateManyTeachingLevelInputEnvelope
+    connect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+  }
+
+  export type TutorLevelUncheckedCreateNestedManyWithoutTeachingLevelInput = {
+    create?: XOR<TutorLevelCreateWithoutTeachingLevelInput, TutorLevelUncheckedCreateWithoutTeachingLevelInput> | TutorLevelCreateWithoutTeachingLevelInput[] | TutorLevelUncheckedCreateWithoutTeachingLevelInput[]
+    connectOrCreate?: TutorLevelCreateOrConnectWithoutTeachingLevelInput | TutorLevelCreateOrConnectWithoutTeachingLevelInput[]
+    createMany?: TutorLevelCreateManyTeachingLevelInputEnvelope
+    connect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+  }
+
+  export type TutorLevelUpdateManyWithoutTeachingLevelNestedInput = {
+    create?: XOR<TutorLevelCreateWithoutTeachingLevelInput, TutorLevelUncheckedCreateWithoutTeachingLevelInput> | TutorLevelCreateWithoutTeachingLevelInput[] | TutorLevelUncheckedCreateWithoutTeachingLevelInput[]
+    connectOrCreate?: TutorLevelCreateOrConnectWithoutTeachingLevelInput | TutorLevelCreateOrConnectWithoutTeachingLevelInput[]
+    upsert?: TutorLevelUpsertWithWhereUniqueWithoutTeachingLevelInput | TutorLevelUpsertWithWhereUniqueWithoutTeachingLevelInput[]
+    createMany?: TutorLevelCreateManyTeachingLevelInputEnvelope
+    set?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    disconnect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    delete?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    connect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    update?: TutorLevelUpdateWithWhereUniqueWithoutTeachingLevelInput | TutorLevelUpdateWithWhereUniqueWithoutTeachingLevelInput[]
+    updateMany?: TutorLevelUpdateManyWithWhereWithoutTeachingLevelInput | TutorLevelUpdateManyWithWhereWithoutTeachingLevelInput[]
+    deleteMany?: TutorLevelScalarWhereInput | TutorLevelScalarWhereInput[]
+  }
+
+  export type TutorLevelUncheckedUpdateManyWithoutTeachingLevelNestedInput = {
+    create?: XOR<TutorLevelCreateWithoutTeachingLevelInput, TutorLevelUncheckedCreateWithoutTeachingLevelInput> | TutorLevelCreateWithoutTeachingLevelInput[] | TutorLevelUncheckedCreateWithoutTeachingLevelInput[]
+    connectOrCreate?: TutorLevelCreateOrConnectWithoutTeachingLevelInput | TutorLevelCreateOrConnectWithoutTeachingLevelInput[]
+    upsert?: TutorLevelUpsertWithWhereUniqueWithoutTeachingLevelInput | TutorLevelUpsertWithWhereUniqueWithoutTeachingLevelInput[]
+    createMany?: TutorLevelCreateManyTeachingLevelInputEnvelope
+    set?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    disconnect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    delete?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    connect?: TutorLevelWhereUniqueInput | TutorLevelWhereUniqueInput[]
+    update?: TutorLevelUpdateWithWhereUniqueWithoutTeachingLevelInput | TutorLevelUpdateWithWhereUniqueWithoutTeachingLevelInput[]
+    updateMany?: TutorLevelUpdateManyWithWhereWithoutTeachingLevelInput | TutorLevelUpdateManyWithWhereWithoutTeachingLevelInput[]
+    deleteMany?: TutorLevelScalarWhereInput | TutorLevelScalarWhereInput[]
+  }
+
+  export type TutorProfileCreateNestedOneWithoutLevelsInput = {
+    create?: XOR<TutorProfileCreateWithoutLevelsInput, TutorProfileUncheckedCreateWithoutLevelsInput>
+    connectOrCreate?: TutorProfileCreateOrConnectWithoutLevelsInput
     connect?: TutorProfileWhereUniqueInput
   }
 
-  export type TutorProfileUpdateOneRequiredWithoutAvailableTimesNestedInput = {
-    create?: XOR<TutorProfileCreateWithoutAvailableTimesInput, TutorProfileUncheckedCreateWithoutAvailableTimesInput>
-    connectOrCreate?: TutorProfileCreateOrConnectWithoutAvailableTimesInput
-    upsert?: TutorProfileUpsertWithoutAvailableTimesInput
+  export type TeachingLevelCreateNestedOneWithoutTutorsInput = {
+    create?: XOR<TeachingLevelCreateWithoutTutorsInput, TeachingLevelUncheckedCreateWithoutTutorsInput>
+    connectOrCreate?: TeachingLevelCreateOrConnectWithoutTutorsInput
+    connect?: TeachingLevelWhereUniqueInput
+  }
+
+  export type TutorProfileUpdateOneRequiredWithoutLevelsNestedInput = {
+    create?: XOR<TutorProfileCreateWithoutLevelsInput, TutorProfileUncheckedCreateWithoutLevelsInput>
+    connectOrCreate?: TutorProfileCreateOrConnectWithoutLevelsInput
+    upsert?: TutorProfileUpsertWithoutLevelsInput
     connect?: TutorProfileWhereUniqueInput
-    update?: XOR<XOR<TutorProfileUpdateToOneWithWhereWithoutAvailableTimesInput, TutorProfileUpdateWithoutAvailableTimesInput>, TutorProfileUncheckedUpdateWithoutAvailableTimesInput>
+    update?: XOR<XOR<TutorProfileUpdateToOneWithWhereWithoutLevelsInput, TutorProfileUpdateWithoutLevelsInput>, TutorProfileUncheckedUpdateWithoutLevelsInput>
+  }
+
+  export type TeachingLevelUpdateOneRequiredWithoutTutorsNestedInput = {
+    create?: XOR<TeachingLevelCreateWithoutTutorsInput, TeachingLevelUncheckedCreateWithoutTutorsInput>
+    connectOrCreate?: TeachingLevelCreateOrConnectWithoutTutorsInput
+    upsert?: TeachingLevelUpsertWithoutTutorsInput
+    connect?: TeachingLevelWhereUniqueInput
+    update?: XOR<XOR<TeachingLevelUpdateToOneWithWhereWithoutTutorsInput, TeachingLevelUpdateWithoutTutorsInput>, TeachingLevelUncheckedUpdateWithoutTutorsInput>
+  }
+
+  export type SubjectCategoryCreateNestedOneWithoutBookingTutorInput = {
+    create?: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
+    connectOrCreate?: SubjectCategoryCreateOrConnectWithoutBookingTutorInput
+    connect?: SubjectCategoryWhereUniqueInput
+  }
+
+  export type TutorProfileCreateNestedOneWithoutBookingTutorInput = {
+    create?: XOR<TutorProfileCreateWithoutBookingTutorInput, TutorProfileUncheckedCreateWithoutBookingTutorInput>
+    connectOrCreate?: TutorProfileCreateOrConnectWithoutBookingTutorInput
+    connect?: TutorProfileWhereUniqueInput
+  }
+
+  export type NullableEnumSexMethodFieldUpdateOperationsInput = {
+    set?: $Enums.SexMethod | null
+  }
+
+  export type NullableEnumTeachingTimeFieldUpdateOperationsInput = {
+    set?: $Enums.TeachingTime | null
+  }
+
+  export type NullableEnumTeachingMethodFieldUpdateOperationsInput = {
+    set?: $Enums.TeachingMethod | null
+  }
+
+  export type NullableEnumBookingStatusFieldUpdateOperationsInput = {
+    set?: $Enums.BookingStatus | null
+  }
+
+  export type SubjectCategoryUpdateOneWithoutBookingTutorNestedInput = {
+    create?: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
+    connectOrCreate?: SubjectCategoryCreateOrConnectWithoutBookingTutorInput
+    upsert?: SubjectCategoryUpsertWithoutBookingTutorInput
+    disconnect?: SubjectCategoryWhereInput | boolean
+    delete?: SubjectCategoryWhereInput | boolean
+    connect?: SubjectCategoryWhereUniqueInput
+    update?: XOR<XOR<SubjectCategoryUpdateToOneWithWhereWithoutBookingTutorInput, SubjectCategoryUpdateWithoutBookingTutorInput>, SubjectCategoryUncheckedUpdateWithoutBookingTutorInput>
+  }
+
+  export type TutorProfileUpdateOneWithoutBookingTutorNestedInput = {
+    create?: XOR<TutorProfileCreateWithoutBookingTutorInput, TutorProfileUncheckedCreateWithoutBookingTutorInput>
+    connectOrCreate?: TutorProfileCreateOrConnectWithoutBookingTutorInput
+    upsert?: TutorProfileUpsertWithoutBookingTutorInput
+    disconnect?: TutorProfileWhereInput | boolean
+    delete?: TutorProfileWhereInput | boolean
+    connect?: TutorProfileWhereUniqueInput
+    update?: XOR<XOR<TutorProfileUpdateToOneWithWhereWithoutBookingTutorInput, TutorProfileUpdateWithoutBookingTutorInput>, TutorProfileUncheckedUpdateWithoutBookingTutorInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type TutorProfileCreateNestedOneWithoutExperiencesInput = {
@@ -11203,11 +15153,25 @@ export namespace Prisma {
     connect?: TutorSubjectWhereUniqueInput | TutorSubjectWhereUniqueInput[]
   }
 
+  export type BookingTutorCreateNestedManyWithoutSubjectInput = {
+    create?: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput> | BookingTutorCreateWithoutSubjectInput[] | BookingTutorUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectInput | BookingTutorCreateOrConnectWithoutSubjectInput[]
+    createMany?: BookingTutorCreateManySubjectInputEnvelope
+    connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+  }
+
   export type TutorSubjectUncheckedCreateNestedManyWithoutCategoryInput = {
     create?: XOR<TutorSubjectCreateWithoutCategoryInput, TutorSubjectUncheckedCreateWithoutCategoryInput> | TutorSubjectCreateWithoutCategoryInput[] | TutorSubjectUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: TutorSubjectCreateOrConnectWithoutCategoryInput | TutorSubjectCreateOrConnectWithoutCategoryInput[]
     createMany?: TutorSubjectCreateManyCategoryInputEnvelope
     connect?: TutorSubjectWhereUniqueInput | TutorSubjectWhereUniqueInput[]
+  }
+
+  export type BookingTutorUncheckedCreateNestedManyWithoutSubjectInput = {
+    create?: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput> | BookingTutorCreateWithoutSubjectInput[] | BookingTutorUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectInput | BookingTutorCreateOrConnectWithoutSubjectInput[]
+    createMany?: BookingTutorCreateManySubjectInputEnvelope
+    connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
   }
 
   export type TutorSubjectUpdateManyWithoutCategoryNestedInput = {
@@ -11224,6 +15188,20 @@ export namespace Prisma {
     deleteMany?: TutorSubjectScalarWhereInput | TutorSubjectScalarWhereInput[]
   }
 
+  export type BookingTutorUpdateManyWithoutSubjectNestedInput = {
+    create?: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput> | BookingTutorCreateWithoutSubjectInput[] | BookingTutorUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectInput | BookingTutorCreateOrConnectWithoutSubjectInput[]
+    upsert?: BookingTutorUpsertWithWhereUniqueWithoutSubjectInput | BookingTutorUpsertWithWhereUniqueWithoutSubjectInput[]
+    createMany?: BookingTutorCreateManySubjectInputEnvelope
+    set?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    disconnect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    delete?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    update?: BookingTutorUpdateWithWhereUniqueWithoutSubjectInput | BookingTutorUpdateWithWhereUniqueWithoutSubjectInput[]
+    updateMany?: BookingTutorUpdateManyWithWhereWithoutSubjectInput | BookingTutorUpdateManyWithWhereWithoutSubjectInput[]
+    deleteMany?: BookingTutorScalarWhereInput | BookingTutorScalarWhereInput[]
+  }
+
   export type TutorSubjectUncheckedUpdateManyWithoutCategoryNestedInput = {
     create?: XOR<TutorSubjectCreateWithoutCategoryInput, TutorSubjectUncheckedCreateWithoutCategoryInput> | TutorSubjectCreateWithoutCategoryInput[] | TutorSubjectUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: TutorSubjectCreateOrConnectWithoutCategoryInput | TutorSubjectCreateOrConnectWithoutCategoryInput[]
@@ -11236,6 +15214,20 @@ export namespace Prisma {
     update?: TutorSubjectUpdateWithWhereUniqueWithoutCategoryInput | TutorSubjectUpdateWithWhereUniqueWithoutCategoryInput[]
     updateMany?: TutorSubjectUpdateManyWithWhereWithoutCategoryInput | TutorSubjectUpdateManyWithWhereWithoutCategoryInput[]
     deleteMany?: TutorSubjectScalarWhereInput | TutorSubjectScalarWhereInput[]
+  }
+
+  export type BookingTutorUncheckedUpdateManyWithoutSubjectNestedInput = {
+    create?: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput> | BookingTutorCreateWithoutSubjectInput[] | BookingTutorUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectInput | BookingTutorCreateOrConnectWithoutSubjectInput[]
+    upsert?: BookingTutorUpsertWithWhereUniqueWithoutSubjectInput | BookingTutorUpsertWithWhereUniqueWithoutSubjectInput[]
+    createMany?: BookingTutorCreateManySubjectInputEnvelope
+    set?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    disconnect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    delete?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
+    update?: BookingTutorUpdateWithWhereUniqueWithoutSubjectInput | BookingTutorUpdateWithWhereUniqueWithoutSubjectInput[]
+    updateMany?: BookingTutorUpdateManyWithWhereWithoutSubjectInput | BookingTutorUpdateManyWithWhereWithoutSubjectInput[]
+    deleteMany?: BookingTutorScalarWhereInput | BookingTutorScalarWhereInput[]
   }
 
   export type TutorProfileCreateNestedOneWithoutTutorSubjectsInput = {
@@ -11377,9 +15369,99 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedEnumLanguageFilter<$PrismaModel = never> = {
+    equals?: $Enums.Language | EnumLanguageFieldRefInput<$PrismaModel>
+    in?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageFilter<$PrismaModel> | $Enums.Language
+  }
+
+  export type NestedEnumSexMethodFilter<$PrismaModel = never> = {
+    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumSexMethodFilter<$PrismaModel> | $Enums.SexMethod
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedEnumTeachingMethodFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumTeachingMethodFilter<$PrismaModel> | $Enums.TeachingMethod
+  }
+
+  export type NestedEnumTeachingTimeFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel>
+    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTeachingTimeFilter<$PrismaModel> | $Enums.TeachingTime
+  }
+
+  export type NestedEnumLanguageWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Language | EnumLanguageFieldRefInput<$PrismaModel>
+    in?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Language[] | ListEnumLanguageFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageWithAggregatesFilter<$PrismaModel> | $Enums.Language
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLanguageFilter<$PrismaModel>
+    _max?: NestedEnumLanguageFilter<$PrismaModel>
+  }
+
+  export type NestedEnumSexMethodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumSexMethodWithAggregatesFilter<$PrismaModel> | $Enums.SexMethod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSexMethodFilter<$PrismaModel>
+    _max?: NestedEnumSexMethodFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -11390,18 +15472,142 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedEnumTeachingMethodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumTeachingMethodWithAggregatesFilter<$PrismaModel> | $Enums.TeachingMethod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTeachingMethodFilter<$PrismaModel>
+    _max?: NestedEnumTeachingMethodFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTeachingTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel>
+    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTeachingTimeWithAggregatesFilter<$PrismaModel> | $Enums.TeachingTime
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTeachingTimeFilter<$PrismaModel>
+    _max?: NestedEnumTeachingTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumSexMethodNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSexMethodNullableFilter<$PrismaModel> | $Enums.SexMethod | null
+  }
+
+  export type NestedEnumTeachingTimeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTeachingTimeNullableFilter<$PrismaModel> | $Enums.TeachingTime | null
+  }
+
+  export type NestedEnumTeachingMethodNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTeachingMethodNullableFilter<$PrismaModel> | $Enums.TeachingMethod | null
+  }
+
+  export type NestedEnumBookingStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.BookingStatus | EnumBookingStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumBookingStatusNullableFilter<$PrismaModel> | $Enums.BookingStatus | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumSexMethodNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSexMethodNullableWithAggregatesFilter<$PrismaModel> | $Enums.SexMethod | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumSexMethodNullableFilter<$PrismaModel>
+    _max?: NestedEnumSexMethodNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTeachingTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTeachingTimeNullableWithAggregatesFilter<$PrismaModel> | $Enums.TeachingTime | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTeachingTimeNullableFilter<$PrismaModel>
+    _max?: NestedEnumTeachingTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTeachingMethodNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTeachingMethodNullableWithAggregatesFilter<$PrismaModel> | $Enums.TeachingMethod | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTeachingMethodNullableFilter<$PrismaModel>
+    _max?: NestedEnumTeachingMethodNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumBookingStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.BookingStatus | EnumBookingStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumBookingStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.BookingStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumBookingStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumBookingStatusNullableFilter<$PrismaModel>
+  }
+
   export type TutorProfileCreateWithoutUserInput = {
     tutorName: string
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
-    availableTimes?: AvailableTimeCreateNestedManyWithoutTutorInput
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     tutorSubjects?: TutorSubjectCreateNestedManyWithoutTutorInput
     experiences?: ExperienceCreateNestedManyWithoutTutorInput
     reviews?: ReviewCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelCreateNestedManyWithoutTutorProfileInput
+    BookingTutor?: BookingTutorCreateNestedManyWithoutAssignedTutorInput
   }
 
   export type TutorProfileUncheckedCreateWithoutUserInput = {
@@ -11410,13 +15616,22 @@ export namespace Prisma {
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
-    availableTimes?: AvailableTimeUncheckedCreateNestedManyWithoutTutorInput
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUncheckedCreateNestedManyWithoutTutorInput
     experiences?: ExperienceUncheckedCreateNestedManyWithoutTutorInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelUncheckedCreateNestedManyWithoutTutorProfileInput
+    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutAssignedTutorInput
   }
 
   export type TutorProfileCreateOrConnectWithoutUserInput = {
@@ -11465,13 +15680,22 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
-    availableTimes?: AvailableTimeUpdateManyWithoutTutorNestedInput
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUpdateManyWithoutTutorNestedInput
     experiences?: ExperienceUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUpdateManyWithoutTutorProfileNestedInput
+    BookingTutor?: BookingTutorUpdateManyWithoutAssignedTutorNestedInput
   }
 
   export type TutorProfileUncheckedUpdateWithoutUserInput = {
@@ -11480,13 +15704,22 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
-    availableTimes?: AvailableTimeUncheckedUpdateManyWithoutTutorNestedInput
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUncheckedUpdateManyWithoutTutorNestedInput
     experiences?: ExperienceUncheckedUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUncheckedUpdateManyWithoutTutorProfileNestedInput
+    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutAssignedTutorNestedInput
   }
 
   export type ReviewUpsertWithWhereUniqueWithoutUserInput = {
@@ -11518,7 +15751,6 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutTutorProfileInput = {
-    name: string
     email: string
     password: string
     role?: $Enums.Role
@@ -11529,7 +15761,6 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutTutorProfileInput = {
     id?: number
-    name: string
     email: string
     password: string
     role?: $Enums.Role
@@ -11541,31 +15772,6 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutTutorProfileInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutTutorProfileInput, UserUncheckedCreateWithoutTutorProfileInput>
-  }
-
-  export type AvailableTimeCreateWithoutTutorInput = {
-    dayStart: string
-    dayEnd: string
-    timeStart: string
-    timeEnd: string
-  }
-
-  export type AvailableTimeUncheckedCreateWithoutTutorInput = {
-    id?: number
-    dayStart: string
-    dayEnd: string
-    timeStart: string
-    timeEnd: string
-  }
-
-  export type AvailableTimeCreateOrConnectWithoutTutorInput = {
-    where: AvailableTimeWhereUniqueInput
-    create: XOR<AvailableTimeCreateWithoutTutorInput, AvailableTimeUncheckedCreateWithoutTutorInput>
-  }
-
-  export type AvailableTimeCreateManyTutorInputEnvelope = {
-    data: AvailableTimeCreateManyTutorInput | AvailableTimeCreateManyTutorInput[]
-    skipDuplicates?: boolean
   }
 
   export type TutorSubjectCreateWithoutTutorInput = {
@@ -11631,6 +15837,80 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TutorLevelCreateWithoutTutorProfileInput = {
+    teachingLevel: TeachingLevelCreateNestedOneWithoutTutorsInput
+  }
+
+  export type TutorLevelUncheckedCreateWithoutTutorProfileInput = {
+    id?: number
+    teachingLevelId: number
+  }
+
+  export type TutorLevelCreateOrConnectWithoutTutorProfileInput = {
+    where: TutorLevelWhereUniqueInput
+    create: XOR<TutorLevelCreateWithoutTutorProfileInput, TutorLevelUncheckedCreateWithoutTutorProfileInput>
+  }
+
+  export type TutorLevelCreateManyTutorProfileInputEnvelope = {
+    data: TutorLevelCreateManyTutorProfileInput | TutorLevelCreateManyTutorProfileInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BookingTutorCreateWithoutAssignedTutorInput = {
+    fullName: string
+    phoneNumber: string
+    email?: string | null
+    subjectName?: string | null
+    level?: string | null
+    target?: string | null
+    nationalityTeacher?: string | null
+    teacherSex?: $Enums.SexMethod | null
+    studyingDays?: $Enums.TeachingTime | null
+    studyingTimes?: string | null
+    startStudyingDate?: string | null
+    teachingMethod?: $Enums.TeachingMethod | null
+    studyLocation?: string | null
+    yourCity?: string | null
+    note?: string | null
+    status?: $Enums.BookingStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subject?: SubjectCategoryCreateNestedOneWithoutBookingTutorInput
+  }
+
+  export type BookingTutorUncheckedCreateWithoutAssignedTutorInput = {
+    id?: number
+    fullName: string
+    phoneNumber: string
+    email?: string | null
+    subjectId?: number | null
+    subjectName?: string | null
+    level?: string | null
+    target?: string | null
+    nationalityTeacher?: string | null
+    teacherSex?: $Enums.SexMethod | null
+    studyingDays?: $Enums.TeachingTime | null
+    studyingTimes?: string | null
+    startStudyingDate?: string | null
+    teachingMethod?: $Enums.TeachingMethod | null
+    studyLocation?: string | null
+    yourCity?: string | null
+    note?: string | null
+    status?: $Enums.BookingStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookingTutorCreateOrConnectWithoutAssignedTutorInput = {
+    where: BookingTutorWhereUniqueInput
+    create: XOR<BookingTutorCreateWithoutAssignedTutorInput, BookingTutorUncheckedCreateWithoutAssignedTutorInput>
+  }
+
+  export type BookingTutorCreateManyAssignedTutorInputEnvelope = {
+    data: BookingTutorCreateManyAssignedTutorInput | BookingTutorCreateManyAssignedTutorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutTutorProfileInput = {
     update: XOR<UserUpdateWithoutTutorProfileInput, UserUncheckedUpdateWithoutTutorProfileInput>
     create: XOR<UserCreateWithoutTutorProfileInput, UserUncheckedCreateWithoutTutorProfileInput>
@@ -11643,7 +15923,6 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutTutorProfileInput = {
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -11654,41 +15933,12 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutTutorProfileInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type AvailableTimeUpsertWithWhereUniqueWithoutTutorInput = {
-    where: AvailableTimeWhereUniqueInput
-    update: XOR<AvailableTimeUpdateWithoutTutorInput, AvailableTimeUncheckedUpdateWithoutTutorInput>
-    create: XOR<AvailableTimeCreateWithoutTutorInput, AvailableTimeUncheckedCreateWithoutTutorInput>
-  }
-
-  export type AvailableTimeUpdateWithWhereUniqueWithoutTutorInput = {
-    where: AvailableTimeWhereUniqueInput
-    data: XOR<AvailableTimeUpdateWithoutTutorInput, AvailableTimeUncheckedUpdateWithoutTutorInput>
-  }
-
-  export type AvailableTimeUpdateManyWithWhereWithoutTutorInput = {
-    where: AvailableTimeScalarWhereInput
-    data: XOR<AvailableTimeUpdateManyMutationInput, AvailableTimeUncheckedUpdateManyWithoutTutorInput>
-  }
-
-  export type AvailableTimeScalarWhereInput = {
-    AND?: AvailableTimeScalarWhereInput | AvailableTimeScalarWhereInput[]
-    OR?: AvailableTimeScalarWhereInput[]
-    NOT?: AvailableTimeScalarWhereInput | AvailableTimeScalarWhereInput[]
-    id?: IntFilter<"AvailableTime"> | number
-    dayStart?: StringFilter<"AvailableTime"> | string
-    dayEnd?: StringFilter<"AvailableTime"> | string
-    timeStart?: StringFilter<"AvailableTime"> | string
-    timeEnd?: StringFilter<"AvailableTime"> | string
-    tutorId?: IntFilter<"AvailableTime"> | number
   }
 
   export type TutorSubjectUpsertWithWhereUniqueWithoutTutorInput = {
@@ -11757,78 +16007,403 @@ export namespace Prisma {
     data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutTutorInput>
   }
 
-  export type TutorProfileCreateWithoutAvailableTimesInput = {
+  export type TutorLevelUpsertWithWhereUniqueWithoutTutorProfileInput = {
+    where: TutorLevelWhereUniqueInput
+    update: XOR<TutorLevelUpdateWithoutTutorProfileInput, TutorLevelUncheckedUpdateWithoutTutorProfileInput>
+    create: XOR<TutorLevelCreateWithoutTutorProfileInput, TutorLevelUncheckedCreateWithoutTutorProfileInput>
+  }
+
+  export type TutorLevelUpdateWithWhereUniqueWithoutTutorProfileInput = {
+    where: TutorLevelWhereUniqueInput
+    data: XOR<TutorLevelUpdateWithoutTutorProfileInput, TutorLevelUncheckedUpdateWithoutTutorProfileInput>
+  }
+
+  export type TutorLevelUpdateManyWithWhereWithoutTutorProfileInput = {
+    where: TutorLevelScalarWhereInput
+    data: XOR<TutorLevelUpdateManyMutationInput, TutorLevelUncheckedUpdateManyWithoutTutorProfileInput>
+  }
+
+  export type TutorLevelScalarWhereInput = {
+    AND?: TutorLevelScalarWhereInput | TutorLevelScalarWhereInput[]
+    OR?: TutorLevelScalarWhereInput[]
+    NOT?: TutorLevelScalarWhereInput | TutorLevelScalarWhereInput[]
+    id?: IntFilter<"TutorLevel"> | number
+    tutorProfileId?: IntFilter<"TutorLevel"> | number
+    teachingLevelId?: IntFilter<"TutorLevel"> | number
+  }
+
+  export type BookingTutorUpsertWithWhereUniqueWithoutAssignedTutorInput = {
+    where: BookingTutorWhereUniqueInput
+    update: XOR<BookingTutorUpdateWithoutAssignedTutorInput, BookingTutorUncheckedUpdateWithoutAssignedTutorInput>
+    create: XOR<BookingTutorCreateWithoutAssignedTutorInput, BookingTutorUncheckedCreateWithoutAssignedTutorInput>
+  }
+
+  export type BookingTutorUpdateWithWhereUniqueWithoutAssignedTutorInput = {
+    where: BookingTutorWhereUniqueInput
+    data: XOR<BookingTutorUpdateWithoutAssignedTutorInput, BookingTutorUncheckedUpdateWithoutAssignedTutorInput>
+  }
+
+  export type BookingTutorUpdateManyWithWhereWithoutAssignedTutorInput = {
+    where: BookingTutorScalarWhereInput
+    data: XOR<BookingTutorUpdateManyMutationInput, BookingTutorUncheckedUpdateManyWithoutAssignedTutorInput>
+  }
+
+  export type BookingTutorScalarWhereInput = {
+    AND?: BookingTutorScalarWhereInput | BookingTutorScalarWhereInput[]
+    OR?: BookingTutorScalarWhereInput[]
+    NOT?: BookingTutorScalarWhereInput | BookingTutorScalarWhereInput[]
+    id?: IntFilter<"BookingTutor"> | number
+    fullName?: StringFilter<"BookingTutor"> | string
+    phoneNumber?: StringFilter<"BookingTutor"> | string
+    email?: StringNullableFilter<"BookingTutor"> | string | null
+    subjectId?: IntNullableFilter<"BookingTutor"> | number | null
+    subjectName?: StringNullableFilter<"BookingTutor"> | string | null
+    level?: StringNullableFilter<"BookingTutor"> | string | null
+    target?: StringNullableFilter<"BookingTutor"> | string | null
+    nationalityTeacher?: StringNullableFilter<"BookingTutor"> | string | null
+    teacherSex?: EnumSexMethodNullableFilter<"BookingTutor"> | $Enums.SexMethod | null
+    studyingDays?: EnumTeachingTimeNullableFilter<"BookingTutor"> | $Enums.TeachingTime | null
+    studyingTimes?: StringNullableFilter<"BookingTutor"> | string | null
+    startStudyingDate?: StringNullableFilter<"BookingTutor"> | string | null
+    teachingMethod?: EnumTeachingMethodNullableFilter<"BookingTutor"> | $Enums.TeachingMethod | null
+    studyLocation?: StringNullableFilter<"BookingTutor"> | string | null
+    yourCity?: StringNullableFilter<"BookingTutor"> | string | null
+    note?: StringNullableFilter<"BookingTutor"> | string | null
+    assignedTutorId?: IntNullableFilter<"BookingTutor"> | number | null
+    status?: EnumBookingStatusNullableFilter<"BookingTutor"> | $Enums.BookingStatus | null
+    createdAt?: DateTimeFilter<"BookingTutor"> | Date | string
+    updatedAt?: DateTimeFilter<"BookingTutor"> | Date | string
+  }
+
+  export type TutorLevelCreateWithoutTeachingLevelInput = {
+    tutorProfile: TutorProfileCreateNestedOneWithoutLevelsInput
+  }
+
+  export type TutorLevelUncheckedCreateWithoutTeachingLevelInput = {
+    id?: number
+    tutorProfileId: number
+  }
+
+  export type TutorLevelCreateOrConnectWithoutTeachingLevelInput = {
+    where: TutorLevelWhereUniqueInput
+    create: XOR<TutorLevelCreateWithoutTeachingLevelInput, TutorLevelUncheckedCreateWithoutTeachingLevelInput>
+  }
+
+  export type TutorLevelCreateManyTeachingLevelInputEnvelope = {
+    data: TutorLevelCreateManyTeachingLevelInput | TutorLevelCreateManyTeachingLevelInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TutorLevelUpsertWithWhereUniqueWithoutTeachingLevelInput = {
+    where: TutorLevelWhereUniqueInput
+    update: XOR<TutorLevelUpdateWithoutTeachingLevelInput, TutorLevelUncheckedUpdateWithoutTeachingLevelInput>
+    create: XOR<TutorLevelCreateWithoutTeachingLevelInput, TutorLevelUncheckedCreateWithoutTeachingLevelInput>
+  }
+
+  export type TutorLevelUpdateWithWhereUniqueWithoutTeachingLevelInput = {
+    where: TutorLevelWhereUniqueInput
+    data: XOR<TutorLevelUpdateWithoutTeachingLevelInput, TutorLevelUncheckedUpdateWithoutTeachingLevelInput>
+  }
+
+  export type TutorLevelUpdateManyWithWhereWithoutTeachingLevelInput = {
+    where: TutorLevelScalarWhereInput
+    data: XOR<TutorLevelUpdateManyMutationInput, TutorLevelUncheckedUpdateManyWithoutTeachingLevelInput>
+  }
+
+  export type TutorProfileCreateWithoutLevelsInput = {
     tutorName: string
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     user: UserCreateNestedOneWithoutTutorProfileInput
     tutorSubjects?: TutorSubjectCreateNestedManyWithoutTutorInput
     experiences?: ExperienceCreateNestedManyWithoutTutorInput
     reviews?: ReviewCreateNestedManyWithoutTutorInput
+    BookingTutor?: BookingTutorCreateNestedManyWithoutAssignedTutorInput
   }
 
-  export type TutorProfileUncheckedCreateWithoutAvailableTimesInput = {
+  export type TutorProfileUncheckedCreateWithoutLevelsInput = {
     id?: number
     userId: number
     tutorName: string
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUncheckedCreateNestedManyWithoutTutorInput
     experiences?: ExperienceUncheckedCreateNestedManyWithoutTutorInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutTutorInput
+    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutAssignedTutorInput
   }
 
-  export type TutorProfileCreateOrConnectWithoutAvailableTimesInput = {
+  export type TutorProfileCreateOrConnectWithoutLevelsInput = {
     where: TutorProfileWhereUniqueInput
-    create: XOR<TutorProfileCreateWithoutAvailableTimesInput, TutorProfileUncheckedCreateWithoutAvailableTimesInput>
+    create: XOR<TutorProfileCreateWithoutLevelsInput, TutorProfileUncheckedCreateWithoutLevelsInput>
   }
 
-  export type TutorProfileUpsertWithoutAvailableTimesInput = {
-    update: XOR<TutorProfileUpdateWithoutAvailableTimesInput, TutorProfileUncheckedUpdateWithoutAvailableTimesInput>
-    create: XOR<TutorProfileCreateWithoutAvailableTimesInput, TutorProfileUncheckedCreateWithoutAvailableTimesInput>
+  export type TeachingLevelCreateWithoutTutorsInput = {
+    name: string
+  }
+
+  export type TeachingLevelUncheckedCreateWithoutTutorsInput = {
+    id?: number
+    name: string
+  }
+
+  export type TeachingLevelCreateOrConnectWithoutTutorsInput = {
+    where: TeachingLevelWhereUniqueInput
+    create: XOR<TeachingLevelCreateWithoutTutorsInput, TeachingLevelUncheckedCreateWithoutTutorsInput>
+  }
+
+  export type TutorProfileUpsertWithoutLevelsInput = {
+    update: XOR<TutorProfileUpdateWithoutLevelsInput, TutorProfileUncheckedUpdateWithoutLevelsInput>
+    create: XOR<TutorProfileCreateWithoutLevelsInput, TutorProfileUncheckedCreateWithoutLevelsInput>
     where?: TutorProfileWhereInput
   }
 
-  export type TutorProfileUpdateToOneWithWhereWithoutAvailableTimesInput = {
+  export type TutorProfileUpdateToOneWithWhereWithoutLevelsInput = {
     where?: TutorProfileWhereInput
-    data: XOR<TutorProfileUpdateWithoutAvailableTimesInput, TutorProfileUncheckedUpdateWithoutAvailableTimesInput>
+    data: XOR<TutorProfileUpdateWithoutLevelsInput, TutorProfileUncheckedUpdateWithoutLevelsInput>
   }
 
-  export type TutorProfileUpdateWithoutAvailableTimesInput = {
+  export type TutorProfileUpdateWithoutLevelsInput = {
     tutorName?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     user?: UserUpdateOneRequiredWithoutTutorProfileNestedInput
     tutorSubjects?: TutorSubjectUpdateManyWithoutTutorNestedInput
     experiences?: ExperienceUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUpdateManyWithoutTutorNestedInput
+    BookingTutor?: BookingTutorUpdateManyWithoutAssignedTutorNestedInput
   }
 
-  export type TutorProfileUncheckedUpdateWithoutAvailableTimesInput = {
+  export type TutorProfileUncheckedUpdateWithoutLevelsInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     tutorName?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUncheckedUpdateManyWithoutTutorNestedInput
     experiences?: ExperienceUncheckedUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutTutorNestedInput
+    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutAssignedTutorNestedInput
+  }
+
+  export type TeachingLevelUpsertWithoutTutorsInput = {
+    update: XOR<TeachingLevelUpdateWithoutTutorsInput, TeachingLevelUncheckedUpdateWithoutTutorsInput>
+    create: XOR<TeachingLevelCreateWithoutTutorsInput, TeachingLevelUncheckedCreateWithoutTutorsInput>
+    where?: TeachingLevelWhereInput
+  }
+
+  export type TeachingLevelUpdateToOneWithWhereWithoutTutorsInput = {
+    where?: TeachingLevelWhereInput
+    data: XOR<TeachingLevelUpdateWithoutTutorsInput, TeachingLevelUncheckedUpdateWithoutTutorsInput>
+  }
+
+  export type TeachingLevelUpdateWithoutTutorsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TeachingLevelUncheckedUpdateWithoutTutorsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SubjectCategoryCreateWithoutBookingTutorInput = {
+    name: string
+    icon?: string | null
+    tutors?: TutorSubjectCreateNestedManyWithoutCategoryInput
+  }
+
+  export type SubjectCategoryUncheckedCreateWithoutBookingTutorInput = {
+    id?: number
+    name: string
+    icon?: string | null
+    tutors?: TutorSubjectUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type SubjectCategoryCreateOrConnectWithoutBookingTutorInput = {
+    where: SubjectCategoryWhereUniqueInput
+    create: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
+  }
+
+  export type TutorProfileCreateWithoutBookingTutorInput = {
+    tutorName: string
+    province: string
+    image: string
+    pricePerHour: number
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
+    phoneNumber: string
+    verifyed?: boolean
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
+    user: UserCreateNestedOneWithoutTutorProfileInput
+    tutorSubjects?: TutorSubjectCreateNestedManyWithoutTutorInput
+    experiences?: ExperienceCreateNestedManyWithoutTutorInput
+    reviews?: ReviewCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelCreateNestedManyWithoutTutorProfileInput
+  }
+
+  export type TutorProfileUncheckedCreateWithoutBookingTutorInput = {
+    id?: number
+    userId: number
+    tutorName: string
+    province: string
+    image: string
+    pricePerHour: number
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
+    phoneNumber: string
+    verifyed?: boolean
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
+    tutorSubjects?: TutorSubjectUncheckedCreateNestedManyWithoutTutorInput
+    experiences?: ExperienceUncheckedCreateNestedManyWithoutTutorInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelUncheckedCreateNestedManyWithoutTutorProfileInput
+  }
+
+  export type TutorProfileCreateOrConnectWithoutBookingTutorInput = {
+    where: TutorProfileWhereUniqueInput
+    create: XOR<TutorProfileCreateWithoutBookingTutorInput, TutorProfileUncheckedCreateWithoutBookingTutorInput>
+  }
+
+  export type SubjectCategoryUpsertWithoutBookingTutorInput = {
+    update: XOR<SubjectCategoryUpdateWithoutBookingTutorInput, SubjectCategoryUncheckedUpdateWithoutBookingTutorInput>
+    create: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
+    where?: SubjectCategoryWhereInput
+  }
+
+  export type SubjectCategoryUpdateToOneWithWhereWithoutBookingTutorInput = {
+    where?: SubjectCategoryWhereInput
+    data: XOR<SubjectCategoryUpdateWithoutBookingTutorInput, SubjectCategoryUncheckedUpdateWithoutBookingTutorInput>
+  }
+
+  export type SubjectCategoryUpdateWithoutBookingTutorInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    tutors?: TutorSubjectUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type SubjectCategoryUncheckedUpdateWithoutBookingTutorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    tutors?: TutorSubjectUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type TutorProfileUpsertWithoutBookingTutorInput = {
+    update: XOR<TutorProfileUpdateWithoutBookingTutorInput, TutorProfileUncheckedUpdateWithoutBookingTutorInput>
+    create: XOR<TutorProfileCreateWithoutBookingTutorInput, TutorProfileUncheckedCreateWithoutBookingTutorInput>
+    where?: TutorProfileWhereInput
+  }
+
+  export type TutorProfileUpdateToOneWithWhereWithoutBookingTutorInput = {
+    where?: TutorProfileWhereInput
+    data: XOR<TutorProfileUpdateWithoutBookingTutorInput, TutorProfileUncheckedUpdateWithoutBookingTutorInput>
+  }
+
+  export type TutorProfileUpdateWithoutBookingTutorInput = {
+    tutorName?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    pricePerHour?: IntFieldUpdateOperationsInput | number
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    verifyed?: BoolFieldUpdateOperationsInput | boolean
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    user?: UserUpdateOneRequiredWithoutTutorProfileNestedInput
+    tutorSubjects?: TutorSubjectUpdateManyWithoutTutorNestedInput
+    experiences?: ExperienceUpdateManyWithoutTutorNestedInput
+    reviews?: ReviewUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUpdateManyWithoutTutorProfileNestedInput
+  }
+
+  export type TutorProfileUncheckedUpdateWithoutBookingTutorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    tutorName?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    pricePerHour?: IntFieldUpdateOperationsInput | number
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    verifyed?: BoolFieldUpdateOperationsInput | boolean
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    tutorSubjects?: TutorSubjectUncheckedUpdateManyWithoutTutorNestedInput
+    experiences?: ExperienceUncheckedUpdateManyWithoutTutorNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUncheckedUpdateManyWithoutTutorProfileNestedInput
   }
 
   export type TutorProfileCreateWithoutExperiencesInput = {
@@ -11836,13 +16411,22 @@ export namespace Prisma {
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     user: UserCreateNestedOneWithoutTutorProfileInput
-    availableTimes?: AvailableTimeCreateNestedManyWithoutTutorInput
     tutorSubjects?: TutorSubjectCreateNestedManyWithoutTutorInput
     reviews?: ReviewCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelCreateNestedManyWithoutTutorProfileInput
+    BookingTutor?: BookingTutorCreateNestedManyWithoutAssignedTutorInput
   }
 
   export type TutorProfileUncheckedCreateWithoutExperiencesInput = {
@@ -11852,12 +16436,21 @@ export namespace Prisma {
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
-    availableTimes?: AvailableTimeUncheckedCreateNestedManyWithoutTutorInput
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUncheckedCreateNestedManyWithoutTutorInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelUncheckedCreateNestedManyWithoutTutorProfileInput
+    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutAssignedTutorInput
   }
 
   export type TutorProfileCreateOrConnectWithoutExperiencesInput = {
@@ -11881,13 +16474,22 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     user?: UserUpdateOneRequiredWithoutTutorProfileNestedInput
-    availableTimes?: AvailableTimeUpdateManyWithoutTutorNestedInput
     tutorSubjects?: TutorSubjectUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUpdateManyWithoutTutorProfileNestedInput
+    BookingTutor?: BookingTutorUpdateManyWithoutAssignedTutorNestedInput
   }
 
   export type TutorProfileUncheckedUpdateWithoutExperiencesInput = {
@@ -11897,12 +16499,21 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
-    availableTimes?: AvailableTimeUncheckedUpdateManyWithoutTutorNestedInput
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUncheckedUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUncheckedUpdateManyWithoutTutorProfileNestedInput
+    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutAssignedTutorNestedInput
   }
 
   export type TutorProfileCreateWithoutReviewsInput = {
@@ -11910,13 +16521,22 @@ export namespace Prisma {
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     user: UserCreateNestedOneWithoutTutorProfileInput
-    availableTimes?: AvailableTimeCreateNestedManyWithoutTutorInput
     tutorSubjects?: TutorSubjectCreateNestedManyWithoutTutorInput
     experiences?: ExperienceCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelCreateNestedManyWithoutTutorProfileInput
+    BookingTutor?: BookingTutorCreateNestedManyWithoutAssignedTutorInput
   }
 
   export type TutorProfileUncheckedCreateWithoutReviewsInput = {
@@ -11926,12 +16546,21 @@ export namespace Prisma {
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
-    availableTimes?: AvailableTimeUncheckedCreateNestedManyWithoutTutorInput
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUncheckedCreateNestedManyWithoutTutorInput
     experiences?: ExperienceUncheckedCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelUncheckedCreateNestedManyWithoutTutorProfileInput
+    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutAssignedTutorInput
   }
 
   export type TutorProfileCreateOrConnectWithoutReviewsInput = {
@@ -11940,7 +16569,6 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutReviewsInput = {
-    name: string
     email: string
     password: string
     role?: $Enums.Role
@@ -11951,7 +16579,6 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutReviewsInput = {
     id?: number
-    name: string
     email: string
     password: string
     role?: $Enums.Role
@@ -11981,13 +16608,22 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     user?: UserUpdateOneRequiredWithoutTutorProfileNestedInput
-    availableTimes?: AvailableTimeUpdateManyWithoutTutorNestedInput
     tutorSubjects?: TutorSubjectUpdateManyWithoutTutorNestedInput
     experiences?: ExperienceUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUpdateManyWithoutTutorProfileNestedInput
+    BookingTutor?: BookingTutorUpdateManyWithoutAssignedTutorNestedInput
   }
 
   export type TutorProfileUncheckedUpdateWithoutReviewsInput = {
@@ -11997,12 +16633,21 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
-    availableTimes?: AvailableTimeUncheckedUpdateManyWithoutTutorNestedInput
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     tutorSubjects?: TutorSubjectUncheckedUpdateManyWithoutTutorNestedInput
     experiences?: ExperienceUncheckedUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUncheckedUpdateManyWithoutTutorProfileNestedInput
+    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutAssignedTutorNestedInput
   }
 
   export type UserUpsertWithoutReviewsInput = {
@@ -12017,7 +16662,6 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutReviewsInput = {
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -12028,7 +16672,6 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutReviewsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -12056,6 +16699,61 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type BookingTutorCreateWithoutSubjectInput = {
+    fullName: string
+    phoneNumber: string
+    email?: string | null
+    subjectName?: string | null
+    level?: string | null
+    target?: string | null
+    nationalityTeacher?: string | null
+    teacherSex?: $Enums.SexMethod | null
+    studyingDays?: $Enums.TeachingTime | null
+    studyingTimes?: string | null
+    startStudyingDate?: string | null
+    teachingMethod?: $Enums.TeachingMethod | null
+    studyLocation?: string | null
+    yourCity?: string | null
+    note?: string | null
+    status?: $Enums.BookingStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    assignedTutor?: TutorProfileCreateNestedOneWithoutBookingTutorInput
+  }
+
+  export type BookingTutorUncheckedCreateWithoutSubjectInput = {
+    id?: number
+    fullName: string
+    phoneNumber: string
+    email?: string | null
+    subjectName?: string | null
+    level?: string | null
+    target?: string | null
+    nationalityTeacher?: string | null
+    teacherSex?: $Enums.SexMethod | null
+    studyingDays?: $Enums.TeachingTime | null
+    studyingTimes?: string | null
+    startStudyingDate?: string | null
+    teachingMethod?: $Enums.TeachingMethod | null
+    studyLocation?: string | null
+    yourCity?: string | null
+    note?: string | null
+    assignedTutorId?: number | null
+    status?: $Enums.BookingStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookingTutorCreateOrConnectWithoutSubjectInput = {
+    where: BookingTutorWhereUniqueInput
+    create: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type BookingTutorCreateManySubjectInputEnvelope = {
+    data: BookingTutorCreateManySubjectInput | BookingTutorCreateManySubjectInput[]
+    skipDuplicates?: boolean
+  }
+
   export type TutorSubjectUpsertWithWhereUniqueWithoutCategoryInput = {
     where: TutorSubjectWhereUniqueInput
     update: XOR<TutorSubjectUpdateWithoutCategoryInput, TutorSubjectUncheckedUpdateWithoutCategoryInput>
@@ -12072,18 +16770,43 @@ export namespace Prisma {
     data: XOR<TutorSubjectUpdateManyMutationInput, TutorSubjectUncheckedUpdateManyWithoutCategoryInput>
   }
 
+  export type BookingTutorUpsertWithWhereUniqueWithoutSubjectInput = {
+    where: BookingTutorWhereUniqueInput
+    update: XOR<BookingTutorUpdateWithoutSubjectInput, BookingTutorUncheckedUpdateWithoutSubjectInput>
+    create: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type BookingTutorUpdateWithWhereUniqueWithoutSubjectInput = {
+    where: BookingTutorWhereUniqueInput
+    data: XOR<BookingTutorUpdateWithoutSubjectInput, BookingTutorUncheckedUpdateWithoutSubjectInput>
+  }
+
+  export type BookingTutorUpdateManyWithWhereWithoutSubjectInput = {
+    where: BookingTutorScalarWhereInput
+    data: XOR<BookingTutorUpdateManyMutationInput, BookingTutorUncheckedUpdateManyWithoutSubjectInput>
+  }
+
   export type TutorProfileCreateWithoutTutorSubjectsInput = {
     tutorName: string
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     user: UserCreateNestedOneWithoutTutorProfileInput
-    availableTimes?: AvailableTimeCreateNestedManyWithoutTutorInput
     experiences?: ExperienceCreateNestedManyWithoutTutorInput
     reviews?: ReviewCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelCreateNestedManyWithoutTutorProfileInput
+    BookingTutor?: BookingTutorCreateNestedManyWithoutAssignedTutorInput
   }
 
   export type TutorProfileUncheckedCreateWithoutTutorSubjectsInput = {
@@ -12093,12 +16816,21 @@ export namespace Prisma {
     province: string
     image: string
     pricePerHour: number
-    description: string
+    languageTaught?: $Enums.Language
+    sex?: $Enums.SexMethod
+    description?: string | null
     phoneNumber: string
     verifyed?: boolean
-    availableTimes?: AvailableTimeUncheckedCreateNestedManyWithoutTutorInput
+    technique?: string | null
+    teachingMethod?: $Enums.TeachingMethod
+    teachingTime?: $Enums.TeachingTime
+    timeStart: string
+    timeEnd: string
+    availableTimes?: $Enums.TeachingTime
     experiences?: ExperienceUncheckedCreateNestedManyWithoutTutorInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutTutorInput
+    levels?: TutorLevelUncheckedCreateNestedManyWithoutTutorProfileInput
+    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutAssignedTutorInput
   }
 
   export type TutorProfileCreateOrConnectWithoutTutorSubjectsInput = {
@@ -12108,11 +16840,15 @@ export namespace Prisma {
 
   export type SubjectCategoryCreateWithoutTutorsInput = {
     name: string
+    icon?: string | null
+    BookingTutor?: BookingTutorCreateNestedManyWithoutSubjectInput
   }
 
   export type SubjectCategoryUncheckedCreateWithoutTutorsInput = {
     id?: number
     name: string
+    icon?: string | null
+    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutSubjectInput
   }
 
   export type SubjectCategoryCreateOrConnectWithoutTutorsInput = {
@@ -12136,13 +16872,22 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     user?: UserUpdateOneRequiredWithoutTutorProfileNestedInput
-    availableTimes?: AvailableTimeUpdateManyWithoutTutorNestedInput
     experiences?: ExperienceUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUpdateManyWithoutTutorProfileNestedInput
+    BookingTutor?: BookingTutorUpdateManyWithoutAssignedTutorNestedInput
   }
 
   export type TutorProfileUncheckedUpdateWithoutTutorSubjectsInput = {
@@ -12152,12 +16897,21 @@ export namespace Prisma {
     province?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     pricePerHour?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
+    languageTaught?: EnumLanguageFieldUpdateOperationsInput | $Enums.Language
+    sex?: EnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: StringFieldUpdateOperationsInput | string
     verifyed?: BoolFieldUpdateOperationsInput | boolean
-    availableTimes?: AvailableTimeUncheckedUpdateManyWithoutTutorNestedInput
+    technique?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: EnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod
+    teachingTime?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
+    timeStart?: StringFieldUpdateOperationsInput | string
+    timeEnd?: StringFieldUpdateOperationsInput | string
+    availableTimes?: EnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime
     experiences?: ExperienceUncheckedUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutTutorNestedInput
+    levels?: TutorLevelUncheckedUpdateManyWithoutTutorProfileNestedInput
+    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutAssignedTutorNestedInput
   }
 
   export type SubjectCategoryUpsertWithoutTutorsInput = {
@@ -12173,11 +16927,15 @@ export namespace Prisma {
 
   export type SubjectCategoryUpdateWithoutTutorsInput = {
     name?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    BookingTutor?: BookingTutorUpdateManyWithoutSubjectNestedInput
   }
 
   export type SubjectCategoryUncheckedUpdateWithoutTutorsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutSubjectNestedInput
   }
 
   export type ReviewCreateManyUserInput = {
@@ -12211,14 +16969,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AvailableTimeCreateManyTutorInput = {
-    id?: number
-    dayStart: string
-    dayEnd: string
-    timeStart: string
-    timeEnd: string
-  }
-
   export type TutorSubjectCreateManyTutorInput = {
     id?: number
     categoryId: number
@@ -12237,27 +16987,32 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type AvailableTimeUpdateWithoutTutorInput = {
-    dayStart?: StringFieldUpdateOperationsInput | string
-    dayEnd?: StringFieldUpdateOperationsInput | string
-    timeStart?: StringFieldUpdateOperationsInput | string
-    timeEnd?: StringFieldUpdateOperationsInput | string
+  export type TutorLevelCreateManyTutorProfileInput = {
+    id?: number
+    teachingLevelId: number
   }
 
-  export type AvailableTimeUncheckedUpdateWithoutTutorInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dayStart?: StringFieldUpdateOperationsInput | string
-    dayEnd?: StringFieldUpdateOperationsInput | string
-    timeStart?: StringFieldUpdateOperationsInput | string
-    timeEnd?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AvailableTimeUncheckedUpdateManyWithoutTutorInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dayStart?: StringFieldUpdateOperationsInput | string
-    dayEnd?: StringFieldUpdateOperationsInput | string
-    timeStart?: StringFieldUpdateOperationsInput | string
-    timeEnd?: StringFieldUpdateOperationsInput | string
+  export type BookingTutorCreateManyAssignedTutorInput = {
+    id?: number
+    fullName: string
+    phoneNumber: string
+    email?: string | null
+    subjectId?: number | null
+    subjectName?: string | null
+    level?: string | null
+    target?: string | null
+    nationalityTeacher?: string | null
+    teacherSex?: $Enums.SexMethod | null
+    studyingDays?: $Enums.TeachingTime | null
+    studyingTimes?: string | null
+    startStudyingDate?: string | null
+    teachingMethod?: $Enums.TeachingMethod | null
+    studyLocation?: string | null
+    yourCity?: string | null
+    note?: string | null
+    status?: $Enums.BookingStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TutorSubjectUpdateWithoutTutorInput = {
@@ -12311,9 +17066,133 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TutorLevelUpdateWithoutTutorProfileInput = {
+    teachingLevel?: TeachingLevelUpdateOneRequiredWithoutTutorsNestedInput
+  }
+
+  export type TutorLevelUncheckedUpdateWithoutTutorProfileInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teachingLevelId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TutorLevelUncheckedUpdateManyWithoutTutorProfileInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teachingLevelId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BookingTutorUpdateWithoutAssignedTutorInput = {
+    fullName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
+    level?: NullableStringFieldUpdateOperationsInput | string | null
+    target?: NullableStringFieldUpdateOperationsInput | string | null
+    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
+    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
+    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
+    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
+    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
+    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    yourCity?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subject?: SubjectCategoryUpdateOneWithoutBookingTutorNestedInput
+  }
+
+  export type BookingTutorUncheckedUpdateWithoutAssignedTutorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectId?: NullableIntFieldUpdateOperationsInput | number | null
+    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
+    level?: NullableStringFieldUpdateOperationsInput | string | null
+    target?: NullableStringFieldUpdateOperationsInput | string | null
+    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
+    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
+    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
+    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
+    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
+    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    yourCity?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingTutorUncheckedUpdateManyWithoutAssignedTutorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectId?: NullableIntFieldUpdateOperationsInput | number | null
+    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
+    level?: NullableStringFieldUpdateOperationsInput | string | null
+    target?: NullableStringFieldUpdateOperationsInput | string | null
+    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
+    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
+    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
+    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
+    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
+    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    yourCity?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TutorLevelCreateManyTeachingLevelInput = {
+    id?: number
+    tutorProfileId: number
+  }
+
+  export type TutorLevelUpdateWithoutTeachingLevelInput = {
+    tutorProfile?: TutorProfileUpdateOneRequiredWithoutLevelsNestedInput
+  }
+
+  export type TutorLevelUncheckedUpdateWithoutTeachingLevelInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tutorProfileId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TutorLevelUncheckedUpdateManyWithoutTeachingLevelInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tutorProfileId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type TutorSubjectCreateManyCategoryInput = {
     id?: number
     tutorId: number
+  }
+
+  export type BookingTutorCreateManySubjectInput = {
+    id?: number
+    fullName: string
+    phoneNumber: string
+    email?: string | null
+    subjectName?: string | null
+    level?: string | null
+    target?: string | null
+    nationalityTeacher?: string | null
+    teacherSex?: $Enums.SexMethod | null
+    studyingDays?: $Enums.TeachingTime | null
+    studyingTimes?: string | null
+    startStudyingDate?: string | null
+    teachingMethod?: $Enums.TeachingMethod | null
+    studyLocation?: string | null
+    yourCity?: string | null
+    note?: string | null
+    assignedTutorId?: number | null
+    status?: $Enums.BookingStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TutorSubjectUpdateWithoutCategoryInput = {
@@ -12328,6 +17207,74 @@ export namespace Prisma {
   export type TutorSubjectUncheckedUpdateManyWithoutCategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     tutorId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BookingTutorUpdateWithoutSubjectInput = {
+    fullName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
+    level?: NullableStringFieldUpdateOperationsInput | string | null
+    target?: NullableStringFieldUpdateOperationsInput | string | null
+    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
+    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
+    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
+    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
+    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
+    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    yourCity?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assignedTutor?: TutorProfileUpdateOneWithoutBookingTutorNestedInput
+  }
+
+  export type BookingTutorUncheckedUpdateWithoutSubjectInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
+    level?: NullableStringFieldUpdateOperationsInput | string | null
+    target?: NullableStringFieldUpdateOperationsInput | string | null
+    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
+    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
+    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
+    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
+    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
+    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    yourCity?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    assignedTutorId?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingTutorUncheckedUpdateManyWithoutSubjectInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
+    level?: NullableStringFieldUpdateOperationsInput | string | null
+    target?: NullableStringFieldUpdateOperationsInput | string | null
+    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
+    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
+    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
+    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
+    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
+    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
+    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    yourCity?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    assignedTutorId?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

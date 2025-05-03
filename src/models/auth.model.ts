@@ -1,7 +1,6 @@
 import Elysia, { t } from "elysia";
 
 const registerBody = t.Object({
-  name: t.String(),
   email: t.String(),
   password: t.String({
     minLength: 8,

@@ -4,6 +4,9 @@ import { loggerPlugin } from "./plugins/logger";
 import swagger from "@elysiajs/swagger";
 import { authRoute } from "./routes/auth.route";
 import { userRoute } from "./routes/user.route";
+import { catagoryRoute } from "./routes/catagory.route";
+import { serviceRoute } from "./routes/service.route";
+import { bookingRoute } from "./routes/booking.route";
 
 export const app = new Elysia()
   .use(cors())
@@ -21,6 +24,9 @@ export const app = new Elysia()
   )
   .use(authRoute)
   .use(userRoute)
+  .use(catagoryRoute)
+  .use(serviceRoute)
+  .use(bookingRoute)
   .onError(({ code, error }) => {
     console.error(
       `[${code}]`,
