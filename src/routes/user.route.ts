@@ -1,6 +1,7 @@
 import { Elysia, t } from "elysia";
 import {
   createTutorDetail,
+  getTutorByIdController,
   getTutorsBySubject,
   getTutosList,
 } from "../controllers/user.controller";
@@ -12,6 +13,7 @@ export const userRoute = new Elysia({
 })
   .use(UserModel)
   .get("/tutors", getTutosList)
+  .get("/tutor/:id", getTutorByIdController, { params: "user-get-tutor-by-id" })
   .get("/tutors/:subjectId", getTutorsBySubject)
   .post("/tutor-detail", createTutorDetail, {
     body: "user-create-tutor-detail",

@@ -2,6 +2,7 @@ import type { Context } from "elysia";
 import { responseError, responseSuccess } from "../utils/response";
 import {
   createTutorInfo,
+  getTutorById,
   getTutorBySubject,
   getUserTutors,
   type TutorInfo,
@@ -36,4 +37,20 @@ const getTutorsBySubject = async ({ params: { subjectId } }: Context) => {
   }
 };
 
-export { createTutorDetail, getTutosList, getTutorsBySubject };
+const getTutorByIdController = async ({ params: { id }, set }: Context) => {
+  try {
+    const tutors = await getTutorById(Number(id));
+    set.status = 200;
+    return responseSuccess(tutors);
+  } catch (err) {
+    set.status = 400;
+    return responseError(err as string);
+  }
+};
+
+export {
+  createTutorDetail,
+  getTutosList,
+  getTutorsBySubject,
+  getTutorByIdController,
+};

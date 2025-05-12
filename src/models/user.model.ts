@@ -1,23 +1,30 @@
 import Elysia, { t } from "elysia";
 
-
 // สมมุติว่าใช้ enum เหล่านี้จาก Prisma
-const TeachingMethod = { ONLINE: 'ONLINE', ONSITE: 'ONSITE', BOTH: 'BOTH' } as const;
-const TeachingTime = { WEEKDAY: 'WEEKDAY', WEEKEND: 'WEEKEND', EVERYDAY: 'EVERYDAY' } as const;
-const SexMethod = { MAN: 'MAN', WOMAN: 'WOMAN', OTHER: 'OTHER' } as const;
-const Language = { THAI: 'THAI', ENGLISH: 'ENGLISH' } as const;
+const TeachingMethod = {
+  ONLINE: "ONLINE",
+  ONSITE: "ONSITE",
+  BOTH: "BOTH",
+} as const;
+const TeachingTime = {
+  WEEKDAY: "WEEKDAY",
+  WEEKEND: "WEEKEND",
+  EVERYDAY: "EVERYDAY",
+} as const;
+const SexMethod = { MAN: "MAN", WOMAN: "WOMAN", OTHER: "OTHER" } as const;
+const Language = { THAI: "THAI", ENGLISH: "ENGLISH" } as const;
 
 export const createTutorDetailBody = t.Object({
-  image: t.String({ examples: ['https://example.com/image.jpg'] }),
-  phoneNumber: t.String({ examples: ['0612345678'] }),
+  image: t.String({ examples: ["https://example.com/image.jpg"] }),
+  phoneNumber: t.String({ examples: ["0612345678"] }),
   pricePerHour: t.Number({ examples: [300] }),
-  province: t.String({ examples: ['กรุงเทพมหานคร'] }),
-  tutorName: t.String({ examples: ['ครูมิ๊ก'] }),
+  province: t.String({ examples: ["กรุงเทพมหานคร"] }),
+  tutorName: t.String({ examples: ["ครูมิ๊ก"] }),
   description: t.Optional(
-    t.String({ examples: ['ติวเข้มเนื้อหาครบถ้วนทุกจุดที่สำคัญ'] })
+    t.String({ examples: ["ติวเข้มเนื้อหาครบถ้วนทุกจุดที่สำคัญ"] })
   ),
   technique: t.Optional(
-    t.String({ examples: ['สอนเน้นความเข้าใจมากกว่าท่องจำ'] })
+    t.String({ examples: ["สอนเน้นความเข้าใจมากกว่าท่องจำ"] })
   ),
 
   categoryId: t.Array(t.Number({ examples: [1] }), {
@@ -26,11 +33,11 @@ export const createTutorDetailBody = t.Object({
   teachingTime: t.Enum(TeachingTime, {
     examples: Object.values(TeachingTime),
   }),
-  timeStart: t.String({ examples: ['08:00:00'] }),
-  timeEnd: t.String({ examples: ['17:00:00'] }),
+  timeStart: t.String({ examples: ["08:00:00"] }),
+  timeEnd: t.String({ examples: ["17:00:00"] }),
 
   experience: t.Array(t.String(), {
-    examples: [['สอน GED 2 ปี', 'ติวสอบ IGCSE']],
+    examples: [["สอน GED 2 ปี", "ติวสอบ IGCSE"]],
   }),
   levels: t.Array(t.Number(), {
     examples: [[1, 2, 3]],
@@ -44,10 +51,12 @@ export const createTutorDetailBody = t.Object({
   languageTaught: t.Enum(Language, { examples: Object.values(Language) }),
 });
 
+const getTutorById = t.Object({
+  id: t.Number({ examples: [42] }),
+});
 
-const UserModel = new Elysia().model(
-  "user-create-tutor-detail",
-  createTutorDetailBody
-);
+const UserModel = new Elysia()
+  .model("user-create-tutor-detail", createTutorDetailBody)
+  .model("user-get-tutor-by-id", getTutorById);
 
 export default UserModel;

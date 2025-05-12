@@ -83,6 +83,16 @@ const getTutorBySubject = async (subjectId: number) => {
     where: { tutorSubjects: { some: { categoryId: subjectId } } },
   });
 };
+const getTutorById = async (id: number) => {
+  return prisma.tutorProfile.findUnique({
+    where: { userId: id },
+    include: {
+      tutorSubjects: true,
+      levels: true,
+      experiences: true,
+    },
+  });
+};
 
 const createTutorInfo = async (data: TutorInfo) => {
   const { categoryId, experience, userId } = data;
@@ -161,4 +171,4 @@ const createTutorInfo = async (data: TutorInfo) => {
   return tutor;
 };
 
-export { getUserTutors, createTutorInfo, getTutorBySubject };
+export { getUserTutors, createTutorInfo, getTutorBySubject, getTutorById };
