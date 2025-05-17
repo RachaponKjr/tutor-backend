@@ -6548,14 +6548,14 @@ export namespace Prisma {
 
   export type BookingTutorAvgAggregateOutputType = {
     id: number | null
-    subjectId: number | null
     assignedTutorId: number | null
+    subjectCategoryId: number | null
   }
 
   export type BookingTutorSumAggregateOutputType = {
     id: number | null
-    subjectId: number | null
     assignedTutorId: number | null
+    subjectCategoryId: number | null
   }
 
   export type BookingTutorMinAggregateOutputType = {
@@ -6563,23 +6563,20 @@ export namespace Prisma {
     fullName: string | null
     phoneNumber: string | null
     email: string | null
-    subjectId: number | null
-    subjectName: string | null
-    level: string | null
-    target: string | null
-    nationalityTeacher: string | null
-    teacherSex: $Enums.SexMethod | null
-    studyingDays: $Enums.TeachingTime | null
-    studyingTimes: string | null
-    startStudyingDate: string | null
-    teachingMethod: $Enums.TeachingMethod | null
-    studyLocation: string | null
+    formOne: string | null
+    formTwo: string | null
+    formThree: string | null
+    formFour: string | null
+    formFive: string | null
+    formSix: string | null
+    formSeven: string | null
+    formEight: string | null
     yourCity: string | null
-    note: string | null
     assignedTutorId: number | null
     status: $Enums.BookingStatus | null
     createdAt: Date | null
     updatedAt: Date | null
+    subjectCategoryId: number | null
   }
 
   export type BookingTutorMaxAggregateOutputType = {
@@ -6587,23 +6584,20 @@ export namespace Prisma {
     fullName: string | null
     phoneNumber: string | null
     email: string | null
-    subjectId: number | null
-    subjectName: string | null
-    level: string | null
-    target: string | null
-    nationalityTeacher: string | null
-    teacherSex: $Enums.SexMethod | null
-    studyingDays: $Enums.TeachingTime | null
-    studyingTimes: string | null
-    startStudyingDate: string | null
-    teachingMethod: $Enums.TeachingMethod | null
-    studyLocation: string | null
+    formOne: string | null
+    formTwo: string | null
+    formThree: string | null
+    formFour: string | null
+    formFive: string | null
+    formSix: string | null
+    formSeven: string | null
+    formEight: string | null
     yourCity: string | null
-    note: string | null
     assignedTutorId: number | null
     status: $Enums.BookingStatus | null
     createdAt: Date | null
     updatedAt: Date | null
+    subjectCategoryId: number | null
   }
 
   export type BookingTutorCountAggregateOutputType = {
@@ -6611,37 +6605,34 @@ export namespace Prisma {
     fullName: number
     phoneNumber: number
     email: number
-    subjectId: number
-    subjectName: number
-    level: number
-    target: number
-    nationalityTeacher: number
-    teacherSex: number
-    studyingDays: number
-    studyingTimes: number
-    startStudyingDate: number
-    teachingMethod: number
-    studyLocation: number
+    formOne: number
+    formTwo: number
+    formThree: number
+    formFour: number
+    formFive: number
+    formSix: number
+    formSeven: number
+    formEight: number
     yourCity: number
-    note: number
     assignedTutorId: number
     status: number
     createdAt: number
     updatedAt: number
+    subjectCategoryId: number
     _all: number
   }
 
 
   export type BookingTutorAvgAggregateInputType = {
     id?: true
-    subjectId?: true
     assignedTutorId?: true
+    subjectCategoryId?: true
   }
 
   export type BookingTutorSumAggregateInputType = {
     id?: true
-    subjectId?: true
     assignedTutorId?: true
+    subjectCategoryId?: true
   }
 
   export type BookingTutorMinAggregateInputType = {
@@ -6649,23 +6640,20 @@ export namespace Prisma {
     fullName?: true
     phoneNumber?: true
     email?: true
-    subjectId?: true
-    subjectName?: true
-    level?: true
-    target?: true
-    nationalityTeacher?: true
-    teacherSex?: true
-    studyingDays?: true
-    studyingTimes?: true
-    startStudyingDate?: true
-    teachingMethod?: true
-    studyLocation?: true
+    formOne?: true
+    formTwo?: true
+    formThree?: true
+    formFour?: true
+    formFive?: true
+    formSix?: true
+    formSeven?: true
+    formEight?: true
     yourCity?: true
-    note?: true
     assignedTutorId?: true
     status?: true
     createdAt?: true
     updatedAt?: true
+    subjectCategoryId?: true
   }
 
   export type BookingTutorMaxAggregateInputType = {
@@ -6673,23 +6661,20 @@ export namespace Prisma {
     fullName?: true
     phoneNumber?: true
     email?: true
-    subjectId?: true
-    subjectName?: true
-    level?: true
-    target?: true
-    nationalityTeacher?: true
-    teacherSex?: true
-    studyingDays?: true
-    studyingTimes?: true
-    startStudyingDate?: true
-    teachingMethod?: true
-    studyLocation?: true
+    formOne?: true
+    formTwo?: true
+    formThree?: true
+    formFour?: true
+    formFive?: true
+    formSix?: true
+    formSeven?: true
+    formEight?: true
     yourCity?: true
-    note?: true
     assignedTutorId?: true
     status?: true
     createdAt?: true
     updatedAt?: true
+    subjectCategoryId?: true
   }
 
   export type BookingTutorCountAggregateInputType = {
@@ -6697,23 +6682,20 @@ export namespace Prisma {
     fullName?: true
     phoneNumber?: true
     email?: true
-    subjectId?: true
-    subjectName?: true
-    level?: true
-    target?: true
-    nationalityTeacher?: true
-    teacherSex?: true
-    studyingDays?: true
-    studyingTimes?: true
-    startStudyingDate?: true
-    teachingMethod?: true
-    studyLocation?: true
+    formOne?: true
+    formTwo?: true
+    formThree?: true
+    formFour?: true
+    formFive?: true
+    formSix?: true
+    formSeven?: true
+    formEight?: true
     yourCity?: true
-    note?: true
     assignedTutorId?: true
     status?: true
     createdAt?: true
     updatedAt?: true
+    subjectCategoryId?: true
     _all?: true
   }
 
@@ -6808,23 +6790,20 @@ export namespace Prisma {
     fullName: string
     phoneNumber: string
     email: string | null
-    subjectId: number | null
-    subjectName: string | null
-    level: string | null
-    target: string | null
-    nationalityTeacher: string | null
-    teacherSex: $Enums.SexMethod | null
-    studyingDays: $Enums.TeachingTime | null
-    studyingTimes: string | null
-    startStudyingDate: string | null
-    teachingMethod: $Enums.TeachingMethod | null
-    studyLocation: string | null
+    formOne: string | null
+    formTwo: string | null
+    formThree: string | null
+    formFour: string | null
+    formFive: string | null
+    formSix: string | null
+    formSeven: string | null
+    formEight: string | null
     yourCity: string | null
-    note: string | null
     assignedTutorId: number | null
     status: $Enums.BookingStatus | null
     createdAt: Date
     updatedAt: Date
+    subjectCategoryId: number | null
     _count: BookingTutorCountAggregateOutputType | null
     _avg: BookingTutorAvgAggregateOutputType | null
     _sum: BookingTutorSumAggregateOutputType | null
@@ -6851,25 +6830,22 @@ export namespace Prisma {
     fullName?: boolean
     phoneNumber?: boolean
     email?: boolean
-    subjectId?: boolean
-    subjectName?: boolean
-    level?: boolean
-    target?: boolean
-    nationalityTeacher?: boolean
-    teacherSex?: boolean
-    studyingDays?: boolean
-    studyingTimes?: boolean
-    startStudyingDate?: boolean
-    teachingMethod?: boolean
-    studyLocation?: boolean
+    formOne?: boolean
+    formTwo?: boolean
+    formThree?: boolean
+    formFour?: boolean
+    formFive?: boolean
+    formSix?: boolean
+    formSeven?: boolean
+    formEight?: boolean
     yourCity?: boolean
-    note?: boolean
     assignedTutorId?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
+    subjectCategoryId?: boolean
     assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+    subjectCategory?: boolean | BookingTutor$subjectCategoryArgs<ExtArgs>
   }, ExtArgs["result"]["bookingTutor"]>
 
   export type BookingTutorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6877,25 +6853,22 @@ export namespace Prisma {
     fullName?: boolean
     phoneNumber?: boolean
     email?: boolean
-    subjectId?: boolean
-    subjectName?: boolean
-    level?: boolean
-    target?: boolean
-    nationalityTeacher?: boolean
-    teacherSex?: boolean
-    studyingDays?: boolean
-    studyingTimes?: boolean
-    startStudyingDate?: boolean
-    teachingMethod?: boolean
-    studyLocation?: boolean
+    formOne?: boolean
+    formTwo?: boolean
+    formThree?: boolean
+    formFour?: boolean
+    formFive?: boolean
+    formSix?: boolean
+    formSeven?: boolean
+    formEight?: boolean
     yourCity?: boolean
-    note?: boolean
     assignedTutorId?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
+    subjectCategoryId?: boolean
     assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+    subjectCategory?: boolean | BookingTutor$subjectCategoryArgs<ExtArgs>
   }, ExtArgs["result"]["bookingTutor"]>
 
   export type BookingTutorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6903,25 +6876,22 @@ export namespace Prisma {
     fullName?: boolean
     phoneNumber?: boolean
     email?: boolean
-    subjectId?: boolean
-    subjectName?: boolean
-    level?: boolean
-    target?: boolean
-    nationalityTeacher?: boolean
-    teacherSex?: boolean
-    studyingDays?: boolean
-    studyingTimes?: boolean
-    startStudyingDate?: boolean
-    teachingMethod?: boolean
-    studyLocation?: boolean
+    formOne?: boolean
+    formTwo?: boolean
+    formThree?: boolean
+    formFour?: boolean
+    formFive?: boolean
+    formSix?: boolean
+    formSeven?: boolean
+    formEight?: boolean
     yourCity?: boolean
-    note?: boolean
     assignedTutorId?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
+    subjectCategoryId?: boolean
     assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+    subjectCategory?: boolean | BookingTutor$subjectCategoryArgs<ExtArgs>
   }, ExtArgs["result"]["bookingTutor"]>
 
   export type BookingTutorSelectScalar = {
@@ -6929,67 +6899,61 @@ export namespace Prisma {
     fullName?: boolean
     phoneNumber?: boolean
     email?: boolean
-    subjectId?: boolean
-    subjectName?: boolean
-    level?: boolean
-    target?: boolean
-    nationalityTeacher?: boolean
-    teacherSex?: boolean
-    studyingDays?: boolean
-    studyingTimes?: boolean
-    startStudyingDate?: boolean
-    teachingMethod?: boolean
-    studyLocation?: boolean
+    formOne?: boolean
+    formTwo?: boolean
+    formThree?: boolean
+    formFour?: boolean
+    formFive?: boolean
+    formSix?: boolean
+    formSeven?: boolean
+    formEight?: boolean
     yourCity?: boolean
-    note?: boolean
     assignedTutorId?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    subjectCategoryId?: boolean
   }
 
-  export type BookingTutorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "phoneNumber" | "email" | "subjectId" | "subjectName" | "level" | "target" | "nationalityTeacher" | "teacherSex" | "studyingDays" | "studyingTimes" | "startStudyingDate" | "teachingMethod" | "studyLocation" | "yourCity" | "note" | "assignedTutorId" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["bookingTutor"]>
+  export type BookingTutorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "phoneNumber" | "email" | "formOne" | "formTwo" | "formThree" | "formFour" | "formFive" | "formSix" | "formSeven" | "formEight" | "yourCity" | "assignedTutorId" | "status" | "createdAt" | "updatedAt" | "subjectCategoryId", ExtArgs["result"]["bookingTutor"]>
   export type BookingTutorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
     assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+    subjectCategory?: boolean | BookingTutor$subjectCategoryArgs<ExtArgs>
   }
   export type BookingTutorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
     assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+    subjectCategory?: boolean | BookingTutor$subjectCategoryArgs<ExtArgs>
   }
   export type BookingTutorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subject?: boolean | BookingTutor$subjectArgs<ExtArgs>
     assignedTutor?: boolean | BookingTutor$assignedTutorArgs<ExtArgs>
+    subjectCategory?: boolean | BookingTutor$subjectCategoryArgs<ExtArgs>
   }
 
   export type $BookingTutorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "BookingTutor"
     objects: {
-      subject: Prisma.$SubjectCategoryPayload<ExtArgs> | null
       assignedTutor: Prisma.$TutorProfilePayload<ExtArgs> | null
+      subjectCategory: Prisma.$SubjectCategoryPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       fullName: string
       phoneNumber: string
       email: string | null
-      subjectId: number | null
-      subjectName: string | null
-      level: string | null
-      target: string | null
-      nationalityTeacher: string | null
-      teacherSex: $Enums.SexMethod | null
-      studyingDays: $Enums.TeachingTime | null
-      studyingTimes: string | null
-      startStudyingDate: string | null
-      teachingMethod: $Enums.TeachingMethod | null
-      studyLocation: string | null
+      formOne: string | null
+      formTwo: string | null
+      formThree: string | null
+      formFour: string | null
+      formFive: string | null
+      formSix: string | null
+      formSeven: string | null
+      formEight: string | null
       yourCity: string | null
-      note: string | null
       assignedTutorId: number | null
       status: $Enums.BookingStatus | null
       createdAt: Date
       updatedAt: Date
+      subjectCategoryId: number | null
     }, ExtArgs["result"]["bookingTutor"]>
     composites: {}
   }
@@ -7384,8 +7348,8 @@ export namespace Prisma {
    */
   export interface Prisma__BookingTutorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    subject<T extends BookingTutor$subjectArgs<ExtArgs> = {}>(args?: Subset<T, BookingTutor$subjectArgs<ExtArgs>>): Prisma__SubjectCategoryClient<$Result.GetResult<Prisma.$SubjectCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     assignedTutor<T extends BookingTutor$assignedTutorArgs<ExtArgs> = {}>(args?: Subset<T, BookingTutor$assignedTutorArgs<ExtArgs>>): Prisma__TutorProfileClient<$Result.GetResult<Prisma.$TutorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    subjectCategory<T extends BookingTutor$subjectCategoryArgs<ExtArgs> = {}>(args?: Subset<T, BookingTutor$subjectCategoryArgs<ExtArgs>>): Prisma__SubjectCategoryClient<$Result.GetResult<Prisma.$SubjectCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7419,23 +7383,20 @@ export namespace Prisma {
     readonly fullName: FieldRef<"BookingTutor", 'String'>
     readonly phoneNumber: FieldRef<"BookingTutor", 'String'>
     readonly email: FieldRef<"BookingTutor", 'String'>
-    readonly subjectId: FieldRef<"BookingTutor", 'Int'>
-    readonly subjectName: FieldRef<"BookingTutor", 'String'>
-    readonly level: FieldRef<"BookingTutor", 'String'>
-    readonly target: FieldRef<"BookingTutor", 'String'>
-    readonly nationalityTeacher: FieldRef<"BookingTutor", 'String'>
-    readonly teacherSex: FieldRef<"BookingTutor", 'SexMethod'>
-    readonly studyingDays: FieldRef<"BookingTutor", 'TeachingTime'>
-    readonly studyingTimes: FieldRef<"BookingTutor", 'String'>
-    readonly startStudyingDate: FieldRef<"BookingTutor", 'String'>
-    readonly teachingMethod: FieldRef<"BookingTutor", 'TeachingMethod'>
-    readonly studyLocation: FieldRef<"BookingTutor", 'String'>
+    readonly formOne: FieldRef<"BookingTutor", 'String'>
+    readonly formTwo: FieldRef<"BookingTutor", 'String'>
+    readonly formThree: FieldRef<"BookingTutor", 'String'>
+    readonly formFour: FieldRef<"BookingTutor", 'String'>
+    readonly formFive: FieldRef<"BookingTutor", 'String'>
+    readonly formSix: FieldRef<"BookingTutor", 'String'>
+    readonly formSeven: FieldRef<"BookingTutor", 'String'>
+    readonly formEight: FieldRef<"BookingTutor", 'String'>
     readonly yourCity: FieldRef<"BookingTutor", 'String'>
-    readonly note: FieldRef<"BookingTutor", 'String'>
     readonly assignedTutorId: FieldRef<"BookingTutor", 'Int'>
     readonly status: FieldRef<"BookingTutor", 'BookingStatus'>
     readonly createdAt: FieldRef<"BookingTutor", 'DateTime'>
     readonly updatedAt: FieldRef<"BookingTutor", 'DateTime'>
+    readonly subjectCategoryId: FieldRef<"BookingTutor", 'Int'>
   }
     
 
@@ -7832,25 +7793,6 @@ export namespace Prisma {
   }
 
   /**
-   * BookingTutor.subject
-   */
-  export type BookingTutor$subjectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubjectCategory
-     */
-    select?: SubjectCategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SubjectCategory
-     */
-    omit?: SubjectCategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SubjectCategoryInclude<ExtArgs> | null
-    where?: SubjectCategoryWhereInput
-  }
-
-  /**
    * BookingTutor.assignedTutor
    */
   export type BookingTutor$assignedTutorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7867,6 +7809,25 @@ export namespace Prisma {
      */
     include?: TutorProfileInclude<ExtArgs> | null
     where?: TutorProfileWhereInput
+  }
+
+  /**
+   * BookingTutor.subjectCategory
+   */
+  export type BookingTutor$subjectCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubjectCategory
+     */
+    select?: SubjectCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubjectCategory
+     */
+    omit?: SubjectCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectCategoryInclude<ExtArgs> | null
+    where?: SubjectCategoryWhereInput
   }
 
   /**
@@ -12342,23 +12303,20 @@ export namespace Prisma {
     fullName: 'fullName',
     phoneNumber: 'phoneNumber',
     email: 'email',
-    subjectId: 'subjectId',
-    subjectName: 'subjectName',
-    level: 'level',
-    target: 'target',
-    nationalityTeacher: 'nationalityTeacher',
-    teacherSex: 'teacherSex',
-    studyingDays: 'studyingDays',
-    studyingTimes: 'studyingTimes',
-    startStudyingDate: 'startStudyingDate',
-    teachingMethod: 'teachingMethod',
-    studyLocation: 'studyLocation',
+    formOne: 'formOne',
+    formTwo: 'formTwo',
+    formThree: 'formThree',
+    formFour: 'formFour',
+    formFive: 'formFive',
+    formSix: 'formSix',
+    formSeven: 'formSeven',
+    formEight: 'formEight',
     yourCity: 'yourCity',
-    note: 'note',
     assignedTutorId: 'assignedTutorId',
     status: 'status',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    subjectCategoryId: 'subjectCategoryId'
   };
 
   export type BookingTutorScalarFieldEnum = (typeof BookingTutorScalarFieldEnum)[keyof typeof BookingTutorScalarFieldEnum]
@@ -12880,25 +12838,22 @@ export namespace Prisma {
     fullName?: StringFilter<"BookingTutor"> | string
     phoneNumber?: StringFilter<"BookingTutor"> | string
     email?: StringNullableFilter<"BookingTutor"> | string | null
-    subjectId?: IntNullableFilter<"BookingTutor"> | number | null
-    subjectName?: StringNullableFilter<"BookingTutor"> | string | null
-    level?: StringNullableFilter<"BookingTutor"> | string | null
-    target?: StringNullableFilter<"BookingTutor"> | string | null
-    nationalityTeacher?: StringNullableFilter<"BookingTutor"> | string | null
-    teacherSex?: EnumSexMethodNullableFilter<"BookingTutor"> | $Enums.SexMethod | null
-    studyingDays?: EnumTeachingTimeNullableFilter<"BookingTutor"> | $Enums.TeachingTime | null
-    studyingTimes?: StringNullableFilter<"BookingTutor"> | string | null
-    startStudyingDate?: StringNullableFilter<"BookingTutor"> | string | null
-    teachingMethod?: EnumTeachingMethodNullableFilter<"BookingTutor"> | $Enums.TeachingMethod | null
-    studyLocation?: StringNullableFilter<"BookingTutor"> | string | null
+    formOne?: StringNullableFilter<"BookingTutor"> | string | null
+    formTwo?: StringNullableFilter<"BookingTutor"> | string | null
+    formThree?: StringNullableFilter<"BookingTutor"> | string | null
+    formFour?: StringNullableFilter<"BookingTutor"> | string | null
+    formFive?: StringNullableFilter<"BookingTutor"> | string | null
+    formSix?: StringNullableFilter<"BookingTutor"> | string | null
+    formSeven?: StringNullableFilter<"BookingTutor"> | string | null
+    formEight?: StringNullableFilter<"BookingTutor"> | string | null
     yourCity?: StringNullableFilter<"BookingTutor"> | string | null
-    note?: StringNullableFilter<"BookingTutor"> | string | null
     assignedTutorId?: IntNullableFilter<"BookingTutor"> | number | null
     status?: EnumBookingStatusNullableFilter<"BookingTutor"> | $Enums.BookingStatus | null
     createdAt?: DateTimeFilter<"BookingTutor"> | Date | string
     updatedAt?: DateTimeFilter<"BookingTutor"> | Date | string
-    subject?: XOR<SubjectCategoryNullableScalarRelationFilter, SubjectCategoryWhereInput> | null
+    subjectCategoryId?: IntNullableFilter<"BookingTutor"> | number | null
     assignedTutor?: XOR<TutorProfileNullableScalarRelationFilter, TutorProfileWhereInput> | null
+    subjectCategory?: XOR<SubjectCategoryNullableScalarRelationFilter, SubjectCategoryWhereInput> | null
   }
 
   export type BookingTutorOrderByWithRelationInput = {
@@ -12906,25 +12861,22 @@ export namespace Prisma {
     fullName?: SortOrder
     phoneNumber?: SortOrder
     email?: SortOrderInput | SortOrder
-    subjectId?: SortOrderInput | SortOrder
-    subjectName?: SortOrderInput | SortOrder
-    level?: SortOrderInput | SortOrder
-    target?: SortOrderInput | SortOrder
-    nationalityTeacher?: SortOrderInput | SortOrder
-    teacherSex?: SortOrderInput | SortOrder
-    studyingDays?: SortOrderInput | SortOrder
-    studyingTimes?: SortOrderInput | SortOrder
-    startStudyingDate?: SortOrderInput | SortOrder
-    teachingMethod?: SortOrderInput | SortOrder
-    studyLocation?: SortOrderInput | SortOrder
+    formOne?: SortOrderInput | SortOrder
+    formTwo?: SortOrderInput | SortOrder
+    formThree?: SortOrderInput | SortOrder
+    formFour?: SortOrderInput | SortOrder
+    formFive?: SortOrderInput | SortOrder
+    formSix?: SortOrderInput | SortOrder
+    formSeven?: SortOrderInput | SortOrder
+    formEight?: SortOrderInput | SortOrder
     yourCity?: SortOrderInput | SortOrder
-    note?: SortOrderInput | SortOrder
     assignedTutorId?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    subject?: SubjectCategoryOrderByWithRelationInput
+    subjectCategoryId?: SortOrderInput | SortOrder
     assignedTutor?: TutorProfileOrderByWithRelationInput
+    subjectCategory?: SubjectCategoryOrderByWithRelationInput
   }
 
   export type BookingTutorWhereUniqueInput = Prisma.AtLeast<{
@@ -12935,25 +12887,22 @@ export namespace Prisma {
     fullName?: StringFilter<"BookingTutor"> | string
     phoneNumber?: StringFilter<"BookingTutor"> | string
     email?: StringNullableFilter<"BookingTutor"> | string | null
-    subjectId?: IntNullableFilter<"BookingTutor"> | number | null
-    subjectName?: StringNullableFilter<"BookingTutor"> | string | null
-    level?: StringNullableFilter<"BookingTutor"> | string | null
-    target?: StringNullableFilter<"BookingTutor"> | string | null
-    nationalityTeacher?: StringNullableFilter<"BookingTutor"> | string | null
-    teacherSex?: EnumSexMethodNullableFilter<"BookingTutor"> | $Enums.SexMethod | null
-    studyingDays?: EnumTeachingTimeNullableFilter<"BookingTutor"> | $Enums.TeachingTime | null
-    studyingTimes?: StringNullableFilter<"BookingTutor"> | string | null
-    startStudyingDate?: StringNullableFilter<"BookingTutor"> | string | null
-    teachingMethod?: EnumTeachingMethodNullableFilter<"BookingTutor"> | $Enums.TeachingMethod | null
-    studyLocation?: StringNullableFilter<"BookingTutor"> | string | null
+    formOne?: StringNullableFilter<"BookingTutor"> | string | null
+    formTwo?: StringNullableFilter<"BookingTutor"> | string | null
+    formThree?: StringNullableFilter<"BookingTutor"> | string | null
+    formFour?: StringNullableFilter<"BookingTutor"> | string | null
+    formFive?: StringNullableFilter<"BookingTutor"> | string | null
+    formSix?: StringNullableFilter<"BookingTutor"> | string | null
+    formSeven?: StringNullableFilter<"BookingTutor"> | string | null
+    formEight?: StringNullableFilter<"BookingTutor"> | string | null
     yourCity?: StringNullableFilter<"BookingTutor"> | string | null
-    note?: StringNullableFilter<"BookingTutor"> | string | null
     assignedTutorId?: IntNullableFilter<"BookingTutor"> | number | null
     status?: EnumBookingStatusNullableFilter<"BookingTutor"> | $Enums.BookingStatus | null
     createdAt?: DateTimeFilter<"BookingTutor"> | Date | string
     updatedAt?: DateTimeFilter<"BookingTutor"> | Date | string
-    subject?: XOR<SubjectCategoryNullableScalarRelationFilter, SubjectCategoryWhereInput> | null
+    subjectCategoryId?: IntNullableFilter<"BookingTutor"> | number | null
     assignedTutor?: XOR<TutorProfileNullableScalarRelationFilter, TutorProfileWhereInput> | null
+    subjectCategory?: XOR<SubjectCategoryNullableScalarRelationFilter, SubjectCategoryWhereInput> | null
   }, "id">
 
   export type BookingTutorOrderByWithAggregationInput = {
@@ -12961,23 +12910,20 @@ export namespace Prisma {
     fullName?: SortOrder
     phoneNumber?: SortOrder
     email?: SortOrderInput | SortOrder
-    subjectId?: SortOrderInput | SortOrder
-    subjectName?: SortOrderInput | SortOrder
-    level?: SortOrderInput | SortOrder
-    target?: SortOrderInput | SortOrder
-    nationalityTeacher?: SortOrderInput | SortOrder
-    teacherSex?: SortOrderInput | SortOrder
-    studyingDays?: SortOrderInput | SortOrder
-    studyingTimes?: SortOrderInput | SortOrder
-    startStudyingDate?: SortOrderInput | SortOrder
-    teachingMethod?: SortOrderInput | SortOrder
-    studyLocation?: SortOrderInput | SortOrder
+    formOne?: SortOrderInput | SortOrder
+    formTwo?: SortOrderInput | SortOrder
+    formThree?: SortOrderInput | SortOrder
+    formFour?: SortOrderInput | SortOrder
+    formFive?: SortOrderInput | SortOrder
+    formSix?: SortOrderInput | SortOrder
+    formSeven?: SortOrderInput | SortOrder
+    formEight?: SortOrderInput | SortOrder
     yourCity?: SortOrderInput | SortOrder
-    note?: SortOrderInput | SortOrder
     assignedTutorId?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subjectCategoryId?: SortOrderInput | SortOrder
     _count?: BookingTutorCountOrderByAggregateInput
     _avg?: BookingTutorAvgOrderByAggregateInput
     _max?: BookingTutorMaxOrderByAggregateInput
@@ -12993,23 +12939,20 @@ export namespace Prisma {
     fullName?: StringWithAggregatesFilter<"BookingTutor"> | string
     phoneNumber?: StringWithAggregatesFilter<"BookingTutor"> | string
     email?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
-    subjectId?: IntNullableWithAggregatesFilter<"BookingTutor"> | number | null
-    subjectName?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
-    level?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
-    target?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
-    nationalityTeacher?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
-    teacherSex?: EnumSexMethodNullableWithAggregatesFilter<"BookingTutor"> | $Enums.SexMethod | null
-    studyingDays?: EnumTeachingTimeNullableWithAggregatesFilter<"BookingTutor"> | $Enums.TeachingTime | null
-    studyingTimes?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
-    startStudyingDate?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
-    teachingMethod?: EnumTeachingMethodNullableWithAggregatesFilter<"BookingTutor"> | $Enums.TeachingMethod | null
-    studyLocation?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    formOne?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    formTwo?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    formThree?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    formFour?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    formFive?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    formSix?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    formSeven?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
+    formEight?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
     yourCity?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
-    note?: StringNullableWithAggregatesFilter<"BookingTutor"> | string | null
     assignedTutorId?: IntNullableWithAggregatesFilter<"BookingTutor"> | number | null
     status?: EnumBookingStatusNullableWithAggregatesFilter<"BookingTutor"> | $Enums.BookingStatus | null
     createdAt?: DateTimeWithAggregatesFilter<"BookingTutor"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"BookingTutor"> | Date | string
+    subjectCategoryId?: IntNullableWithAggregatesFilter<"BookingTutor"> | number | null
   }
 
   export type ExperienceWhereInput = {
@@ -13526,23 +13469,20 @@ export namespace Prisma {
     fullName: string
     phoneNumber: string
     email?: string | null
-    subjectName?: string | null
-    level?: string | null
-    target?: string | null
-    nationalityTeacher?: string | null
-    teacherSex?: $Enums.SexMethod | null
-    studyingDays?: $Enums.TeachingTime | null
-    studyingTimes?: string | null
-    startStudyingDate?: string | null
-    teachingMethod?: $Enums.TeachingMethod | null
-    studyLocation?: string | null
+    formOne?: string | null
+    formTwo?: string | null
+    formThree?: string | null
+    formFour?: string | null
+    formFive?: string | null
+    formSix?: string | null
+    formSeven?: string | null
+    formEight?: string | null
     yourCity?: string | null
-    note?: string | null
     status?: $Enums.BookingStatus | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    subject?: SubjectCategoryCreateNestedOneWithoutBookingTutorInput
     assignedTutor?: TutorProfileCreateNestedOneWithoutBookingTutorInput
+    subjectCategory?: SubjectCategoryCreateNestedOneWithoutBookingTutorInput
   }
 
   export type BookingTutorUncheckedCreateInput = {
@@ -13550,46 +13490,40 @@ export namespace Prisma {
     fullName: string
     phoneNumber: string
     email?: string | null
-    subjectId?: number | null
-    subjectName?: string | null
-    level?: string | null
-    target?: string | null
-    nationalityTeacher?: string | null
-    teacherSex?: $Enums.SexMethod | null
-    studyingDays?: $Enums.TeachingTime | null
-    studyingTimes?: string | null
-    startStudyingDate?: string | null
-    teachingMethod?: $Enums.TeachingMethod | null
-    studyLocation?: string | null
+    formOne?: string | null
+    formTwo?: string | null
+    formThree?: string | null
+    formFour?: string | null
+    formFive?: string | null
+    formSix?: string | null
+    formSeven?: string | null
+    formEight?: string | null
     yourCity?: string | null
-    note?: string | null
     assignedTutorId?: number | null
     status?: $Enums.BookingStatus | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subjectCategoryId?: number | null
   }
 
   export type BookingTutorUpdateInput = {
     fullName?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: NullableStringFieldUpdateOperationsInput | string | null
-    target?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
-    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
-    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
-    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
-    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
-    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
-    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    formOne?: NullableStringFieldUpdateOperationsInput | string | null
+    formTwo?: NullableStringFieldUpdateOperationsInput | string | null
+    formThree?: NullableStringFieldUpdateOperationsInput | string | null
+    formFour?: NullableStringFieldUpdateOperationsInput | string | null
+    formFive?: NullableStringFieldUpdateOperationsInput | string | null
+    formSix?: NullableStringFieldUpdateOperationsInput | string | null
+    formSeven?: NullableStringFieldUpdateOperationsInput | string | null
+    formEight?: NullableStringFieldUpdateOperationsInput | string | null
     yourCity?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subject?: SubjectCategoryUpdateOneWithoutBookingTutorNestedInput
     assignedTutor?: TutorProfileUpdateOneWithoutBookingTutorNestedInput
+    subjectCategory?: SubjectCategoryUpdateOneWithoutBookingTutorNestedInput
   }
 
   export type BookingTutorUncheckedUpdateInput = {
@@ -13597,23 +13531,20 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    subjectId?: NullableIntFieldUpdateOperationsInput | number | null
-    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: NullableStringFieldUpdateOperationsInput | string | null
-    target?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
-    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
-    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
-    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
-    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
-    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
-    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    formOne?: NullableStringFieldUpdateOperationsInput | string | null
+    formTwo?: NullableStringFieldUpdateOperationsInput | string | null
+    formThree?: NullableStringFieldUpdateOperationsInput | string | null
+    formFour?: NullableStringFieldUpdateOperationsInput | string | null
+    formFive?: NullableStringFieldUpdateOperationsInput | string | null
+    formSix?: NullableStringFieldUpdateOperationsInput | string | null
+    formSeven?: NullableStringFieldUpdateOperationsInput | string | null
+    formEight?: NullableStringFieldUpdateOperationsInput | string | null
     yourCity?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
     assignedTutorId?: NullableIntFieldUpdateOperationsInput | number | null
     status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subjectCategoryId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type BookingTutorCreateManyInput = {
@@ -13621,41 +13552,35 @@ export namespace Prisma {
     fullName: string
     phoneNumber: string
     email?: string | null
-    subjectId?: number | null
-    subjectName?: string | null
-    level?: string | null
-    target?: string | null
-    nationalityTeacher?: string | null
-    teacherSex?: $Enums.SexMethod | null
-    studyingDays?: $Enums.TeachingTime | null
-    studyingTimes?: string | null
-    startStudyingDate?: string | null
-    teachingMethod?: $Enums.TeachingMethod | null
-    studyLocation?: string | null
+    formOne?: string | null
+    formTwo?: string | null
+    formThree?: string | null
+    formFour?: string | null
+    formFive?: string | null
+    formSix?: string | null
+    formSeven?: string | null
+    formEight?: string | null
     yourCity?: string | null
-    note?: string | null
     assignedTutorId?: number | null
     status?: $Enums.BookingStatus | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subjectCategoryId?: number | null
   }
 
   export type BookingTutorUpdateManyMutationInput = {
     fullName?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: NullableStringFieldUpdateOperationsInput | string | null
-    target?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
-    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
-    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
-    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
-    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
-    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
-    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    formOne?: NullableStringFieldUpdateOperationsInput | string | null
+    formTwo?: NullableStringFieldUpdateOperationsInput | string | null
+    formThree?: NullableStringFieldUpdateOperationsInput | string | null
+    formFour?: NullableStringFieldUpdateOperationsInput | string | null
+    formFive?: NullableStringFieldUpdateOperationsInput | string | null
+    formSix?: NullableStringFieldUpdateOperationsInput | string | null
+    formSeven?: NullableStringFieldUpdateOperationsInput | string | null
+    formEight?: NullableStringFieldUpdateOperationsInput | string | null
     yourCity?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13666,23 +13591,20 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    subjectId?: NullableIntFieldUpdateOperationsInput | number | null
-    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: NullableStringFieldUpdateOperationsInput | string | null
-    target?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
-    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
-    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
-    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
-    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
-    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
-    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    formOne?: NullableStringFieldUpdateOperationsInput | string | null
+    formTwo?: NullableStringFieldUpdateOperationsInput | string | null
+    formThree?: NullableStringFieldUpdateOperationsInput | string | null
+    formFour?: NullableStringFieldUpdateOperationsInput | string | null
+    formFive?: NullableStringFieldUpdateOperationsInput | string | null
+    formSix?: NullableStringFieldUpdateOperationsInput | string | null
+    formSeven?: NullableStringFieldUpdateOperationsInput | string | null
+    formEight?: NullableStringFieldUpdateOperationsInput | string | null
     yourCity?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
     assignedTutorId?: NullableIntFieldUpdateOperationsInput | number | null
     status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subjectCategoryId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ExperienceCreateInput = {
@@ -13785,7 +13707,7 @@ export namespace Prisma {
     name: string
     icon?: string | null
     tutors?: TutorSubjectCreateNestedManyWithoutCategoryInput
-    BookingTutor?: BookingTutorCreateNestedManyWithoutSubjectInput
+    BookingTutor?: BookingTutorCreateNestedManyWithoutSubjectCategoryInput
   }
 
   export type SubjectCategoryUncheckedCreateInput = {
@@ -13793,14 +13715,14 @@ export namespace Prisma {
     name: string
     icon?: string | null
     tutors?: TutorSubjectUncheckedCreateNestedManyWithoutCategoryInput
-    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutSubjectInput
+    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutSubjectCategoryInput
   }
 
   export type SubjectCategoryUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     icon?: NullableStringFieldUpdateOperationsInput | string | null
     tutors?: TutorSubjectUpdateManyWithoutCategoryNestedInput
-    BookingTutor?: BookingTutorUpdateManyWithoutSubjectNestedInput
+    BookingTutor?: BookingTutorUpdateManyWithoutSubjectCategoryNestedInput
   }
 
   export type SubjectCategoryUncheckedUpdateInput = {
@@ -13808,7 +13730,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     icon?: NullableStringFieldUpdateOperationsInput | string | null
     tutors?: TutorSubjectUncheckedUpdateManyWithoutCategoryNestedInput
-    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutSubjectNestedInput
+    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutSubjectCategoryNestedInput
   }
 
   export type SubjectCategoryCreateManyInput = {
@@ -14333,27 +14255,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type EnumSexMethodNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumSexMethodNullableFilter<$PrismaModel> | $Enums.SexMethod | null
-  }
-
-  export type EnumTeachingTimeNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTeachingTimeNullableFilter<$PrismaModel> | $Enums.TeachingTime | null
-  }
-
-  export type EnumTeachingMethodNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTeachingMethodNullableFilter<$PrismaModel> | $Enums.TeachingMethod | null
-  }
-
   export type EnumBookingStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.BookingStatus | EnumBookingStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel> | null
@@ -14371,29 +14272,26 @@ export namespace Prisma {
     fullName?: SortOrder
     phoneNumber?: SortOrder
     email?: SortOrder
-    subjectId?: SortOrder
-    subjectName?: SortOrder
-    level?: SortOrder
-    target?: SortOrder
-    nationalityTeacher?: SortOrder
-    teacherSex?: SortOrder
-    studyingDays?: SortOrder
-    studyingTimes?: SortOrder
-    startStudyingDate?: SortOrder
-    teachingMethod?: SortOrder
-    studyLocation?: SortOrder
+    formOne?: SortOrder
+    formTwo?: SortOrder
+    formThree?: SortOrder
+    formFour?: SortOrder
+    formFive?: SortOrder
+    formSix?: SortOrder
+    formSeven?: SortOrder
+    formEight?: SortOrder
     yourCity?: SortOrder
-    note?: SortOrder
     assignedTutorId?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subjectCategoryId?: SortOrder
   }
 
   export type BookingTutorAvgOrderByAggregateInput = {
     id?: SortOrder
-    subjectId?: SortOrder
     assignedTutorId?: SortOrder
+    subjectCategoryId?: SortOrder
   }
 
   export type BookingTutorMaxOrderByAggregateInput = {
@@ -14401,23 +14299,20 @@ export namespace Prisma {
     fullName?: SortOrder
     phoneNumber?: SortOrder
     email?: SortOrder
-    subjectId?: SortOrder
-    subjectName?: SortOrder
-    level?: SortOrder
-    target?: SortOrder
-    nationalityTeacher?: SortOrder
-    teacherSex?: SortOrder
-    studyingDays?: SortOrder
-    studyingTimes?: SortOrder
-    startStudyingDate?: SortOrder
-    teachingMethod?: SortOrder
-    studyLocation?: SortOrder
+    formOne?: SortOrder
+    formTwo?: SortOrder
+    formThree?: SortOrder
+    formFour?: SortOrder
+    formFive?: SortOrder
+    formSix?: SortOrder
+    formSeven?: SortOrder
+    formEight?: SortOrder
     yourCity?: SortOrder
-    note?: SortOrder
     assignedTutorId?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subjectCategoryId?: SortOrder
   }
 
   export type BookingTutorMinOrderByAggregateInput = {
@@ -14425,29 +14320,26 @@ export namespace Prisma {
     fullName?: SortOrder
     phoneNumber?: SortOrder
     email?: SortOrder
-    subjectId?: SortOrder
-    subjectName?: SortOrder
-    level?: SortOrder
-    target?: SortOrder
-    nationalityTeacher?: SortOrder
-    teacherSex?: SortOrder
-    studyingDays?: SortOrder
-    studyingTimes?: SortOrder
-    startStudyingDate?: SortOrder
-    teachingMethod?: SortOrder
-    studyLocation?: SortOrder
+    formOne?: SortOrder
+    formTwo?: SortOrder
+    formThree?: SortOrder
+    formFour?: SortOrder
+    formFive?: SortOrder
+    formSix?: SortOrder
+    formSeven?: SortOrder
+    formEight?: SortOrder
     yourCity?: SortOrder
-    note?: SortOrder
     assignedTutorId?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subjectCategoryId?: SortOrder
   }
 
   export type BookingTutorSumOrderByAggregateInput = {
     id?: SortOrder
-    subjectId?: SortOrder
     assignedTutorId?: SortOrder
+    subjectCategoryId?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -14464,36 +14356,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type EnumSexMethodNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumSexMethodNullableWithAggregatesFilter<$PrismaModel> | $Enums.SexMethod | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumSexMethodNullableFilter<$PrismaModel>
-    _max?: NestedEnumSexMethodNullableFilter<$PrismaModel>
-  }
-
-  export type EnumTeachingTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTeachingTimeNullableWithAggregatesFilter<$PrismaModel> | $Enums.TeachingTime | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumTeachingTimeNullableFilter<$PrismaModel>
-    _max?: NestedEnumTeachingTimeNullableFilter<$PrismaModel>
-  }
-
-  export type EnumTeachingMethodNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTeachingMethodNullableWithAggregatesFilter<$PrismaModel> | $Enums.TeachingMethod | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumTeachingMethodNullableFilter<$PrismaModel>
-    _max?: NestedEnumTeachingMethodNullableFilter<$PrismaModel>
   }
 
   export type EnumBookingStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -15048,42 +14910,20 @@ export namespace Prisma {
     update?: XOR<XOR<TeachingLevelUpdateToOneWithWhereWithoutTutorsInput, TeachingLevelUpdateWithoutTutorsInput>, TeachingLevelUncheckedUpdateWithoutTutorsInput>
   }
 
-  export type SubjectCategoryCreateNestedOneWithoutBookingTutorInput = {
-    create?: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
-    connectOrCreate?: SubjectCategoryCreateOrConnectWithoutBookingTutorInput
-    connect?: SubjectCategoryWhereUniqueInput
-  }
-
   export type TutorProfileCreateNestedOneWithoutBookingTutorInput = {
     create?: XOR<TutorProfileCreateWithoutBookingTutorInput, TutorProfileUncheckedCreateWithoutBookingTutorInput>
     connectOrCreate?: TutorProfileCreateOrConnectWithoutBookingTutorInput
     connect?: TutorProfileWhereUniqueInput
   }
 
-  export type NullableEnumSexMethodFieldUpdateOperationsInput = {
-    set?: $Enums.SexMethod | null
-  }
-
-  export type NullableEnumTeachingTimeFieldUpdateOperationsInput = {
-    set?: $Enums.TeachingTime | null
-  }
-
-  export type NullableEnumTeachingMethodFieldUpdateOperationsInput = {
-    set?: $Enums.TeachingMethod | null
+  export type SubjectCategoryCreateNestedOneWithoutBookingTutorInput = {
+    create?: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
+    connectOrCreate?: SubjectCategoryCreateOrConnectWithoutBookingTutorInput
+    connect?: SubjectCategoryWhereUniqueInput
   }
 
   export type NullableEnumBookingStatusFieldUpdateOperationsInput = {
     set?: $Enums.BookingStatus | null
-  }
-
-  export type SubjectCategoryUpdateOneWithoutBookingTutorNestedInput = {
-    create?: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
-    connectOrCreate?: SubjectCategoryCreateOrConnectWithoutBookingTutorInput
-    upsert?: SubjectCategoryUpsertWithoutBookingTutorInput
-    disconnect?: SubjectCategoryWhereInput | boolean
-    delete?: SubjectCategoryWhereInput | boolean
-    connect?: SubjectCategoryWhereUniqueInput
-    update?: XOR<XOR<SubjectCategoryUpdateToOneWithWhereWithoutBookingTutorInput, SubjectCategoryUpdateWithoutBookingTutorInput>, SubjectCategoryUncheckedUpdateWithoutBookingTutorInput>
   }
 
   export type TutorProfileUpdateOneWithoutBookingTutorNestedInput = {
@@ -15094,6 +14934,16 @@ export namespace Prisma {
     delete?: TutorProfileWhereInput | boolean
     connect?: TutorProfileWhereUniqueInput
     update?: XOR<XOR<TutorProfileUpdateToOneWithWhereWithoutBookingTutorInput, TutorProfileUpdateWithoutBookingTutorInput>, TutorProfileUncheckedUpdateWithoutBookingTutorInput>
+  }
+
+  export type SubjectCategoryUpdateOneWithoutBookingTutorNestedInput = {
+    create?: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
+    connectOrCreate?: SubjectCategoryCreateOrConnectWithoutBookingTutorInput
+    upsert?: SubjectCategoryUpsertWithoutBookingTutorInput
+    disconnect?: SubjectCategoryWhereInput | boolean
+    delete?: SubjectCategoryWhereInput | boolean
+    connect?: SubjectCategoryWhereUniqueInput
+    update?: XOR<XOR<SubjectCategoryUpdateToOneWithWhereWithoutBookingTutorInput, SubjectCategoryUpdateWithoutBookingTutorInput>, SubjectCategoryUncheckedUpdateWithoutBookingTutorInput>
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -15153,10 +15003,10 @@ export namespace Prisma {
     connect?: TutorSubjectWhereUniqueInput | TutorSubjectWhereUniqueInput[]
   }
 
-  export type BookingTutorCreateNestedManyWithoutSubjectInput = {
-    create?: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput> | BookingTutorCreateWithoutSubjectInput[] | BookingTutorUncheckedCreateWithoutSubjectInput[]
-    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectInput | BookingTutorCreateOrConnectWithoutSubjectInput[]
-    createMany?: BookingTutorCreateManySubjectInputEnvelope
+  export type BookingTutorCreateNestedManyWithoutSubjectCategoryInput = {
+    create?: XOR<BookingTutorCreateWithoutSubjectCategoryInput, BookingTutorUncheckedCreateWithoutSubjectCategoryInput> | BookingTutorCreateWithoutSubjectCategoryInput[] | BookingTutorUncheckedCreateWithoutSubjectCategoryInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectCategoryInput | BookingTutorCreateOrConnectWithoutSubjectCategoryInput[]
+    createMany?: BookingTutorCreateManySubjectCategoryInputEnvelope
     connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
   }
 
@@ -15167,10 +15017,10 @@ export namespace Prisma {
     connect?: TutorSubjectWhereUniqueInput | TutorSubjectWhereUniqueInput[]
   }
 
-  export type BookingTutorUncheckedCreateNestedManyWithoutSubjectInput = {
-    create?: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput> | BookingTutorCreateWithoutSubjectInput[] | BookingTutorUncheckedCreateWithoutSubjectInput[]
-    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectInput | BookingTutorCreateOrConnectWithoutSubjectInput[]
-    createMany?: BookingTutorCreateManySubjectInputEnvelope
+  export type BookingTutorUncheckedCreateNestedManyWithoutSubjectCategoryInput = {
+    create?: XOR<BookingTutorCreateWithoutSubjectCategoryInput, BookingTutorUncheckedCreateWithoutSubjectCategoryInput> | BookingTutorCreateWithoutSubjectCategoryInput[] | BookingTutorUncheckedCreateWithoutSubjectCategoryInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectCategoryInput | BookingTutorCreateOrConnectWithoutSubjectCategoryInput[]
+    createMany?: BookingTutorCreateManySubjectCategoryInputEnvelope
     connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
   }
 
@@ -15188,17 +15038,17 @@ export namespace Prisma {
     deleteMany?: TutorSubjectScalarWhereInput | TutorSubjectScalarWhereInput[]
   }
 
-  export type BookingTutorUpdateManyWithoutSubjectNestedInput = {
-    create?: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput> | BookingTutorCreateWithoutSubjectInput[] | BookingTutorUncheckedCreateWithoutSubjectInput[]
-    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectInput | BookingTutorCreateOrConnectWithoutSubjectInput[]
-    upsert?: BookingTutorUpsertWithWhereUniqueWithoutSubjectInput | BookingTutorUpsertWithWhereUniqueWithoutSubjectInput[]
-    createMany?: BookingTutorCreateManySubjectInputEnvelope
+  export type BookingTutorUpdateManyWithoutSubjectCategoryNestedInput = {
+    create?: XOR<BookingTutorCreateWithoutSubjectCategoryInput, BookingTutorUncheckedCreateWithoutSubjectCategoryInput> | BookingTutorCreateWithoutSubjectCategoryInput[] | BookingTutorUncheckedCreateWithoutSubjectCategoryInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectCategoryInput | BookingTutorCreateOrConnectWithoutSubjectCategoryInput[]
+    upsert?: BookingTutorUpsertWithWhereUniqueWithoutSubjectCategoryInput | BookingTutorUpsertWithWhereUniqueWithoutSubjectCategoryInput[]
+    createMany?: BookingTutorCreateManySubjectCategoryInputEnvelope
     set?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
     disconnect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
     delete?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
     connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
-    update?: BookingTutorUpdateWithWhereUniqueWithoutSubjectInput | BookingTutorUpdateWithWhereUniqueWithoutSubjectInput[]
-    updateMany?: BookingTutorUpdateManyWithWhereWithoutSubjectInput | BookingTutorUpdateManyWithWhereWithoutSubjectInput[]
+    update?: BookingTutorUpdateWithWhereUniqueWithoutSubjectCategoryInput | BookingTutorUpdateWithWhereUniqueWithoutSubjectCategoryInput[]
+    updateMany?: BookingTutorUpdateManyWithWhereWithoutSubjectCategoryInput | BookingTutorUpdateManyWithWhereWithoutSubjectCategoryInput[]
     deleteMany?: BookingTutorScalarWhereInput | BookingTutorScalarWhereInput[]
   }
 
@@ -15216,17 +15066,17 @@ export namespace Prisma {
     deleteMany?: TutorSubjectScalarWhereInput | TutorSubjectScalarWhereInput[]
   }
 
-  export type BookingTutorUncheckedUpdateManyWithoutSubjectNestedInput = {
-    create?: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput> | BookingTutorCreateWithoutSubjectInput[] | BookingTutorUncheckedCreateWithoutSubjectInput[]
-    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectInput | BookingTutorCreateOrConnectWithoutSubjectInput[]
-    upsert?: BookingTutorUpsertWithWhereUniqueWithoutSubjectInput | BookingTutorUpsertWithWhereUniqueWithoutSubjectInput[]
-    createMany?: BookingTutorCreateManySubjectInputEnvelope
+  export type BookingTutorUncheckedUpdateManyWithoutSubjectCategoryNestedInput = {
+    create?: XOR<BookingTutorCreateWithoutSubjectCategoryInput, BookingTutorUncheckedCreateWithoutSubjectCategoryInput> | BookingTutorCreateWithoutSubjectCategoryInput[] | BookingTutorUncheckedCreateWithoutSubjectCategoryInput[]
+    connectOrCreate?: BookingTutorCreateOrConnectWithoutSubjectCategoryInput | BookingTutorCreateOrConnectWithoutSubjectCategoryInput[]
+    upsert?: BookingTutorUpsertWithWhereUniqueWithoutSubjectCategoryInput | BookingTutorUpsertWithWhereUniqueWithoutSubjectCategoryInput[]
+    createMany?: BookingTutorCreateManySubjectCategoryInputEnvelope
     set?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
     disconnect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
     delete?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
     connect?: BookingTutorWhereUniqueInput | BookingTutorWhereUniqueInput[]
-    update?: BookingTutorUpdateWithWhereUniqueWithoutSubjectInput | BookingTutorUpdateWithWhereUniqueWithoutSubjectInput[]
-    updateMany?: BookingTutorUpdateManyWithWhereWithoutSubjectInput | BookingTutorUpdateManyWithWhereWithoutSubjectInput[]
+    update?: BookingTutorUpdateWithWhereUniqueWithoutSubjectCategoryInput | BookingTutorUpdateWithWhereUniqueWithoutSubjectCategoryInput[]
+    updateMany?: BookingTutorUpdateManyWithWhereWithoutSubjectCategoryInput | BookingTutorUpdateManyWithWhereWithoutSubjectCategoryInput[]
     deleteMany?: BookingTutorScalarWhereInput | BookingTutorScalarWhereInput[]
   }
 
@@ -15492,27 +15342,6 @@ export namespace Prisma {
     _max?: NestedEnumTeachingTimeFilter<$PrismaModel>
   }
 
-  export type NestedEnumSexMethodNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumSexMethodNullableFilter<$PrismaModel> | $Enums.SexMethod | null
-  }
-
-  export type NestedEnumTeachingTimeNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTeachingTimeNullableFilter<$PrismaModel> | $Enums.TeachingTime | null
-  }
-
-  export type NestedEnumTeachingMethodNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTeachingMethodNullableFilter<$PrismaModel> | $Enums.TeachingMethod | null
-  }
-
   export type NestedEnumBookingStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.BookingStatus | EnumBookingStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel> | null
@@ -15545,36 +15374,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedEnumSexMethodNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SexMethod | EnumSexMethodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.SexMethod[] | ListEnumSexMethodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumSexMethodNullableWithAggregatesFilter<$PrismaModel> | $Enums.SexMethod | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumSexMethodNullableFilter<$PrismaModel>
-    _max?: NestedEnumSexMethodNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumTeachingTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TeachingTime | EnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TeachingTime[] | ListEnumTeachingTimeFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTeachingTimeNullableWithAggregatesFilter<$PrismaModel> | $Enums.TeachingTime | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumTeachingTimeNullableFilter<$PrismaModel>
-    _max?: NestedEnumTeachingTimeNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumTeachingMethodNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TeachingMethod | EnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TeachingMethod[] | ListEnumTeachingMethodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTeachingMethodNullableWithAggregatesFilter<$PrismaModel> | $Enums.TeachingMethod | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumTeachingMethodNullableFilter<$PrismaModel>
-    _max?: NestedEnumTeachingMethodNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumBookingStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -15860,22 +15659,19 @@ export namespace Prisma {
     fullName: string
     phoneNumber: string
     email?: string | null
-    subjectName?: string | null
-    level?: string | null
-    target?: string | null
-    nationalityTeacher?: string | null
-    teacherSex?: $Enums.SexMethod | null
-    studyingDays?: $Enums.TeachingTime | null
-    studyingTimes?: string | null
-    startStudyingDate?: string | null
-    teachingMethod?: $Enums.TeachingMethod | null
-    studyLocation?: string | null
+    formOne?: string | null
+    formTwo?: string | null
+    formThree?: string | null
+    formFour?: string | null
+    formFive?: string | null
+    formSix?: string | null
+    formSeven?: string | null
+    formEight?: string | null
     yourCity?: string | null
-    note?: string | null
     status?: $Enums.BookingStatus | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    subject?: SubjectCategoryCreateNestedOneWithoutBookingTutorInput
+    subjectCategory?: SubjectCategoryCreateNestedOneWithoutBookingTutorInput
   }
 
   export type BookingTutorUncheckedCreateWithoutAssignedTutorInput = {
@@ -15883,22 +15679,19 @@ export namespace Prisma {
     fullName: string
     phoneNumber: string
     email?: string | null
-    subjectId?: number | null
-    subjectName?: string | null
-    level?: string | null
-    target?: string | null
-    nationalityTeacher?: string | null
-    teacherSex?: $Enums.SexMethod | null
-    studyingDays?: $Enums.TeachingTime | null
-    studyingTimes?: string | null
-    startStudyingDate?: string | null
-    teachingMethod?: $Enums.TeachingMethod | null
-    studyLocation?: string | null
+    formOne?: string | null
+    formTwo?: string | null
+    formThree?: string | null
+    formFour?: string | null
+    formFive?: string | null
+    formSix?: string | null
+    formSeven?: string | null
+    formEight?: string | null
     yourCity?: string | null
-    note?: string | null
     status?: $Enums.BookingStatus | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subjectCategoryId?: number | null
   }
 
   export type BookingTutorCreateOrConnectWithoutAssignedTutorInput = {
@@ -16056,23 +15849,20 @@ export namespace Prisma {
     fullName?: StringFilter<"BookingTutor"> | string
     phoneNumber?: StringFilter<"BookingTutor"> | string
     email?: StringNullableFilter<"BookingTutor"> | string | null
-    subjectId?: IntNullableFilter<"BookingTutor"> | number | null
-    subjectName?: StringNullableFilter<"BookingTutor"> | string | null
-    level?: StringNullableFilter<"BookingTutor"> | string | null
-    target?: StringNullableFilter<"BookingTutor"> | string | null
-    nationalityTeacher?: StringNullableFilter<"BookingTutor"> | string | null
-    teacherSex?: EnumSexMethodNullableFilter<"BookingTutor"> | $Enums.SexMethod | null
-    studyingDays?: EnumTeachingTimeNullableFilter<"BookingTutor"> | $Enums.TeachingTime | null
-    studyingTimes?: StringNullableFilter<"BookingTutor"> | string | null
-    startStudyingDate?: StringNullableFilter<"BookingTutor"> | string | null
-    teachingMethod?: EnumTeachingMethodNullableFilter<"BookingTutor"> | $Enums.TeachingMethod | null
-    studyLocation?: StringNullableFilter<"BookingTutor"> | string | null
+    formOne?: StringNullableFilter<"BookingTutor"> | string | null
+    formTwo?: StringNullableFilter<"BookingTutor"> | string | null
+    formThree?: StringNullableFilter<"BookingTutor"> | string | null
+    formFour?: StringNullableFilter<"BookingTutor"> | string | null
+    formFive?: StringNullableFilter<"BookingTutor"> | string | null
+    formSix?: StringNullableFilter<"BookingTutor"> | string | null
+    formSeven?: StringNullableFilter<"BookingTutor"> | string | null
+    formEight?: StringNullableFilter<"BookingTutor"> | string | null
     yourCity?: StringNullableFilter<"BookingTutor"> | string | null
-    note?: StringNullableFilter<"BookingTutor"> | string | null
     assignedTutorId?: IntNullableFilter<"BookingTutor"> | number | null
     status?: EnumBookingStatusNullableFilter<"BookingTutor"> | $Enums.BookingStatus | null
     createdAt?: DateTimeFilter<"BookingTutor"> | Date | string
     updatedAt?: DateTimeFilter<"BookingTutor"> | Date | string
+    subjectCategoryId?: IntNullableFilter<"BookingTutor"> | number | null
   }
 
   export type TutorLevelCreateWithoutTeachingLevelInput = {
@@ -16254,24 +16044,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
   }
 
-  export type SubjectCategoryCreateWithoutBookingTutorInput = {
-    name: string
-    icon?: string | null
-    tutors?: TutorSubjectCreateNestedManyWithoutCategoryInput
-  }
-
-  export type SubjectCategoryUncheckedCreateWithoutBookingTutorInput = {
-    id?: number
-    name: string
-    icon?: string | null
-    tutors?: TutorSubjectUncheckedCreateNestedManyWithoutCategoryInput
-  }
-
-  export type SubjectCategoryCreateOrConnectWithoutBookingTutorInput = {
-    where: SubjectCategoryWhereUniqueInput
-    create: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
-  }
-
   export type TutorProfileCreateWithoutBookingTutorInput = {
     tutorName: string
     province: string
@@ -16324,28 +16096,22 @@ export namespace Prisma {
     create: XOR<TutorProfileCreateWithoutBookingTutorInput, TutorProfileUncheckedCreateWithoutBookingTutorInput>
   }
 
-  export type SubjectCategoryUpsertWithoutBookingTutorInput = {
-    update: XOR<SubjectCategoryUpdateWithoutBookingTutorInput, SubjectCategoryUncheckedUpdateWithoutBookingTutorInput>
+  export type SubjectCategoryCreateWithoutBookingTutorInput = {
+    name: string
+    icon?: string | null
+    tutors?: TutorSubjectCreateNestedManyWithoutCategoryInput
+  }
+
+  export type SubjectCategoryUncheckedCreateWithoutBookingTutorInput = {
+    id?: number
+    name: string
+    icon?: string | null
+    tutors?: TutorSubjectUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type SubjectCategoryCreateOrConnectWithoutBookingTutorInput = {
+    where: SubjectCategoryWhereUniqueInput
     create: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
-    where?: SubjectCategoryWhereInput
-  }
-
-  export type SubjectCategoryUpdateToOneWithWhereWithoutBookingTutorInput = {
-    where?: SubjectCategoryWhereInput
-    data: XOR<SubjectCategoryUpdateWithoutBookingTutorInput, SubjectCategoryUncheckedUpdateWithoutBookingTutorInput>
-  }
-
-  export type SubjectCategoryUpdateWithoutBookingTutorInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
-    tutors?: TutorSubjectUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type SubjectCategoryUncheckedUpdateWithoutBookingTutorInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
-    tutors?: TutorSubjectUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type TutorProfileUpsertWithoutBookingTutorInput = {
@@ -16404,6 +16170,30 @@ export namespace Prisma {
     experiences?: ExperienceUncheckedUpdateManyWithoutTutorNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutTutorNestedInput
     levels?: TutorLevelUncheckedUpdateManyWithoutTutorProfileNestedInput
+  }
+
+  export type SubjectCategoryUpsertWithoutBookingTutorInput = {
+    update: XOR<SubjectCategoryUpdateWithoutBookingTutorInput, SubjectCategoryUncheckedUpdateWithoutBookingTutorInput>
+    create: XOR<SubjectCategoryCreateWithoutBookingTutorInput, SubjectCategoryUncheckedCreateWithoutBookingTutorInput>
+    where?: SubjectCategoryWhereInput
+  }
+
+  export type SubjectCategoryUpdateToOneWithWhereWithoutBookingTutorInput = {
+    where?: SubjectCategoryWhereInput
+    data: XOR<SubjectCategoryUpdateWithoutBookingTutorInput, SubjectCategoryUncheckedUpdateWithoutBookingTutorInput>
+  }
+
+  export type SubjectCategoryUpdateWithoutBookingTutorInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    tutors?: TutorSubjectUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type SubjectCategoryUncheckedUpdateWithoutBookingTutorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    tutors?: TutorSubjectUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type TutorProfileCreateWithoutExperiencesInput = {
@@ -16699,58 +16489,52 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type BookingTutorCreateWithoutSubjectInput = {
+  export type BookingTutorCreateWithoutSubjectCategoryInput = {
     fullName: string
     phoneNumber: string
     email?: string | null
-    subjectName?: string | null
-    level?: string | null
-    target?: string | null
-    nationalityTeacher?: string | null
-    teacherSex?: $Enums.SexMethod | null
-    studyingDays?: $Enums.TeachingTime | null
-    studyingTimes?: string | null
-    startStudyingDate?: string | null
-    teachingMethod?: $Enums.TeachingMethod | null
-    studyLocation?: string | null
+    formOne?: string | null
+    formTwo?: string | null
+    formThree?: string | null
+    formFour?: string | null
+    formFive?: string | null
+    formSix?: string | null
+    formSeven?: string | null
+    formEight?: string | null
     yourCity?: string | null
-    note?: string | null
     status?: $Enums.BookingStatus | null
     createdAt?: Date | string
     updatedAt?: Date | string
     assignedTutor?: TutorProfileCreateNestedOneWithoutBookingTutorInput
   }
 
-  export type BookingTutorUncheckedCreateWithoutSubjectInput = {
+  export type BookingTutorUncheckedCreateWithoutSubjectCategoryInput = {
     id?: number
     fullName: string
     phoneNumber: string
     email?: string | null
-    subjectName?: string | null
-    level?: string | null
-    target?: string | null
-    nationalityTeacher?: string | null
-    teacherSex?: $Enums.SexMethod | null
-    studyingDays?: $Enums.TeachingTime | null
-    studyingTimes?: string | null
-    startStudyingDate?: string | null
-    teachingMethod?: $Enums.TeachingMethod | null
-    studyLocation?: string | null
+    formOne?: string | null
+    formTwo?: string | null
+    formThree?: string | null
+    formFour?: string | null
+    formFive?: string | null
+    formSix?: string | null
+    formSeven?: string | null
+    formEight?: string | null
     yourCity?: string | null
-    note?: string | null
     assignedTutorId?: number | null
     status?: $Enums.BookingStatus | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type BookingTutorCreateOrConnectWithoutSubjectInput = {
+  export type BookingTutorCreateOrConnectWithoutSubjectCategoryInput = {
     where: BookingTutorWhereUniqueInput
-    create: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput>
+    create: XOR<BookingTutorCreateWithoutSubjectCategoryInput, BookingTutorUncheckedCreateWithoutSubjectCategoryInput>
   }
 
-  export type BookingTutorCreateManySubjectInputEnvelope = {
-    data: BookingTutorCreateManySubjectInput | BookingTutorCreateManySubjectInput[]
+  export type BookingTutorCreateManySubjectCategoryInputEnvelope = {
+    data: BookingTutorCreateManySubjectCategoryInput | BookingTutorCreateManySubjectCategoryInput[]
     skipDuplicates?: boolean
   }
 
@@ -16770,20 +16554,20 @@ export namespace Prisma {
     data: XOR<TutorSubjectUpdateManyMutationInput, TutorSubjectUncheckedUpdateManyWithoutCategoryInput>
   }
 
-  export type BookingTutorUpsertWithWhereUniqueWithoutSubjectInput = {
+  export type BookingTutorUpsertWithWhereUniqueWithoutSubjectCategoryInput = {
     where: BookingTutorWhereUniqueInput
-    update: XOR<BookingTutorUpdateWithoutSubjectInput, BookingTutorUncheckedUpdateWithoutSubjectInput>
-    create: XOR<BookingTutorCreateWithoutSubjectInput, BookingTutorUncheckedCreateWithoutSubjectInput>
+    update: XOR<BookingTutorUpdateWithoutSubjectCategoryInput, BookingTutorUncheckedUpdateWithoutSubjectCategoryInput>
+    create: XOR<BookingTutorCreateWithoutSubjectCategoryInput, BookingTutorUncheckedCreateWithoutSubjectCategoryInput>
   }
 
-  export type BookingTutorUpdateWithWhereUniqueWithoutSubjectInput = {
+  export type BookingTutorUpdateWithWhereUniqueWithoutSubjectCategoryInput = {
     where: BookingTutorWhereUniqueInput
-    data: XOR<BookingTutorUpdateWithoutSubjectInput, BookingTutorUncheckedUpdateWithoutSubjectInput>
+    data: XOR<BookingTutorUpdateWithoutSubjectCategoryInput, BookingTutorUncheckedUpdateWithoutSubjectCategoryInput>
   }
 
-  export type BookingTutorUpdateManyWithWhereWithoutSubjectInput = {
+  export type BookingTutorUpdateManyWithWhereWithoutSubjectCategoryInput = {
     where: BookingTutorScalarWhereInput
-    data: XOR<BookingTutorUpdateManyMutationInput, BookingTutorUncheckedUpdateManyWithoutSubjectInput>
+    data: XOR<BookingTutorUpdateManyMutationInput, BookingTutorUncheckedUpdateManyWithoutSubjectCategoryInput>
   }
 
   export type TutorProfileCreateWithoutTutorSubjectsInput = {
@@ -16841,14 +16625,14 @@ export namespace Prisma {
   export type SubjectCategoryCreateWithoutTutorsInput = {
     name: string
     icon?: string | null
-    BookingTutor?: BookingTutorCreateNestedManyWithoutSubjectInput
+    BookingTutor?: BookingTutorCreateNestedManyWithoutSubjectCategoryInput
   }
 
   export type SubjectCategoryUncheckedCreateWithoutTutorsInput = {
     id?: number
     name: string
     icon?: string | null
-    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutSubjectInput
+    BookingTutor?: BookingTutorUncheckedCreateNestedManyWithoutSubjectCategoryInput
   }
 
   export type SubjectCategoryCreateOrConnectWithoutTutorsInput = {
@@ -16928,14 +16712,14 @@ export namespace Prisma {
   export type SubjectCategoryUpdateWithoutTutorsInput = {
     name?: StringFieldUpdateOperationsInput | string
     icon?: NullableStringFieldUpdateOperationsInput | string | null
-    BookingTutor?: BookingTutorUpdateManyWithoutSubjectNestedInput
+    BookingTutor?: BookingTutorUpdateManyWithoutSubjectCategoryNestedInput
   }
 
   export type SubjectCategoryUncheckedUpdateWithoutTutorsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     icon?: NullableStringFieldUpdateOperationsInput | string | null
-    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutSubjectNestedInput
+    BookingTutor?: BookingTutorUncheckedUpdateManyWithoutSubjectCategoryNestedInput
   }
 
   export type ReviewCreateManyUserInput = {
@@ -16997,22 +16781,19 @@ export namespace Prisma {
     fullName: string
     phoneNumber: string
     email?: string | null
-    subjectId?: number | null
-    subjectName?: string | null
-    level?: string | null
-    target?: string | null
-    nationalityTeacher?: string | null
-    teacherSex?: $Enums.SexMethod | null
-    studyingDays?: $Enums.TeachingTime | null
-    studyingTimes?: string | null
-    startStudyingDate?: string | null
-    teachingMethod?: $Enums.TeachingMethod | null
-    studyLocation?: string | null
+    formOne?: string | null
+    formTwo?: string | null
+    formThree?: string | null
+    formFour?: string | null
+    formFive?: string | null
+    formSix?: string | null
+    formSeven?: string | null
+    formEight?: string | null
     yourCity?: string | null
-    note?: string | null
     status?: $Enums.BookingStatus | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subjectCategoryId?: number | null
   }
 
   export type TutorSubjectUpdateWithoutTutorInput = {
@@ -17084,22 +16865,19 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: NullableStringFieldUpdateOperationsInput | string | null
-    target?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
-    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
-    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
-    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
-    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
-    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
-    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    formOne?: NullableStringFieldUpdateOperationsInput | string | null
+    formTwo?: NullableStringFieldUpdateOperationsInput | string | null
+    formThree?: NullableStringFieldUpdateOperationsInput | string | null
+    formFour?: NullableStringFieldUpdateOperationsInput | string | null
+    formFive?: NullableStringFieldUpdateOperationsInput | string | null
+    formSix?: NullableStringFieldUpdateOperationsInput | string | null
+    formSeven?: NullableStringFieldUpdateOperationsInput | string | null
+    formEight?: NullableStringFieldUpdateOperationsInput | string | null
     yourCity?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subject?: SubjectCategoryUpdateOneWithoutBookingTutorNestedInput
+    subjectCategory?: SubjectCategoryUpdateOneWithoutBookingTutorNestedInput
   }
 
   export type BookingTutorUncheckedUpdateWithoutAssignedTutorInput = {
@@ -17107,22 +16885,19 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    subjectId?: NullableIntFieldUpdateOperationsInput | number | null
-    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: NullableStringFieldUpdateOperationsInput | string | null
-    target?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
-    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
-    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
-    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
-    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
-    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
-    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    formOne?: NullableStringFieldUpdateOperationsInput | string | null
+    formTwo?: NullableStringFieldUpdateOperationsInput | string | null
+    formThree?: NullableStringFieldUpdateOperationsInput | string | null
+    formFour?: NullableStringFieldUpdateOperationsInput | string | null
+    formFive?: NullableStringFieldUpdateOperationsInput | string | null
+    formSix?: NullableStringFieldUpdateOperationsInput | string | null
+    formSeven?: NullableStringFieldUpdateOperationsInput | string | null
+    formEight?: NullableStringFieldUpdateOperationsInput | string | null
     yourCity?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subjectCategoryId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type BookingTutorUncheckedUpdateManyWithoutAssignedTutorInput = {
@@ -17130,22 +16905,19 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    subjectId?: NullableIntFieldUpdateOperationsInput | number | null
-    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: NullableStringFieldUpdateOperationsInput | string | null
-    target?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
-    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
-    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
-    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
-    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
-    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
-    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    formOne?: NullableStringFieldUpdateOperationsInput | string | null
+    formTwo?: NullableStringFieldUpdateOperationsInput | string | null
+    formThree?: NullableStringFieldUpdateOperationsInput | string | null
+    formFour?: NullableStringFieldUpdateOperationsInput | string | null
+    formFive?: NullableStringFieldUpdateOperationsInput | string | null
+    formSix?: NullableStringFieldUpdateOperationsInput | string | null
+    formSeven?: NullableStringFieldUpdateOperationsInput | string | null
+    formEight?: NullableStringFieldUpdateOperationsInput | string | null
     yourCity?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subjectCategoryId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TutorLevelCreateManyTeachingLevelInput = {
@@ -17172,23 +16944,20 @@ export namespace Prisma {
     tutorId: number
   }
 
-  export type BookingTutorCreateManySubjectInput = {
+  export type BookingTutorCreateManySubjectCategoryInput = {
     id?: number
     fullName: string
     phoneNumber: string
     email?: string | null
-    subjectName?: string | null
-    level?: string | null
-    target?: string | null
-    nationalityTeacher?: string | null
-    teacherSex?: $Enums.SexMethod | null
-    studyingDays?: $Enums.TeachingTime | null
-    studyingTimes?: string | null
-    startStudyingDate?: string | null
-    teachingMethod?: $Enums.TeachingMethod | null
-    studyLocation?: string | null
+    formOne?: string | null
+    formTwo?: string | null
+    formThree?: string | null
+    formFour?: string | null
+    formFive?: string | null
+    formSix?: string | null
+    formSeven?: string | null
+    formEight?: string | null
     yourCity?: string | null
-    note?: string | null
     assignedTutorId?: number | null
     status?: $Enums.BookingStatus | null
     createdAt?: Date | string
@@ -17209,68 +16978,59 @@ export namespace Prisma {
     tutorId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type BookingTutorUpdateWithoutSubjectInput = {
+  export type BookingTutorUpdateWithoutSubjectCategoryInput = {
     fullName?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: NullableStringFieldUpdateOperationsInput | string | null
-    target?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
-    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
-    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
-    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
-    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
-    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
-    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    formOne?: NullableStringFieldUpdateOperationsInput | string | null
+    formTwo?: NullableStringFieldUpdateOperationsInput | string | null
+    formThree?: NullableStringFieldUpdateOperationsInput | string | null
+    formFour?: NullableStringFieldUpdateOperationsInput | string | null
+    formFive?: NullableStringFieldUpdateOperationsInput | string | null
+    formSix?: NullableStringFieldUpdateOperationsInput | string | null
+    formSeven?: NullableStringFieldUpdateOperationsInput | string | null
+    formEight?: NullableStringFieldUpdateOperationsInput | string | null
     yourCity?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assignedTutor?: TutorProfileUpdateOneWithoutBookingTutorNestedInput
   }
 
-  export type BookingTutorUncheckedUpdateWithoutSubjectInput = {
+  export type BookingTutorUncheckedUpdateWithoutSubjectCategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     fullName?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: NullableStringFieldUpdateOperationsInput | string | null
-    target?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
-    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
-    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
-    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
-    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
-    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
-    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    formOne?: NullableStringFieldUpdateOperationsInput | string | null
+    formTwo?: NullableStringFieldUpdateOperationsInput | string | null
+    formThree?: NullableStringFieldUpdateOperationsInput | string | null
+    formFour?: NullableStringFieldUpdateOperationsInput | string | null
+    formFive?: NullableStringFieldUpdateOperationsInput | string | null
+    formSix?: NullableStringFieldUpdateOperationsInput | string | null
+    formSeven?: NullableStringFieldUpdateOperationsInput | string | null
+    formEight?: NullableStringFieldUpdateOperationsInput | string | null
     yourCity?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
     assignedTutorId?: NullableIntFieldUpdateOperationsInput | number | null
     status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BookingTutorUncheckedUpdateManyWithoutSubjectInput = {
+  export type BookingTutorUncheckedUpdateManyWithoutSubjectCategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     fullName?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    subjectName?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: NullableStringFieldUpdateOperationsInput | string | null
-    target?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalityTeacher?: NullableStringFieldUpdateOperationsInput | string | null
-    teacherSex?: NullableEnumSexMethodFieldUpdateOperationsInput | $Enums.SexMethod | null
-    studyingDays?: NullableEnumTeachingTimeFieldUpdateOperationsInput | $Enums.TeachingTime | null
-    studyingTimes?: NullableStringFieldUpdateOperationsInput | string | null
-    startStudyingDate?: NullableStringFieldUpdateOperationsInput | string | null
-    teachingMethod?: NullableEnumTeachingMethodFieldUpdateOperationsInput | $Enums.TeachingMethod | null
-    studyLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    formOne?: NullableStringFieldUpdateOperationsInput | string | null
+    formTwo?: NullableStringFieldUpdateOperationsInput | string | null
+    formThree?: NullableStringFieldUpdateOperationsInput | string | null
+    formFour?: NullableStringFieldUpdateOperationsInput | string | null
+    formFive?: NullableStringFieldUpdateOperationsInput | string | null
+    formSix?: NullableStringFieldUpdateOperationsInput | string | null
+    formSeven?: NullableStringFieldUpdateOperationsInput | string | null
+    formEight?: NullableStringFieldUpdateOperationsInput | string | null
     yourCity?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
     assignedTutorId?: NullableIntFieldUpdateOperationsInput | number | null
     status?: NullableEnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

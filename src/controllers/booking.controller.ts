@@ -8,37 +8,18 @@ import {
 
 const createBookingController = async ({ body, set }: Context) => {
   try {
-    const {
-      fullName,
-      phoneNumber,
-      startStudyingDate,
-      studyLocation,
-      studyingDays,
-      studyingTimes,
-      target,
-      teacherSex,
-      teachingMethod,
-      yourCity,
-    } = body as BookingCreate;
-    if (
-      !fullName ||
-      !phoneNumber ||
-      !startStudyingDate ||
-      !studyLocation ||
-      !studyingDays ||
-      !studyingTimes ||
-      !target ||
-      !teacherSex ||
-      !teachingMethod ||
-      !yourCity
-    ) {
+    const { fullName, phoneNumber, subjectCategoryId } = body as BookingCreate;
+    console.log(body);
+    if (!fullName || !phoneNumber || !subjectCategoryId) {
       set.status = 400;
-      return responseError("กรุณากรอกข้อมูลให้ครบ");
+      return responseError("กรุณากรอกชื่อ เบอร์โทร และวิชาอย่างน้อย");
     }
+
     const create = await createBookingService({ data: body as BookingCreate });
     return responseSuccess(create);
   } catch (err) {
-    return responseError(err as string);
+    set.status = 500;
+    return responseError("เกิดข้อผิดพลาดบนเซิร์ฟเวอร์");
   }
 };
 

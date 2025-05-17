@@ -6,26 +6,26 @@ import type {
   TeachingTime,
 } from "../libs/prismaClient";
 
-export interface BookingCreate {
+export type BookingCreate = {
   fullName: string;
   phoneNumber: string;
   email?: string;
-  subjectId?: number;
-  subjectName?: string;
-  level?: string;
-  target?: string;
-  nationalityTeacher?: string;
-  teacherSex?: SexMethod;
-  studyingDays?: TeachingTime;
-  studyingTimes?: string;
-  startStudyingDate?: string;
-  teachingMethod?: TeachingMethod;
-  studyLocation?: string;
+
+  formOne?: string;
+  formTwo?: string;
+  formThree?: string;
+  formFour?: string;
+  formFive?: string;
+  formSix?: string;
+  formSeven?: string;
+  formEight?: string;
+  formTen?: string;
+  formEleven?: string;
+
   yourCity?: string;
-  note?: string;
-  status?: BookingStatus;
-  // assignedTutorId: อย่าให้ส่งมาตอนสร้าง
-}
+  subjectCategoryId: number;
+  status?: "PENDING" | "CONFIRMED" | "REJECTED"; // ถ้าใช้ enum
+};
 
 const createBookingService = async ({ data }: { data: BookingCreate }) => {
   return prisma.bookingTutor.create({
@@ -33,21 +33,17 @@ const createBookingService = async ({ data }: { data: BookingCreate }) => {
       fullName: data.fullName,
       phoneNumber: data.phoneNumber,
       email: data.email,
-      subjectId: data.subjectId,
-      subjectName: data.subjectName,
-      level: data.level,
-      target: data.target,
-      nationalityTeacher: data.nationalityTeacher,
-      teacherSex: data.teacherSex,
-      studyingDays: data.studyingDays,
-      studyingTimes: data.studyingTimes,
-      startStudyingDate: data.startStudyingDate,
-      teachingMethod: data.teachingMethod,
-      studyLocation: data.studyLocation,
+      formOne: data.formOne,
+      formTwo: data.formTwo,
+      formThree: data.formThree,
+      formFour: data.formFour,
+      formFive: data.formFive,
+      formSix: data.formSix,
+      formSeven: data.formSeven,
+      formEight: data.formEight,
       yourCity: data.yourCity,
-      note: data.note,
-      status: data.status || "PENDING", // fallback ถ้าไม่ส่ง status
-      // assignedTutorId: ไม่ต้องใส่
+      subjectCategoryId: data.subjectCategoryId,
+      status: (data.status || "PENDING") as BookingStatus,
     },
   });
 };

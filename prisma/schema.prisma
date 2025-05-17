@@ -4,7 +4,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
- 
+
 generator client {
   provider      = "prisma-client-js"
   output        = "../src/libs/prismaClient"
@@ -76,20 +76,15 @@ model BookingTutor {
   phoneNumber String // เบอร์โทร
   email       String? // อีเมล (optional)
 
-  subjectId          Int? // หมวดหมู่วิชา เช่น ภาษาอังกฤษ
-  subjectName        String?
-  level              String? // ระดับ เช่น ม.ปลาย
-  target             String? // เป้าหมาย เช่น สอบ GAT/PAT
-  nationalityTeacher String? // อยากได้ติวเตอร์สัญชาติไหน
-  teacherSex         SexMethod? // อยากได้ติวเตอร์เพศไหน
-  studyingDays       TeachingTime? // เรียนวันอะไร (WEEKDAY/WEEKEND/EVERYDAY)
-  studyingTimes      String? // เวลาเรียน เช่น "10:00-12:00"
-  startStudyingDate  String? // อยากเริ่มเรียนวันไหน
-  teachingMethod     TeachingMethod? // สอนออนไลน์/สอนสด
-  studyLocation      String? // สถานที่เรียน (ถ้า onsite)
-  yourCity           String? // จังหวัดที่เรียน
-  note               String? // ข้อความเพิ่มเติม
-
+  formOne         String? // ฟอร์ม 1 (optional)
+  formTwo         String? // ฟอร์ม 2 (optional)
+  formThree       String? // ฟอร์ม 3 (optional)
+  formFour        String? // ฟอร์ม 4 (optional)
+  formFive        String? // ฟอร์ม 5 (optional)
+  formSix         String? // ฟอร์ม 6 (optional)
+  formSeven       String? // ฟอร์ม 7 (optional)
+  formEight       String? // ฟอร์ม 8 (optional)
+  yourCity        String? // เมืองที่อยู่ (optional)
   // ฝั่งหลังบ้านจัดการ
   assignedTutorId Int? // ติวเตอร์ที่เลือกให้
   status          BookingStatus? @default(PENDING)
@@ -97,8 +92,9 @@ model BookingTutor {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  subject       SubjectCategory? @relation(fields: [subjectId], references: [id])
-  assignedTutor TutorProfile?    @relation(fields: [assignedTutorId], references: [id])
+  assignedTutor     TutorProfile?    @relation(fields: [assignedTutorId], references: [id])
+  subjectCategoryId Int?
+  subjectCategory   SubjectCategory? @relation(fields: [subjectCategoryId], references: [id])
 }
 
 model Experience {

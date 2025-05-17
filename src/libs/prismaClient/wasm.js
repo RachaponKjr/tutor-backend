@@ -162,23 +162,20 @@ exports.Prisma.BookingTutorScalarFieldEnum = {
   fullName: 'fullName',
   phoneNumber: 'phoneNumber',
   email: 'email',
-  subjectId: 'subjectId',
-  subjectName: 'subjectName',
-  level: 'level',
-  target: 'target',
-  nationalityTeacher: 'nationalityTeacher',
-  teacherSex: 'teacherSex',
-  studyingDays: 'studyingDays',
-  studyingTimes: 'studyingTimes',
-  startStudyingDate: 'startStudyingDate',
-  teachingMethod: 'teachingMethod',
-  studyLocation: 'studyLocation',
+  formOne: 'formOne',
+  formTwo: 'formTwo',
+  formThree: 'formThree',
+  formFour: 'formFour',
+  formFive: 'formFive',
+  formSix: 'formSix',
+  formSeven: 'formSeven',
+  formEight: 'formEight',
   yourCity: 'yourCity',
-  note: 'note',
   assignedTutorId: 'assignedTutorId',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  subjectCategoryId: 'subjectCategoryId'
 };
 
 exports.Prisma.ExperienceScalarFieldEnum = {

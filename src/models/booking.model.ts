@@ -10,91 +10,31 @@ const BookingCreateBody = t.Object({
     example: "0812345678",
   }),
   email: t.String({
-    format: "email",
     optional: true,
     default: "",
     description: "อีเมล (optional)",
     example: "example@email.com",
   }),
 
-  subjectId: t.Integer({ optional: true, example: 1 }),
-  subjectName: t.String({ optional: true, default: "", example: "คณิตศาสตร์" }),
-  level: t.String({ optional: true, default: "", example: "มัธยมปลาย" }),
-  target: t.String({
-    optional: true,
-    default: "",
-    example: "สอบเข้ามหาวิทยาลัย",
-  }),
-  nationalityTeacher: t.String({ optional: true, default: "", example: "ไทย" }),
-
-  teacherSex: t.Optional(
-    t.Enum(
-      {
-        MAN: "MAN",
-        WOMAN: "WOMAN",
-        NULL: "NULL",
-      },
-      {
-        description: "เพศของครูที่ต้องการ",
-        example: "MAN",
-      }
-    )
-  ),
-
-  studyingDays: t.Optional(
-    t.Enum(
-      {
-        WEEKDAY: "WEEKDAY",
-        WEEKEND: "WEEKEND",
-        EVERYDAY: "EVERYDAY",
-      },
-      {
-        description: "วันที่ต้องการเรียน",
-        example: "WEEKEND",
-      }
-    )
-  ),
-
-  studyingTimes: t.String({
+  // แบบฟอร์มที่ผู้ใช้งานเลือกแต่ละขั้น (optional ทั้งหมด)
+  formOne: t.String({ optional: true, default: "", example: "วัยประถมศึกษา" }),
+  formTwo: t.String({ optional: true, default: "", example: "เพิ่มเกรด" }),
+  formThree: t.String({ optional: true, default: "", example: "ครูผู้หญิง" }),
+  formFour: t.String({ optional: true, default: "", example: "สอนออนไลน์" }),
+  formFive: t.String({ optional: true, default: "", example: "เขตลาดพร้าว" }),
+  formSix: t.String({ optional: true, default: "", example: "เสาร์-อาทิตย์" }),
+  formSeven: t.String({
     optional: true,
     default: "",
     example: "18:00 - 20:00",
   }),
-  startStudyingDate: t.String({
-    optional: true,
-    format: "date",
-    default: "",
-    example: "2025-05-01",
-    description: "วันที่เริ่มเรียน (yyyy-mm-dd)",
-  }),
+  formEight: t.String({ optional: true, default: "", example: "2025-06-01" }),
 
-  teachingMethod: t.Optional(
-    t.Enum(
-      {
-        ONLINE: "ONLINE",
-        ONSITE: "ONSITE",
-        BOTH: "BOTH",
-      },
-      {
-        description: "รูปแบบการเรียน",
-        example: "ONLINE",
-      }
-    )
-  ),
-
-  studyLocation: t.String({
-    optional: true,
-    default: "",
-    example: "เขตลาดพร้าว",
-  }),
   yourCity: t.String({ optional: true, default: "", example: "กรุงเทพมหานคร" }),
-  note: t.String({
-    optional: true,
-    default: "",
-    example: "อยากให้ครูเน้นการสนทนา",
-  }),
 
   assignedTutorId: t.Optional(t.Integer({ example: 42 })),
+
+  subjectCategoryId: t.Optional(t.Integer({ example: 1 })),
 
   status: t.Optional(
     t.Enum(
